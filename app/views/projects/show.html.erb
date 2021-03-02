@@ -1,0 +1,8 @@
+<p><%= link_to "Back", projects_path %></p>
+
+<h1><%= @project.name %></h1>
+
+<p>Description: <%= @project.description %></p>
+<p>Completed: <%= @project.completed ? "yes" : "no" %></p>
+
+<p><%= link_to "Edit", edit_project_path(@project) %></p>
