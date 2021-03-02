@@ -1,9 +1,20 @@
 <h1>Create a case</h1>
 
+<!-- form to create a patient -->
+<!-- form to create a patient -->
+
+
+<!-- form to create a case -->
 <div>
   <%= simple_form_for(@case) do |f| %>
-    <%= f.association :patient %>
     <%= f.input :description %>
+    <%= f.simple_fields_for(:patient) do |fp| %>
+      <%= fp.input :first_name %>
+      <%= fp.input :last_name %>
+      <%= fp.input :gender %>
+      <%= fp.input :date_of_birth %>
+      <%= fp.input :address %>
+    <% end %>
     <%= f.button :submit %>
   <% end %>
 </div>

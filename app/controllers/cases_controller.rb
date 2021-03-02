@@ -3,16 +3,17 @@ class CasesController < ApplicationController
     @cases = Case.all
   end
 
+  def new
+    @case = Case.new
+    @case.patient = Patient.new
+  end
+
   def show
     @case = Case.find(params[:id])
   end
 
-  def new
-    @case = Case.new
-  end
-
   def create
-
+    raise
   end
 
   def edit
