@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cases, dependent: :destroy
-  has_many :collaborations, dependent: :destroy
-  has_many :projects, through: :collaborations
-  has_many :patients, through: :cases
+  has_many :collaborations
+  has_many :projects, through: :collaborations, dependent: :destroy
+  has_many :patients, through: :cases, dependent: :destroy
 end
