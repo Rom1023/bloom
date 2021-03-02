@@ -1,0 +1,13 @@
+<h1>List all cases</h1>
+
+<div>
+  <ul>
+    <% @cases.each do |case| %>
+      <li>
+        <%= case.user %>
+        <br><%= case.patient %>
+        <br><%= case.description %>
+      </li>
+    <% end %>
+  </ul>
+</div>

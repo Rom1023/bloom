@@ -1,0 +1,9 @@
+<h1>Create a case</h1>
+
+<div>
+  <%= simple_form_for(@case) do |f| %>
+    <%= f.association :patient %>
+    <%= f.input :description %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
