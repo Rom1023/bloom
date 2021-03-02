@@ -21,10 +21,21 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.collaborations << Collaboration.new(user: current_user)
+    @project.update(project_params)
+    redirect_to project_path(@project)
+  end
+
   private
 
   def project_params
-    params.require(:project).permit(:name, :description)
+    params.require(:project).permit(:name, :description, :completed)
   end
 
 end

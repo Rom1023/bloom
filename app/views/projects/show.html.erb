@@ -5,3 +5,4 @@
 <p>Description: <%= @project.description %></p>
 <p>Completed: <%= @project.completed ? "yes" : "no" %></p>
 
+<p><%= link_to "Edit", edit_project_path(@project) %></p>
