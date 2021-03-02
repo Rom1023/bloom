@@ -5,6 +5,8 @@ class CasesController < ApplicationController
 
   def new
     @case = Case.new
+    # same as:
+    # @case.build_patient
     @case.patient = Patient.new
   end
 

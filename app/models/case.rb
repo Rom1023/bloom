@@ -1,6 +1,6 @@
 class Case < ApplicationRecord
-  belongs_to :user, foreign_key: true
-  belongs_to :patient, foreign_key: true
+  belongs_to :user
+  belongs_to :patient
   has_many :links, dependent: :destroy
 
   accepts_nested_attributes_for :patient
