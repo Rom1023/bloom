@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_010123) do
+ActiveRecord::Schema.define(version: 2021_03_02_134833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cases", force: :cascade do |t|
+    t.string "description"
+    t.bigint "user_id", null: false
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_cases_on_patient_id"
+    t.index ["user_id"], name: "index_cases_on_user_id"
+  end
+
+  create_table "collaborations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_collaborations_on_project_id"
+    t.index ["user_id"], name: "index_collaborations_on_user_id"
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.bigint "case_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["case_id"], name: "index_links_on_case_id"
+    t.index ["project_id"], name: "index_links_on_project_id"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "gender"
+    t.date "date_of_birth"
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
@@ -38,4 +76,10 @@ ActiveRecord::Schema.define(version: 2021_03_02_010123) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cases", "patients"
+  add_foreign_key "cases", "users"
+  add_foreign_key "collaborations", "projects"
+  add_foreign_key "collaborations", "users"
+  add_foreign_key "links", "cases"
+  add_foreign_key "links", "projects"
 end
