@@ -9,9 +9,21 @@
   <p><%= link_to "Edit", edit_project_path(@project) %></p>
 <% end %>
 
-<% unless @project.is_admin?(current_user.id) %>
-<p>
-  <%= link_to "Collaborate", '#' %>
-</p>
-
+<% if @project.is_collaborator?(current_user) %>
+  <p>You are a collaborator in this project</p>
+<% else %>
+  <div class="w-50">
+    <%= simple_form_for([@project, @collaboration]) do |f| %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 <% end %>
+
+
+<h5>List of contributors</h5>
+<ul>
+  <% @project.collaborations.each do |collaboration| %>
+    <li><%= link_to collaboration.user, user_path(collaboration.user) %></li>
+  <% end %>
+</ul>
+

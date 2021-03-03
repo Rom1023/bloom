@@ -5,6 +5,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @collaboration = Collaboration.new
+    @collaborations = Collaboration.all
+
   end
 
   def new

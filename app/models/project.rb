@@ -10,4 +10,8 @@ class Project < ApplicationRecord
     admin = collaborations.find_by(role: 'admin', user_id: user_id)
     admin.presence
   end
+
+  def is_collaborator?(user)
+    collaborations.where(user: user).exists?
+  end
 end
