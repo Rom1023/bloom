@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.collaborations << Collaboration.new(user: current_user)
+    @project.collaborations << Collaboration.new(user: current_user, role: 'admin')
     if @project.save
       redirect_to project_path(@project)
     else
@@ -27,7 +27,6 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project.collaborations << Collaboration.new(user: current_user)
     @project.update(project_params)
     redirect_to project_path(@project)
   end
