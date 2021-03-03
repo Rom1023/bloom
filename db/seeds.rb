@@ -13,8 +13,10 @@ User.destroy_all
 puts "start seeding..."
 
 # User
-user_1 = User.create!(email: "user1@test.com", password: "123456")
-user_2 = User.create!(email: "user2@test.com", password: "123456")
+user_1 = User.create!(first_name: "Bob", last_name: "Test", specialization: "Orthopaedic",
+                      email: "user1@test.com", password: "123456")
+user_2 = User.create!(first_name: "Bob", last_name: "Test", specialization: "Orthopaedic",
+                      email: "user2@test.com", password: "123456")
 
 # Project
 project_1 = Project.create!(name: "test one", description: "This is a test")

@@ -1,13 +1,25 @@
-<h1>List all cases</h1>
+<div class="container">
 
-<div>
-  <ul>
-    <% @cases.each do |case| %>
-      <li>
-        <%= case.user %>
-        <br><%= case.patient %>
-        <br><%= case.description %>
-      </li>
-    <% end %>
-  </ul>
+  <div>
+    <h1>List all cases</h1>
+    <%= link_to "Add a case", new_case_path %>
+  </div>
+
+  <div>
+    <ul>
+      <% @cases.each do |one_case| %>
+        <li>
+          <%= link_to(case_path(one_case)) do %>
+            Case <%= one_case.id %>:
+          <% end %>
+          <%= one_case.description %>
+          <!-- add link to doctor profile page-->
+          <br>Dr: <%= one_case.user.first_name %> <%= one_case.user.last_name %>
+          <!-- add link to patient profile page-->
+          Patient: <%= one_case.patient.id %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>

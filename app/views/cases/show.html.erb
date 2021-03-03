@@ -1,2 +1,19 @@
-<h1>Case: <%= @case.id %> </h1>
+<div class="container">
 
+  <div>
+    <h2>Case: <%= @case.id %></h2>
+    <h4>Description:</h4>
+    <p><%= @case.description %></p>
+    <hr>
+  </div>
+
+  <div>
+    <h4>Doctor info:</h4>
+    <p>Dr <%= @case.user.first_name %><%= @case.user.last_name %></p>
+    <p><%= @case.user.specialization %></p>
+    <p><%= @case.user.email %></p>
+  </div>
+
+  <%= link_to "Back to list of cases", cases_path %>
+
+</div>

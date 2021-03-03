@@ -15,15 +15,29 @@ class CasesController < ApplicationController
   end
 
   def create
-    raise
+    @case = Case.new(case_params)
+    @case.patient = Patient.find(params[:case][:patient_id]) if params[:case][:patient_id]
+    @case.user = current_user
+    @case.save
+
+    redirect_to case_path(@case)
   end
 
   def edit
+
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def case_params
+    params.require(:case).permit(:description,
+                                 patient_attributes: [:first_name, :last_name, :gender,
+                                                      :date_of_birth, :address])
   end
 end
