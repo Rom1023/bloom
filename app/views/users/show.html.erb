@@ -1,0 +1,56 @@
+<div class="container">
+
+  <h1>My profile</h1>
+  <div>
+    <h4>Doctor info</h4>
+    <p>Dr <%= @user.first_name %><%= @user.last_name %></p>
+    <p><%= @user.specialization %></p>
+    <p><%= @user.email %></p>
+    <hr>
+  </div>
+
+  <div>
+    <h4>My projects</h4>
+    <%= link_to "+ project", new_project_path %>
+    <ul>
+      <% @user.projects.each do |project| %>
+        <li><%= link_to project.name, project_path(project) %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h4>My cases</h4>
+    <%= link_to "+ case", new_case_path %>
+      <ul>
+        <% @user.cases.each do |one_case| %>
+          <li>
+            <%= link_to(case_path(one_case)) do %>
+              Case <%= one_case.id %>:
+            <% end %>
+            <%= one_case.description %>
+            <!-- add link to patient profile page-->
+            <br>Patient: <%= one_case.patient.id %>
+            <%= link_to "Edit", edit_case_path(one_case) %>
+            <%= link_to "Delete", case_path(one_case), method: :delete, data: { confirm: "Are you sure?"} %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
+  <div>
+    <h4>My patients</h4>
+    <%= link_to "+ patient", new_case_path %>
+      <ul>
+        <% @user.patients.each do |patient| %>
+          <li>
+            <%= link_to(patient_path(patient)) do %>
+              Patient <%= patient.id %>:
+            <% end %>
+            <%= patient.first_name %> <%= patient.last_name %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
+</div>
