@@ -12,6 +12,7 @@
         <!-- 2. create a new patient (JS: when click add a new patient, following form appear???) -->
         <h4>Add a new patient</h4>
         <div class="w-50">
+          <!-- nested simple_fields_for: nested attributes -->
           <%= f.simple_fields_for(:patient) do |fp| %>
             <%= fp.input :first_name %>
             <%= fp.input :last_name %>
@@ -21,7 +22,7 @@
           <% end %>
         </div>
       </div>
-      <%= f.button :submit %>
+      <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
   </div>
 

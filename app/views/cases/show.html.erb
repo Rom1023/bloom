@@ -2,6 +2,8 @@
 
   <div>
     <h2>Case: <%= @case.id %></h2>
+    <%= link_to "Edit", edit_case_path(@case) %>
+    <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"} %>
     <h4>Description:</h4>
     <p><%= @case.description %></p>
     <hr>

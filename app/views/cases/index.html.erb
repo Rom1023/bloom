@@ -17,6 +17,8 @@
           <br>Dr: <%= one_case.user.first_name %> <%= one_case.user.last_name %>
           <!-- add link to patient profile page-->
           Patient: <%= one_case.patient.id %>
+          <%= link_to "Edit", edit_case_path(one_case) %>
+          <%= link_to "Delete", case_path(one_case), method: :delete, data: { confirm: "Are you sure?"} %>
         </li>
       <% end %>
     </ul>
