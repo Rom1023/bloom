@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :projects, only: [:index, :show, :new, :create, :edit, :update]
   root to: 'pages#home'
+
+  devise_for :users
+
+  resources :projects do
+    resources :collaborations, only: [:new, :create]
+  end
 
   resources :cases do
     resources :patients, only: [:create]

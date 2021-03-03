@@ -8,3 +8,10 @@
 <% if @project.is_admin?(current_user.id) %>
   <p><%= link_to "Edit", edit_project_path(@project) %></p>
 <% end %>
+
+<% unless @project.is_admin?(current_user.id) %>
+<p>
+  <%= link_to "Collaborate", '#' %>
+</p>
+
+<% end %>
