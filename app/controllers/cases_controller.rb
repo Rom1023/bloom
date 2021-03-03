@@ -50,6 +50,6 @@ class CasesController < ApplicationController
     # Nested Attributes: create patient and case at the same time
     params.require(:case).permit(:description,
                                  patient_attributes: [:first_name, :last_name, :gender,
-                                                      :date_of_birth, :address])
+                                                      :date_of_birth, :address, photos: [], documents: []])
   end
 end
