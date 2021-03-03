@@ -5,4 +5,6 @@
 <p>Description: <%= @project.description %></p>
 <p>Completed: <%= @project.completed ? "yes" : "no" %></p>
 
-<p><%= link_to "Edit", edit_project_path(@project) %></p>
+<% if @project.is_admin?(current_user.id) %>
+  <p><%= link_to "Edit", edit_project_path(@project) %></p>
+<% end %>
