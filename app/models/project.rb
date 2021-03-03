@@ -4,5 +4,5 @@ class Project < ApplicationRecord
   has_many :collaborations, dependent: :destroy
   has_many :links
 
-  validates :collaborations, presence: true
+  # validates :collaborations, presence: true
 end
