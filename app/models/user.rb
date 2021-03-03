@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :patients, through: :cases
 
   def full_name
-    full_name = "#{first_name} #{last_name}".titleize
+    "#{first_name} #{last_name}".titleize
   end
 end

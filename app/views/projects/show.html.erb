@@ -21,7 +21,7 @@
 <h5>List of contributors</h5>
 <ul>
   <% @project.collaborations.each do |collaboration| %>
-    <li><%= link_to collaboration.user, user_path(collaboration.user) %></li>
+    <li><%= link_to collaboration.user.full_name, user_path(collaboration.user) %></li>
   <% end %>
 </ul>
 
@@ -55,4 +55,3 @@
   </div>
 
 </div>
->>>>>>> master
