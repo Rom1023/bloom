@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :cases do
     resources :patients, only: [:create]
   end
+  resources :patients, only: [:edit, :update]
 end

@@ -1,0 +1,29 @@
+<div class="container">
+
+  <h1>Create a case</h1>
+
+  <div>
+    <!-- form to create a case(+ option to add a patient) -->
+    <%= simple_form_for(@case) do |f| %>
+      <%= f.input :description, as: :text %>
+      <!-- 1. pick an existing patient -->
+      <%= f.association :patient, label: "Choose from existing patient" %>
+      <div>
+        <!-- 2. create a new patient (JS: when click add a new patient, following form appear???) -->
+        <h4>Add a new patient</h4>
+        <div class="w-50">
+          <!-- nested simple_fields_for: nested attributes -->
+          <%= f.simple_fields_for(:patient) do |fp| %>
+            <%= fp.input :first_name %>
+            <%= fp.input :last_name %>
+            <%= fp.input :gender %>
+            <%= fp.input :date_of_birth %>
+            <%= fp.input :address %>
+          <% end %>
+        </div>
+      </div>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+</div>
