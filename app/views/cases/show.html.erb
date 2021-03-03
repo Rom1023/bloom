@@ -7,6 +7,18 @@
     <h4>Description:</h4>
     <p><%= @case.description %></p>
     <hr>
+
+    <div>
+      <% @case.patient.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+    <div>
+      <% @case.patient.documents.each do |document| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+
   </div>
 
   <div>

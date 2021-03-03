@@ -16,7 +16,7 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(case_params)
-    @case.patient = Patient.find(params[:case][:patient_id]) if params[:case][:patient_id]
+    @case.patient = Patient.find(params[:case][:patient_id]) unless params[:case][:patient_id] == ""
     @case.user = current_user
     @case.save
 
