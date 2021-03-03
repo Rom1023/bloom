@@ -1,10 +1,39 @@
-<p><%= link_to "Back", projects_path %></p>
+<div class="container">
 
-<h1><%= @project.name %></h1>
+  <p><%= link_to "Back", projects_path %></p>
 
-<p>Description: <%= @project.description %></p>
-<p>Completed: <%= @project.completed ? "yes" : "no" %></p>
+  <h1><%= @project.name %></h1>
+  <div>
+    <p>Description: <%= @project.description %></p>
+    <p>Completed: <%= @project.completed ? "yes" : "no" %></p>
 
-<% if @project.is_admin?(current_user.id) %>
-  <p><%= link_to "Edit", edit_project_path(@project) %></p>
-<% end %>
+    <% if @project.is_admin?(current_user.id) %>
+      <p><%= link_to "Edit", edit_project_path(@project) %></p>
+    <% end %>
+  </div>
+
+  <div>
+    <h4>Asccotiated cases</h4>
+    <ul>
+      <% @links.each do |link| %>
+        <% if link.project == @project %>
+          <li>
+            <%= link_to(case_path(link.case)) do %>
+              <!-- should be link.case.title after title added to Case-->
+              Case <%= link.case.id %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="w-50">
+    <h4>Link a case</h4>
+      <%= simple_form_for([@project, @link]) do |f| %>
+        <%= f.association :case, label: "Pick a case" %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+  </div>
+
+</div>
