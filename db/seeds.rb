@@ -15,17 +15,24 @@ User.destroy_all
 puts "start seeding..."
 
 # User
-user_1 = User.create!(first_name: "Bob", last_name: "Test", specialization: "Orthopaedic",
+user_1 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, specialization: "Orthopaedic",
                       email: "user1@test.com", password: "123456")
-user_2 = User.create!(first_name: "Bob", last_name: "Test", specialization: "Orthopaedic",
+
+user_2 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, specialization: "Rheumatologist",
                       email: "user2@test.com", password: "123456")
+
+user_3 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, specialization: "Neurologist",
+                      email: "user3@test.com", password: "123456")
+
+user_4 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, specialization: "Cardiologist",
+                      email: "user4@test.com", password: "123456")
 
 # Project
 project_1 = Project.create!(name: "test one", description: "This is a test")
 project_2 = Project.create!(name: "test two", description: "Second test", completed: true)
 
 # Patient
-# patient_1 = Patient.create!(first_name: "John", last_name: "Test",
+# patient_1 = Patient.create!(Faker::Name.name, last_name: "Test",
 #                             gender: "Male", date_of_birth: "1962-10-10",
 #                             address: "123 Fake st, Montreal")
 # patient_2 = Patient.create!(first_name: "May", last_name: "Test",
