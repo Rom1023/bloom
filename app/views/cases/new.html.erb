@@ -15,8 +15,10 @@
     <%= simple_form_for(@case) do |f| %>
       <%= f.input :description, as: :text %>
       <!-- 1. pick an existing patient -->
-      <%= f.association :patient, label: "Choose from my patient list", collection: current_user.patients.ids %>
-      <div>
+      <%= f.association :patient, label: "Choose from my patient list",
+                        collection: current_user.patients.ids,
+                        id: "link-exit-patient" %>
+      <div id="link-new-patient">
         <!-- 2. create a new patient (JS: when click add a new patient, following form appear???) -->
         <h4>Add a new patient</h4>
         <div class="w-50">
