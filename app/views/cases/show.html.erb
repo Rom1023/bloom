@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div>
+    <h2>Case: <%= @case.id %></h2>
+    <%= link_to "Edit", edit_case_path(@case) %>
+    <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"} %>
+    <h4>Description:</h4>
+    <p><%= @case.description %></p>
+    <hr>
+
+    <div>
+      <% @case.patient.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+    <div>
+      <% @case.patient.documents.each do |document| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div>
+    <h4>Doctor info:</h4>
+    <p>Dr <%= @case.user.first_name %><%= @case.user.last_name %></p>
+    <p><%= @case.user.specialization %></p>
+    <p><%= @case.user.email %></p>
+  </div>
+
+  <%= link_to "Back to list of cases", cases_path %>
+
+</div>
