@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   has_many :links
   has_many :cases, through: :links
   has_many :users, through: :collaborations
+  has_many :comments
 
   # validates :collaborations, presence: true
 

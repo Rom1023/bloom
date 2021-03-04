@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:show]
-  resources :comments, only: [:show, :create]
   resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
     resources :links, only: [:create]
+    resources :comments, only: [:create]
   end
 
   resources :cases do
