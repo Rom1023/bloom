@@ -16,7 +16,7 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(case_params)
-    @case.patient = Patient.find(params[:case][:patient_id]) if params[:case][:patient_id]
+    @case.patient = Patient.find(params[:case][:patient_id]) unless params[:case][:patient_id] == ""
     @case.user = current_user
     @case.save
 
@@ -50,6 +50,6 @@ class CasesController < ApplicationController
     # Nested Attributes: create patient and case at the same time
     params.require(:case).permit(:description,
                                  patient_attributes: [:first_name, :last_name, :gender,
-                                                      :date_of_birth, :address])
+                                                      :date_of_birth, :address, photos: [], documents: []])
   end
 end

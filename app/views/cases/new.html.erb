@@ -19,6 +19,9 @@
             <%= fp.input :gender %>
             <%= fp.input :date_of_birth %>
             <%= fp.input :address %>
+            <%= fp.input :photos, as: :file, input_html: { multiple: true } %>
+            <%= fp.input :documents, as: :file, input_html: { multiple: true } %>
+
           <% end %>
         </div>
       </div>
