@@ -30,7 +30,10 @@
             <% end %>
             <%= one_case.description %>
             <!-- add link to patient profile page-->
-            <br>Patient: <%= one_case.patient.id %>
+            <br>
+            <%= link_to(patient_path(one_case.patient)) do %>
+              Patient <%= one_case.patient.id %>:
+            <% end %>
             <%= link_to "Edit", edit_case_path(one_case) %>
             <%= link_to "Delete", case_path(one_case), method: :delete, data: { confirm: "Are you sure?"} %>
           </li>

@@ -1,10 +1,9 @@
 <div class="container">
 
-  <p><%= link_to "Back", projects_path %></p>
-
   <h1><%= @project.name %></h1>
   <div>
     <p>Description: <%= @project.description %></p>
+
     <p>Completed: <%= @project.completed ? "yes" : "no" %></p>
 
     <% if @project.is_admin?(current_user.id) %>
@@ -29,6 +28,7 @@
   </div>
 
   <div class="w-50">
+    <!-- Condition to be added: admin and collaborators only-->
     <h4>Link a case</h4>
       <%= simple_form_for([@project, @link]) do |f| %>
         <%= f.association :case, label: "Pick a case" %>
