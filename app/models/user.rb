@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :collaborations
   has_many :projects, through: :collaborations
   has_many :patients, through: :cases
+
+  def full_name
+    self.first_name + " " +self.last_name
+  end
 end

@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $m-blue;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +8,22 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 140px;
 }
+
+// allpages(navbar)
+a.navbar-brand {
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 15px;
+}
+
+#navbarDropdown {
+  box-shadow: 0px 0px 2px $m-blue;
+  &:hover {
+    box-shadow: 0px 0px 6px rgba(56,225,237,0.7);
+  }
+}
+//

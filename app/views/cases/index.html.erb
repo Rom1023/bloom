@@ -1,0 +1,35 @@
+<div class="container">
+
+  <div>
+    <h1>List all cases</h1>
+    <%= link_to "Add a case", new_case_path %>
+  </div>
+
+  <div>
+    <ul>
+      <% @cases.each do |c| %>
+        <li class="card">
+          <div>
+            Dr: <%= c.user.full_name %>
+            <%= c.user.email %>
+          </div>
+          <div>
+              <!-- should show case title-->
+            Case <%= c.id %>:
+            <%= c.description %>
+          </div>
+          <div>
+            <!-- add link to patient profile page-->
+            <%= c.patient.gender %>
+            <%= c.patient.age %> years old
+            Patient: <%= c.patient.id %>
+            <div>
+              <%= link_to "Read more ￫",case_path(c) %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
