@@ -12,32 +12,34 @@
         <label class="" for="createNew">Create new patient</label>
       </fieldset>
     </form>
-    <%= simple_form_for(@case) do |f| %>
-      <%= f.input :description, as: :text %>
-      <!-- 1. pick an existing patient -->
-      <%= f.association :patient, label: "Choose from my patient list",
-                        collection: current_user.patients.ids,
-                        id: "link-exit-patient" %>
-      <div id="link-new-patient">
-        <!-- 2. create a new patient (JS: when click add a new patient, following form appear???) -->
-        <h4>Add a new patient</h4>
-        <div class="w-50">
-          <!-- nested simple_fields_for: nested attributes -->
-          <%= f.simple_fields_for(:patient) do |fp| %>
-            <%= fp.input :first_name %>
-            <%= fp.input :last_name %>
-            <%= fp.input :gender, collection: ['female', 'male'] %>
-            <%= fp.input :date_of_birth, as: :date,
-                                         start_year: 2021, end_year: 1910 %>
-            <%= fp.input :address %>
-            <%= fp.input :photos, as: :file, input_html: { multiple: true } %>
-            <%= fp.input :documents, as: :file, input_html: { multiple: true } %>
-
-          <% end %>
+      <%= simple_form_for(@case) do |f| %>
+        <%= f.input :description, as: :text %>
+        <!-- 1. pick an existing patient -->
+        <div id="create-patient">
+          <%= f.association :patient, label: "Choose from my patient list",
+                            collection: current_user.patients.ids,
+                            id: "link-exit-patient" %>
         </div>
-      </div>
-      <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
+        <div id="link-new-patient">
+          <!-- 2. create a new patient (JS: when click add a new patient, following form appear???) -->
+          <h4>Add a new patient</h4>
+          <div class="w-50">
+            <!-- nested simple_fields_for: nested attributes -->
+            <%= f.simple_fields_for(:patient) do |fp| %>
+              <%= fp.input :first_name %>
+              <%= fp.input :last_name %>
+              <%= fp.input :gender, collection: ['female', 'male'] %>
+              <%= fp.input :date_of_birth, as: :date,
+                                           start_year: 2021, end_year: 1910 %>
+              <%= fp.input :address %>
+              <%= fp.input :photos, as: :file, input_html: { multiple: true } %>
+              <%= fp.input :documents, as: :file, input_html: { multiple: true } %>
+
+            <% end %>
+          </div>
+        </div>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
   </div>
 
 </div>
