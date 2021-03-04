@@ -5,3 +5,11 @@
 @import "banner";
 @import "footer";
 @import "button";
+
+body {
+  position:relative;
+}
+
+.container {
+  padding-bottom: 300px;
+}

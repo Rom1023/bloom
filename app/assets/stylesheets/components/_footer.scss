@@ -1,8 +1,8 @@
 footer {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   padding: 30px 80px;
-  width: 100vw;
+  width: 100%;
   background: $m-blue;
   p {
     color: white;
@@ -23,7 +23,7 @@ footer {
   color: $m-bluelight;
 }
 
-.text-grey {
+footer .footer-bottom {
   opacity: 50%;
   p {
     margin-bottom: 0;
