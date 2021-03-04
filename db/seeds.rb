@@ -40,18 +40,51 @@ project_2 = Project.create!(name: "test two", description: "Second test", comple
 #                             address: "456 Fake st, Montreal")
 
 # Case + Patient
-case_1 = Case.new(description: "Leg bones, do not feel normal.",
-                  patient_attributes: {first_name: "John", last_name: "Test",
-                                        gender: "Male", date_of_birth: "1962-10-10",
-                                        address: "123 Fake st, Montreal"})
-case_1.user = user_1
-case_1.save!
+case_2 = Case.new(
+                  description: "Painless masses in the mouth or face. Respiratory problems",
+                  patient_attributes: {
+                    first_name: "John",
+                    last_name: "Test",
+                    gender: "male",
+                    date_of_birth: "1962-10-10",
+                    address: "123 Fake st, Montreal"
+                  }
+                )
 
-case_2 = Case.new(description: "Headache.",
-                  patient_attributes: {first_name: "May", last_name: "Test",
-                                        gender: "Female", date_of_birth: "1976-12-10",
-                                        address: "456 Fake st, Montreal"})
-case_2.user = user_2
+case_2.user = user_1
 case_2.save!
+
+case_3 = Case.new(
+                  description: "Painless masses in the mouth or face. Respiratory problems",
+                  patient_attributes: {
+                    first_name: "John",
+                    last_name: "Test",
+                    gender: "male",
+                    date_of_birth: "1962-10-10",
+                    address: "123 Fake st, Montreal"
+                  }
+                )
+
+case_3.user = user_2
+case_3.save!
+
+# Project
+project_3 = Project.create!(name: "Adenoid Cystic Carcinoma (ACC)", description: "Adenoid cystic carcinoma (ACC) is a rare form of cancer (adenocarcinoma)
+ that most often arises in the salivary glands but may occur in other locations like the breast or uterus.")
+
+link_1 = Link.new
+link_1.project = project_3
+link_1.case = case_2
+link_1.save!
+
+project_4 = Project.create!(name: "Ileostomy (Ulcerative Colitis Surgery)", description: "Ulcerative colitis is a chronic (long-term) inflammatory disease.
+  It affects the lining of the large intestine, or colon, and rectum. The rectum is the last section of the colon and is located just above the anus.
+  People with ulcerative colitis have tiny ulcers and abscesses in their colon and rectum. These flare up periodically and cause bloody stools and diarrhea.
+  Ulcerative colitis may also cause severe abdominal pain and anemia. Anemia is marked by low levels of healthy red blood cells.")
+
+link_2 = Link.new
+link_2.project = project_4
+link_2.case = case_3
+link_2.save!
 
 puts "done seeding..."
