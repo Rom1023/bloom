@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :user, foreign_key: true
-  belongs_to :project, foreign_key: true
+  belongs_to :user
+  belongs_to :project
   validates :content, presence: true
 end
