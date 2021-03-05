@@ -6,6 +6,9 @@
 @import "footer";
 @import "button";
 
+@import "card-case";
+
+
 body {
   position:relative;
 }
@@ -13,3 +16,4 @@ body {
 .container {
   padding-bottom: 300px;
 }
+
