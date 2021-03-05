@@ -2,7 +2,10 @@
   height: 100vh;
   background-size: cover;
   background-position: center;
-  padding: 250px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 // homepage(title)

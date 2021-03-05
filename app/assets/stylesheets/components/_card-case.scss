@@ -4,15 +4,15 @@ ul{
   list-style-type: none;
 }
 
-#cards-container{
+.cards-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
 }
 
 .card-case{
-  height: 200px;
-  width: 385px;
+  height: 300px;
+  width: 500px;
   border-radius: 16px;
   position: relative;
   border-left: 25px solid #3734AA;
@@ -43,7 +43,7 @@ ul{
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 0px;
-  position: absolute;
+  // position: absolute;
   top: 50px;
     h2{
       font-family: 'Montserrat', sans-serif;
@@ -97,7 +97,7 @@ ul{
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  position: absolute;
+  // position: absolute;
   bottom: 15px;
     a{
       font-family: 'Montserrat', sans-serif;

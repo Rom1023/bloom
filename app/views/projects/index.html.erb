@@ -1,10 +1,12 @@
-<div class="container my-5">
+<div class="container">
   <h1>Projects</h1>
-  <ul>
+  <ul class="cards-container">
     <% @projects.each do |project| %>
-      <li>
+      <li class="card-case">
         <%= link_to project.name, project_path(project) %>
-        <br><%= project.description %>
+        <div class="card-main-infos">
+          <br><%= project.description %>
+        </div>
       </li>
     <% end %>
   </ul>

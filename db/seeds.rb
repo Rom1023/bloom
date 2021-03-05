@@ -90,7 +90,7 @@ neurologist << "Seizures are changes in the brain’s electrical activity. These
                to injury or be a sign of an underlying medical condition, it’s important to seek treatment if
                you experience them."
 # -- Cases + Patients ()--
-2.times do
+4.times do
   c = Case.new(description: descriptions[0].sample,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
@@ -99,7 +99,7 @@ neurologist << "Seizures are changes in the brain’s electrical activity. These
   c.save!
 end
 
-2.times do
+6.times do
   c = Case.new(description: descriptions[1].sample,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
@@ -108,7 +108,7 @@ end
   c.save!
 end
 
-2.times do
+3.times do
   c = Case.new(description: descriptions[2].sample,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
@@ -117,7 +117,7 @@ end
   c.save!
 end
 
-2.times do
+7.times do
   c = Case.new(description: descriptions[3].sample,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,

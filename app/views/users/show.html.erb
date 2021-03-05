@@ -22,20 +22,24 @@
   <div>
     <h4>My cases</h4>
     <%= link_to "+ case", new_case_path %>
-      <ul>
+      <ul class="cards-container">
         <% @user.cases.each do |one_case| %>
-          <li>
-            <%= link_to(case_path(one_case)) do %>
-              Case <%= one_case.id %>:
-            <% end %>
-            <%= one_case.description %>
+          <li class="card-case">
+            <div class="card-main-infos">
+              <%= link_to(case_path(one_case)) do %>
+                <%= one_case.title %>:
+              <% end %>
+              <br><%= one_case.description %>
+            </div>
             <!-- add link to patient profile page-->
             <br>
-            <%= link_to(patient_path(one_case.patient)) do %>
-              Patient <%= one_case.patient.id %>:
-            <% end %>
-            <%= link_to "Edit", edit_case_path(one_case) %>
-            <%= link_to "Delete", case_path(one_case), method: :delete, data: { confirm: "Are you sure?"} %>
+            <div class="card-bottom-infos">
+              <%= link_to(patient_path(one_case.patient)) do %>
+                Patient <%= one_case.patient.id %>:
+              <% end %>
+              <%= link_to "Edit", edit_case_path(one_case) %>
+              <%= link_to "Delete", case_path(one_case), method: :delete, data: { confirm: "Are you sure?"} %>
+            </div>
           </li>
         <% end %>
       </ul>
