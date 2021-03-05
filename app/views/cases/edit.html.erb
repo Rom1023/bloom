@@ -1,19 +1,20 @@
 <div class="container">
+  <div class="my-5">
+    <h1>Edit a case</h1>
 
-  <h1>Edit a case</h1>
+    <div>
+      <%= simple_form_for(@case) do |f| %>
+        <%= f.input :description, as: :text %>
+        <%= f.association :patient, label: "Choose from existing patient" %>
+        <%= f.button :submit, class: "btn-s-blue mb-5" %>
+      <% end %>
+    </div>
 
-  <div>
-    <%= simple_form_for(@case) do |f| %>
-      <%= f.input :description, as: :text %>
-      <%= f.association :patient, label: "Choose from existing patient" %>
-      <%= f.button :submit, class: "btn btn-primary mb-5" %>
-    <% end %>
+    <div>
+      <h4>Associated patient:</h4>
+      <p>Patient <%= @case.patient.id %></p>
+   <!--    < link_to "Edit this patient", edit_patient_path(@case.patient) %> -->
+  <!--     <p>Patient medical reports to be listed here</p> -->
+    </div>
   </div>
-
-  <div>
-    <h4>Patient ID: <%= @case.patient.id %></h4>
-    <%= link_to "Edit this patient", edit_patient_path(@case.patient) %>
-    <p>Patient medical reports to be listed here</p>
-  </div>
-
 </div>

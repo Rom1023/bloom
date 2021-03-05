@@ -6,7 +6,7 @@
       <%= link_to "Edit", edit_case_path(@case), class: "btn-s-blue" %>
       <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-s-blue" %>
     <% end %>
-    <h4>Description:</h4>
+    <h4 class="mt-3">Description:</h4>
     <p><%= @case.description %></p>
     <hr>
 
