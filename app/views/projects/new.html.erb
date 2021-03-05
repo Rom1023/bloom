@@ -1,9 +1,13 @@
-<h1>Create a new project"</h1>
+<div class="container">
+  <div class="my-5">
+    <h1>Create a new project</h1>
 
-<div class="w-50">
-  <%= simple_form_for(@project) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.submit %>
-  <% end %>
+    <div class="w-50">
+      <%= simple_form_for(@project) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.button :submit, class: "btn-s-blue" %>
+      <% end %>
+    </div>
+  </div>
 </div>

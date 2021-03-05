@@ -5,6 +5,7 @@ ul{
 }
 
 #project-container{
+  padding-left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
@@ -63,4 +64,32 @@ ul{
 .card-project-top-infos{
   display: flex;
   justify-content: space-between;
+}
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  #project-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  #project-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  #project-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  #project-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
