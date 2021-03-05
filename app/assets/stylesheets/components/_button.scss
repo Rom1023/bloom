@@ -14,3 +14,20 @@
   }
 }
 //
+
+.btn-s-blue {
+  border-radius: 20px;
+  border: 1px solid $m-blue;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  background: $m-blue;
+  opacity: 1;
+  padding: 6px 12px;
+  color: white;
+  text-decoration: none;
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(56,225,237,0.7);
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-decoration: none;
+  }
+}

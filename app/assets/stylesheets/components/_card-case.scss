@@ -3,8 +3,15 @@
 ul{
   list-style-type: none;
 }
+.display-file {
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
 
 .cards-container{
+  padding-left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
@@ -122,4 +129,32 @@ ul{
     font-size: 16px;
     font-weight: 400;
     color: #6E798C;
+}
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
