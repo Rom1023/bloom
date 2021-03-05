@@ -31,7 +31,7 @@
     <!-- Condition to be added: admin and collaborators only-->
     <h4>Link a case</h4>
       <%= simple_form_for([@project, @link]) do |f| %>
-        <%= f.association :case, label: "Pick a case" %>
+        <%= f.association :case, label: "Pick a case", collection: current_user.cases %>
         <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
   </div>
