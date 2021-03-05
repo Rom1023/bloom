@@ -1,17 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
+ul{
+  list-style-type: none;
+}
+
 #cards-container{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
 }
 
-.card{
+.card-case{
   height: 200px;
   width: 385px;
   border-radius: 16px;
-  grid-gap: 16px;
   position: relative;
   border-left: 25px solid #3734AA;
+  background-color: white;
+    &:hover{
+      background-color: #3734AA;
+      border-left: 25px solid #01E1F0;
+        p{
+          color: white;
+        }
+        h2{
+          color: white;
+        }
+        span{
+          color: white;
+        }
+        .rounded-gender{
+          background-color: #01E1F0
+        }
+        a{
+          color: white;
+        }
+
+    }
 }
 
 .card-main-infos{
@@ -32,6 +57,7 @@
       overflow-y: hidden;
       text-overflow: ellipsis;
       max-height: 4.6em;
+      color: #374A59;
     }
 }
 

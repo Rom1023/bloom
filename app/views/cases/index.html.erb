@@ -8,7 +8,7 @@
   <div>
     <ul id="cards-container">
       <% @cases.each do |c| %>
-        <li class="card">
+        <li class="card-case">
           <div class="card-doctor-email">
             <span><%= c.user.full_name.upcase %></span>
             <p><%= c.user.email %></p>
