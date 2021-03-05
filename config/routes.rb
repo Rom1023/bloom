@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
     resources :links, only: [:create]
     resources :comments, only: [:create]
-    resources :collaborations, only: [:create]
+    resources :collaborations, only: [:new, :create]
   end
 
   resources :cases do

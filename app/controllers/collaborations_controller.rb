@@ -15,6 +15,6 @@ class CollaborationsController < ApplicationController
   private
 
   def params_collaboration
-    params.require(:collaboration).permit(:role)
+    params.require(:collaboration).permit(role: 'collaborator')
   end
 end

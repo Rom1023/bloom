@@ -56,4 +56,13 @@
       </ul>
   </div>
 
+  <div>
+    <h4>My collaborations</h4>
+    <ul>
+      <% @user.collaborations.each do |collaboration| %>
+      <li><%= collaboration.project.name %></li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>
