@@ -20,8 +20,8 @@ class Project < ApplicationRecord
     admin.presence
   end
 
-  def my_collaborators
-     collaborations.collaborator
+  def my_collaborations
+     collaborations.project_collaborations
   end
 
 end
