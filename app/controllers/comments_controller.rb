@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
     @comment.project = @project
     @comment.user = current_user
     if @comment.save
-      redirect_to @project
+      redirect_to project_path(@project)
+    else
+      render 'projects/show'
     end
   end
 
