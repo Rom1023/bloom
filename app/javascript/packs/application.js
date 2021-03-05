@@ -28,9 +28,10 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { formTrigger } from "../components/hide_show_client_form_in_case_create";
-
+import { hidePatientForm } from "../components/default_hide_patient_form_case_create";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  hidePatientForm();
   formTrigger();
 });
