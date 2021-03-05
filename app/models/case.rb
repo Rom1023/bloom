@@ -5,4 +5,8 @@ class Case < ApplicationRecord
   has_many :projects, through: :links
 
   accepts_nested_attributes_for :patient
+
+  def to_label
+    self.title || "untitled case"
+  end
 end
