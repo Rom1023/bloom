@@ -1,10 +1,8 @@
 require 'faker'
 
-require 'faker'
-
 puts "destroying records..."
 
-# User.destroy_all
+User.destroy_all
 
 puts "start seeding..."
 
@@ -127,5 +125,88 @@ end
   c.user = user_4
   c.save!
 end
+
+case_2 = Case.new(
+                  description: "Painless masses in the mouth or face. Respiratory problems",
+                  patient_attributes: {
+                    first_name: "John",
+                    last_name: "Test",
+                    gender: "male",
+                    date_of_birth: "1962-10-10",
+                    address: "123 Fake st, Montreal"
+                  }
+                )
+
+case_2.user = user_1
+case_2.save!
+
+case_3 = Case.new(
+                  description: "Painless masses in the mouth or face. Respiratory problems",
+                  patient_attributes: {
+                    first_name: "John",
+                    last_name: "Test",
+                    gender: "male",
+                    date_of_birth: "1962-10-10",
+                    address: "123 Fake st, Montreal"
+                  }
+                )
+
+case_3.user = user_2
+case_3.save!
+
+# Project
+project_1 = Project.create!(name: "Adenoid Cystic Carcinoma (ACC)", description: "Adenoid cystic carcinoma (ACC) is a rare form of cancer (adenocarcinoma)
+ that most often arises in the salivary glands but may occur in other locations like the breast or uterus.")
+
+link_1 = Link.new
+link_1.project = project_1
+link_1.case = case_2
+link_1.save!
+
+project_2 = Project.create!(name: "Ileostomy (Ulcerative Colitis Surgery)", description: "Ulcerative colitis is a chronic (long-term) inflammatory disease.
+  It affects the lining of the large intestine, or colon, and rectum. The rectum is the last section of the colon and is located just above the anus.
+  People with ulcerative colitis have tiny ulcers and abscesses in their colon and rectum. These flare up periodically and cause bloody stools and diarrhea.
+  Ulcerative colitis may also cause severe abdominal pain and anemia. Anemia is marked by low levels of healthy red blood cells.")
+
+link_2 = Link.new
+link_2.project = project_2
+link_2.case = case_3
+link_2.save!
+
+project_3 = Project.create!(name: "Pain Management: Neuropathic Pain", description: "Neuropathic pain is a complex, chronic pain state that usually is accompanied by tissue injury.
+  With neuropathic pain, the nerve fibers themselves may be damaged, dysfunctional or injured.
+  These damaged nerve fibers send incorrect signals to other pain centers.
+  The impact of nerve fiber injury includes a change in nerve function both at the site of injury and areas around the injury.
+
+One example of neuropathic pain is called phantom limb syndrome. This occurs when an arm or a leg has been removed because of illness or injury,
+but the brain still gets pain messages from the nerves that originally carried impulses from the missing limb. These nerves now misfire and cause pain.")
+
+link_3 = Link.new
+link_3.project = project_3
+link_3.case = user_3.cases[1]
+link_3.save!
+
+project_4 = Project.create!(name: "Parenchymal Diffuse Lung Disease (Interstitial Lung Disease (Interstitial Pneumonia))", description: "Interstitial lung disease includes a group of
+  diseases that have thickening of the supporting tissues between the air sacs of the lungs. This thickening can be due to a variety of causes such as:
+Associated autoimmune or collagen vascular diseases
+Exposure to medications or toxins such as asbestos, tobacco smoke, or environmental toxins
+Associated genetic diseases
+The cause is not known (idiopathic).
+The most common symptoms of interstitial lung disease are a dry cough and shortness of breath.")
+
+link_4 = Link.new
+link_4.project = project_4
+link_4.case = user_4.cases[0]
+link_4.save!
+
+project_5 = Project.create!(name: "DeQuervains Tenosynovitis (De Quervain's Tenosynovitis)", description: "De Quervain's tenosynovitis is inflammation of
+  tendons on the side of the wrist at the base of the thumb. These tendons include the extensor pollicis brevis and the abductor pollicis longus tendons,
+  which extend the joints of the thumb.")
+
+link_5 = Link.new
+link_5.project = project_5
+link_5.case = user_2.cases[0]
+link_5.save!
+
 
 puts "done seeding..."

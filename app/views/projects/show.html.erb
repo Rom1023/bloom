@@ -36,4 +36,22 @@
       <% end %>
   </div>
 
+  <div class="mt-3">
+    <h4>Comment</h4>
+    <div class="card w-50">
+      <% @project.comments.each do |comment| %>
+        <p>Dr.<%= comment.user.last_name %>: <%=  comment.content %></p>
+      <% end %>
+    </div>
+    <div class="w-50">
+        <%= simple_form_for([@project, @comment]) do |f| %>
+          <%= f.input :content  %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+
 </div>
+
+
+<!-- /projects/:project_id/comments(.:format) -->

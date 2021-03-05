@@ -1,3 +1,8 @@
+.navbar .navbar-lewagon {
+  position: fixed;
+  top: 0px;
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: $m-blue;
@@ -24,6 +29,26 @@ a.navbar-brand {
   box-shadow: 0px 0px 2px $m-blue;
   &:hover {
     box-shadow: 0px 0px 6px rgba(56,225,237,0.7);
+  }
+}
+//
+
+//allpages(navbar-search)
+.search-bar-nav {
+  border-radius: 20px 0 0 20px;
+  border-right: none;
+  background: $m-blue;
+  color: rgb(206, 212, 218);
+}
+
+.btn-search {
+  border-radius: 0 20px 20px 0;
+  background: $m-blue;
+  color: rgb(206, 212, 218);
+  border: 0.1px solid rgb(206, 212, 218);
+  border-left: none;
+  &:hover {
+    color: white;
   }
 }
 //
