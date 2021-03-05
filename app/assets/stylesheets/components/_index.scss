@@ -5,11 +5,13 @@
 @import "banner";
 @import "footer";
 @import "button";
-
 @import "card-case";
 
 
-body {
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
   position:relative;
 }
 
