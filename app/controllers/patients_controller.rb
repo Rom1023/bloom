@@ -1,5 +1,9 @@
 class PatientsController < ApplicationController
   # create patient on case/new page
+  def show
+    @patient = Patient.find(params[:id])
+  end
+
   def create
     @patient = Patient.new(patient_params)
     @case = Case.find(params[:case_id])

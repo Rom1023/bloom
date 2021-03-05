@@ -1,17 +1,19 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
                            url('https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260')">
-  <div class="banner-title">
+  <div class="banner-title ml-0 text-center">
     <h1>Dedication is our specialty</h1>
   </div>
 
   <div class="">
-    <%= form_tag projects_path, method: :get, class: "search" do %>
+    <%= form_tag projects_path, method: :get, class: "d-flex justify-content-center" do %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control search-bar-lg",
+          class: "form-control search-bar-lg w-50 mr-3",
           placeholder: "Search a project"
         %>
-        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= button_tag :submit, class: "btn btn-r-blue" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
     <% end %>
   </div>
 </div>

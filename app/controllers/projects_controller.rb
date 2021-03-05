@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.all
+    if params[:query].present?
+      @projects = Project.all.search_by_name_and_description(params[:query])
+    else
+      @projects = Project.all
+    end
   end
 
   def show
@@ -17,7 +21,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.collaborations << Collaboration.new(user: current_user, role: 'admin')
-    @project.comment
+    # @project.comment
     if @project.save
       redirect_to project_path(@project)
     else
@@ -38,7 +42,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :completed)
+    params.require(:project).permit(:name, :description, :completed, :comment)
   end
 
 end

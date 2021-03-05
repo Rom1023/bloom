@@ -2,8 +2,10 @@
 
   <div>
     <h2>Case: <%= @case.id %></h2>
-    <%= link_to "Edit", edit_case_path(@case) %>
-    <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"} %>
+    <% if current_user == @case.user %>
+      <%= link_to "Edit", edit_case_path(@case) %>
+      <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"} %>
+    <% end %>
     <h4>Description:</h4>
     <p><%= @case.description %></p>
     <hr>
@@ -19,6 +21,21 @@
       <% end %>
     </div>
 
+  </div>
+
+  <div>
+    <h4>Associated projects</h4>
+    <ul>
+      <% @links.each do |link| %>
+        <% if link.case == @case %>
+          <li>
+            <%= link_to(project_path(link.project)) do %>
+              <%= link.project.name %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
   </div>
 
   <div>

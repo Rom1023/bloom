@@ -56,4 +56,16 @@
       </ul>
   </div>
 
+  <div>
+    <h4>My collaborations</h4>
+      <ul>
+        <% @user.my_collaborations.each do |collaboration| %>
+          <li>
+
+            <%= link_to collaboration.project.name, project_path(collaboration.project) %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+
 </div>
