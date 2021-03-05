@@ -19,4 +19,9 @@ class Project < ApplicationRecord
     admin = collaborations.find_by(role: 'admin', user_id: user_id)
     admin.presence
   end
+
+  def my_collaborations
+     collaborations.project_collaborations
+  end
+
 end

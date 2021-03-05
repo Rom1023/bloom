@@ -7,13 +7,15 @@ class User < ApplicationRecord
   has_many :cases, dependent: :destroy
   has_many :collaborations
   has_many :projects, through: :collaborations
+  has_many :admin_collaborations, -> {where(role: 'admin')}, class_name: 'Collaboration'
+  has_many :admin_projects, through: :admin_collaborations, source: :project
   has_many :patients, through: :cases
 
   def full_name
-    self.first_name + " " +self.last_name
+    "#{first_name} #{last_name}"
   end
 
   def my_collaborations
-    collaborations.collaborator
+    collaborations.project_collaborations
   end
 end

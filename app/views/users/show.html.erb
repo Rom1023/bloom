@@ -13,7 +13,7 @@
     <h4>My projects</h4>
     <%= link_to "+ project", new_project_path %>
     <ul>
-      <% @user.projects.each do |project| %>
+      <% @user.admin_projects.each do |project| %>
         <li><%= link_to project.name, project_path(project) %></li>
       <% end %>
     </ul>
@@ -62,14 +62,15 @@
 
   <div>
     <h4>My collaborations</h4>
+
       <ul>
         <% @user.my_collaborations.each do |collaboration| %>
           <li>
-
             <%= link_to collaboration.project.name, project_path(collaboration.project) %>
           </li>
         <% end %>
       </ul>
+
   </div>
 
 </div>
