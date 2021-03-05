@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+#cards-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card{
+  height: 200px;
+  width: 385px;
+  border-radius: 16px;
+  grid-gap: 16px;
+  position: relative;
+  border-left: 25px solid #3734AA;
+}
+
+.card-main-infos{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 0px;
+  position: absolute;
+  top: 50px;
+    h2{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    p{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      overflow-y: hidden;
+      text-overflow: ellipsis;
+      max-height: 4.6em;
+    }
+}
+
+.card-doctor-email{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  margin-bottom: 0px;
+    span{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6E798C;
+    }
+    p{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 100;
+      color: #6E798C;
+    }
+}
+.rounded-gender{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #3734AA;
+  color: white;
+  margin-right: 10px;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.card-bottom-infos{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  bottom: 15px;
+    a{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3734AA;
+    }
+}
+
+.card-gender-age{
+  display: flex;
+}
+
+.card-age{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.card-year{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #6E798C;
+}
