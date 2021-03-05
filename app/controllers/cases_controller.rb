@@ -12,6 +12,7 @@ class CasesController < ApplicationController
 
   def show
     @case = Case.find(params[:id])
+    @links = Link.all
   end
 
   def create

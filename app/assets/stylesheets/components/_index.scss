@@ -6,8 +6,10 @@
 @import "footer";
 @import "button";
 
-body {
-  position:relative;
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
 }
 
 .container {
