@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :cases do
-    resources :patients, only: [:create]
+  resources :patients, only: [:create]
   end
-  resources :patients, only: [:edit, :update]
+  resources :patients, only: [:edit, :update, :show]
 end
