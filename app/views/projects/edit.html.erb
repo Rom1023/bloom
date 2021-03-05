@@ -1,10 +1,12 @@
-<h1>Edit "<%= @project.name %>"</h1>
+<div class="container">
+  <h1>Edit "<%= @project.name %>"</h1>
 
-<div class="w-50">
-  <%= simple_form_for(@project) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :completed %>
-    <%= f.submit %>
-  <% end %>
+  <div class="w-50">
+    <%= simple_form_for(@project) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :completed %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
