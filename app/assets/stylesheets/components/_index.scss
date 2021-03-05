@@ -5,4 +5,15 @@
 @import "banner";
 @import "footer";
 @import "button";
+
 @import "card-case";
+
+
+body {
+  position:relative;
+}
+
+.container {
+  padding-bottom: 300px;
+}
+
