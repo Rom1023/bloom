@@ -7,7 +7,7 @@
     <p>Completed: <%= @project.completed ? "yes" : "no" %></p>
 
     <% if @project.is_admin?(current_user.id) %>
-      <p><%= link_to "Edit", edit_project_path(@project) %></p>
+      <p><%= link_to "Edit", edit_project_path(@project), class: "btn-s-blue" %></p>
     <% end %>
   </div>
 
