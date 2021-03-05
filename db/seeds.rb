@@ -91,7 +91,7 @@ neurologist << "Seizures are changes in the brain’s electrical activity. These
                you experience them."
 # -- Cases + Patients ()--
 4.times do
-  c = Case.new(description: descriptions[0].sample,
+  c = Case.new(description: descriptions[0].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
@@ -100,7 +100,7 @@ neurologist << "Seizures are changes in the brain’s electrical activity. These
 end
 
 6.times do
-  c = Case.new(description: descriptions[1].sample,
+  c = Case.new(description: descriptions[1].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
@@ -109,7 +109,7 @@ end
 end
 
 3.times do
-  c = Case.new(description: descriptions[2].sample,
+  c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
@@ -118,7 +118,7 @@ end
 end
 
 7.times do
-  c = Case.new(description: descriptions[3].sample,
+  c = Case.new(description: descriptions[3].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})

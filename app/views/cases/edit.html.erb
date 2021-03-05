@@ -1,6 +1,7 @@
 <div class="container">
   <div class="my-5">
-    <h1>Edit a case</h1>
+    <h1>Edit this case</h1>
+    <h4 class="my-3">Case <%= @case.id %>: <%= @case.title %></h4>
 
     <div>
       <%= simple_form_for(@case) do |f| %>

@@ -24,6 +24,7 @@ ul{
   position: relative;
   border-left: 25px solid #3734AA;
   background-color: white;
+  text-decoration: none;
     &:hover{
       background-color: #3734AA;
       border-left: 25px solid #01E1F0;
@@ -32,6 +33,7 @@ ul{
         }
         h2{
           color: white;
+          text-decoration: none;
         }
         span{
           color: white;

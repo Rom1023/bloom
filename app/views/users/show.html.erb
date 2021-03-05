@@ -6,55 +6,73 @@
     <p>Dr <%= @user.first_name %><%= @user.last_name %></p>
     <p><%= @user.specialization %></p>
     <p><%= @user.email %></p>
-    <hr>
   </div>
 
+  <hr>
+
   <div>
-    <h4>My projects</h4>
-    <%= link_to "+ project", new_project_path %>
+    <div class="d-flex justify-content-between my-3">
+      <h4>My projects</h4>
+      <%= link_to "+ project", new_project_path, class: "btn-s-blue" %>
+    </div>
     <ul>
       <% @user.admin_projects.each do |project| %>
         <li><%= link_to project.name, project_path(project) %></li>
       <% end %>
     </ul>
   </div>
+  <hr>
 
   <div>
-    <h4>My cases</h4>
-    <%= link_to "+ case", new_case_path %>
-      <ul class="cards-container">
-        <% @user.cases.each do |one_case| %>
-          <li class="card-case">
-            <div class="card-main-infos">
-              <%= link_to(case_path(one_case)) do %>
-                <%= one_case.title %>:
+    <div class="d-flex justify-content-between my-3">
+      <h4>My cases</h4>
+      <%= link_to "+ case", new_case_path, class: "btn-s-blue" %>
+    </div>
+    <ul class="cards-container">
+      <% @user.cases.each do |c| %>
+        <li class="card-case">
+          <div class="card-doctor-email">
+            <span><%= c.user.full_name.upcase %></span>
+            <p><%= c.user.email %></p>
+          </div>
+          <div class="card-main-infos">
+              <!-- should show case title-->
+            <h2>Case <%= c.id %> : <%= c.title %></h2>
+            <p><%= c.description %></p>
+          </div>
+          <div class="card-bottom-infos">
+            <div class="card-gender-age">
+              <!-- add link to patient profile page-->
+              <% if  c.patient.gender == "female"%>
+                  <p class="rounded-gender">F</p>
+              <% else %>
+                  <p class="rounded-gender">M</p>
               <% end %>
-              <br><%= one_case.description %>
+              <span class="card-age"><%= c.patient.age %> <span class="card-year">year</span></span>
+             <!--  <span>Patient: <%= c.patient.id %></span> -->
             </div>
-            <!-- add link to patient profile page-->
-            <br>
-            <div class="card-bottom-infos">
-              <%= link_to(patient_path(one_case.patient)) do %>
-                Patient <%= one_case.patient.id %>:
-              <% end %>
-              <%= link_to "Edit", edit_case_path(one_case) %>
-              <%= link_to "Delete", case_path(one_case), method: :delete, data: { confirm: "Are you sure?"} %>
+            <div>
+              <%= link_to "Read more ￫",case_path(c) %>
             </div>
-          </li>
-        <% end %>
-      </ul>
+          </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
+  <hr>
 
   <div>
-    <h4>My patients</h4>
-    <%= link_to "+ patient", new_case_path %>
+    <div class="d-flex justify-content-between my-3">
+      <h4>My patients</h4>
+      <%= link_to "+ patient", new_case_path, class: "btn-s-blue" %>
+    </div>
       <ul>
         <% @user.patients.each do |patient| %>
           <li>
             <%= link_to(patient_path(patient)) do %>
               Patient <%= patient.id %>:
             <% end %>
-            <%= patient.first_name %> <%= patient.last_name %>
+            <%= patient.first_name %>  <%= patient.last_name %>
           </li>
         <% end %>
       </ul>
