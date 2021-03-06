@@ -1,6 +1,8 @@
-footer {
+.footer-bar {
   position: absolute;
-  bottom: 0px;
+  top: auto;
+  bottom: -265px;
+  overflow: hidden;
   padding: 30px 80px;
   width: 100%;
   background: $m-blue;
