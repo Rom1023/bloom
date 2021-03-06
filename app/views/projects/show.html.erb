@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container py-5">
 
   <h1><%= @project.name %></h1>
   <div>
@@ -7,62 +7,67 @@
     <p>Completed: <%= @project.completed ? "yes" : "no" %></p>
 
     <% if @project.is_admin?(current_user.id) %>
-      <p><%= link_to "Edit", edit_project_path(@project) %></p>
+      <p><%= link_to "Edit", edit_project_path(@project), class: "btn-s-blue" %></p>
     <% end %>
   </div>
 
-  <div>
-    <h4>Asccotiated cases</h4>
-    <ul>
-      <% @links.each do |link| %>
-        <% if link.project == @project %>
-          <li>
-            <%= link_to(case_path(link.case)) do %>
-              <!-- should be link.case.title after title added to Case-->
-              Case <%= link.case.id %>
+  <hr>
+  <div class="display-file">
+    <div>
+      <div class="mt-3">
+        <h4>Asccotiated cases</h4>
+        <ul>
+          <% @links.each do |link| %>
+            <% if link.project == @project %>
+              <li>
+                <%= link_to(case_path(link.case)) do %>
+                  <!-- should be link.case.title after title added to Case-->
+                  Case <%= link.case.id %>
+                <% end %>
+              </li>
             <% end %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
+          <% end %>
+        </ul>
+      </div>
 
-  <div class="w-50">
-    <!-- Condition to be added: admin and collaborators only-->
-    <h4>Link a case</h4>
-      <%= simple_form_for([@project, @link]) do |f| %>
-        <%= f.association :case, label: "Pick a case", collection: current_user.cases %>
-        <%= f.button :submit, class: "btn btn-primary" %>
-      <% end %>
-  </div>
+      <div class="">
+        <!-- Condition to be added: admin and collaborators only-->
+        <h4>Link a case</h4>
+          <%= simple_form_for([@project, @link]) do |f| %>
+            <%= f.association :case, label: "Pick a case", collection: current_user.cases %>
+            <%= f.button :submit, class: "btn btn-s-blue" %>
+          <% end %>
+      </div>
 
-  <div class="mt-3">
-    <h4>Comment</h4>
-    <div class="card w-50">
-      <% @project.comments.each do |comment| %>
-        <p>Dr.<%= comment.user.last_name %>: <%=  comment.content %></p>
-      <% end %>
+      <div class="mt-3">
+       <h4>Collaborators</h4>
+         <ul>
+           <% @project.my_collaborations.each do |collaboration| %>
+             <li>
+               <%= link_to collaboration.user.full_name, user_path(collaboration.user) %>
+             </li>
+           <% end %>
+         </ul>
+        <div>
+          <%= link_to 'Become a collaborator', collaboration_path(@project), class: "btn-s-blue" %>
+        </div>
+      </div>
     </div>
-    <div class="w-50">
-        <%= simple_form_for([@project, @comment]) do |f| %>
-          <%= f.input :content  %>
-          <%= f.button :submit, class: "btn btn-primary" %>
-        <% end %>
-    </div>
-  </div>
 
-  <div class="w-50">
-     <h4>Collaborators</h4>
-       <ul>
-         <% @project.my_collaborations.each do |collaboration| %>
-           <li>
-             <%= link_to collaboration.user.full_name, user_path(collaboration.user) %>
-           </li>
-         <% end %>
-       </ul>
-   </div>
-  <div>
-    <%= link_to 'Become a collaborator', collaboration_path(@project) %>
+    <div class="mt-3">
+      <h4>Comment</h4>
+      <div class="card">
+        <% @project.comments.each do |comment| %>
+          <p>Dr.<%= comment.user.last_name %>: <%=  comment.content %></p>
+        <% end %>
+      </div>
+      <div class="">
+          <%= simple_form_for([@project, @comment]) do |f| %>
+            <%= f.input :content  %>
+            <%= f.button :submit, class: "btn btn-s-blue" %>
+          <% end %>
+      </div>
+    </div>
   </div>
 
 </div>

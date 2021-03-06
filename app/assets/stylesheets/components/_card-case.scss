@@ -3,8 +3,15 @@
 ul{
   list-style-type: none;
 }
+.display-file {
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
 
-#cards-container{
+.cards-container{
+  padding-left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
@@ -17,6 +24,7 @@ ul{
   position: relative;
   border-left: 25px solid #3734AA;
   background-color: white;
+  text-decoration: none;
     &:hover{
       background-color: #3734AA;
       border-left: 25px solid #01E1F0;
@@ -25,6 +33,7 @@ ul{
         }
         h2{
           color: white;
+          text-decoration: none;
         }
         span{
           color: white;
@@ -43,7 +52,7 @@ ul{
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 0px;
-  position: absolute;
+  // position: absolute;
   top: 50px;
     h2{
       font-family: 'Montserrat', sans-serif;
@@ -97,7 +106,7 @@ ul{
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  position: absolute;
+  // position: absolute;
   bottom: 15px;
     a{
       font-family: 'Montserrat', sans-serif;
@@ -122,4 +131,32 @@ ul{
     font-size: 16px;
     font-weight: 400;
     color: #6E798C;
+}
+
+/*Smallest device*/
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

@@ -2,15 +2,18 @@
   height: 100vh;
   background-size: cover;
   background-position: center;
-  padding: 250px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 // homepage(title)
 .banner-title {
   color: white;
-  font-family: akkurat, montserrat;
+  font-family: 'Montserrat', sans-serif;
   h1 {
-    font-size: 70px;
+    font-size: 60px;
     margin-bottom: 60px;
   }
 }
@@ -18,7 +21,7 @@
 // homepage(searchbar)
 .search-bar-lg {
   border-radius: 30px;
-  padding: 28px 24px;
+  padding: 24px 24px;
   opacity: 85%;
 }
 //
