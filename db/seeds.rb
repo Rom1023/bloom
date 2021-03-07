@@ -163,6 +163,13 @@ link_1.project = project_1
 link_1.case = case_2
 link_1.save!
 
+collaboration_1 = Collaboration.new
+collaboration_1.project = project_1
+collaboration_1.user = user_1
+collaboration_1.user.role = 'admin'
+collaboration_1.save!
+
+
 project_2 = Project.create!(name: "Ileostomy (Ulcerative Colitis Surgery)", description: "Ulcerative colitis is a chronic (long-term) inflammatory disease.
   It affects the lining of the large intestine, or colon, and rectum. The rectum is the last section of the colon and is located just above the anus.
   People with ulcerative colitis have tiny ulcers and abscesses in their colon and rectum. These flare up periodically and cause bloody stools and diarrhea.
@@ -172,6 +179,7 @@ link_2 = Link.new
 link_2.project = project_2
 link_2.case = case_3
 link_2.save!
+
 
 project_3 = Project.create!(name: "Pain Management: Neuropathic Pain", description: "Neuropathic pain is a complex, chronic pain state that usually is accompanied by tissue injury.
   With neuropathic pain, the nerve fibers themselves may be damaged, dysfunctional or injured.
