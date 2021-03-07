@@ -4,4 +4,5 @@ class Collaboration < ApplicationRecord
   validates :role, inclusion: { in: %w(admin collaborator)}
 
   scope :project_collaborations, -> { where.not(role: 'admin') }
+  scope :project_creator, -> { where(role: 'admin') }
 end
