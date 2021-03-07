@@ -7,7 +7,7 @@ class Project < ApplicationRecord
 
   # validates :collaborations, presence: true
 
-  default_scope {order("created_at DESC")}
+  default_scope { order("created_at DESC") }
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
                   against: [:name, :description],
@@ -21,7 +21,10 @@ class Project < ApplicationRecord
   end
 
   def my_collaborations
-     collaborations.project_collaborations
+    collaborations.project_collaborations
   end
 
+  def creator_collaborations
+    collaborations.project_creator
+  end
 end

@@ -1,0 +1,13 @@
+.display-file {
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
+.cards-project{
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+}

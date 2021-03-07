@@ -1,5 +1,4 @@
 class CollaborationsController < ApplicationController
-
   def create
     @project = Project.find(params[:project_id])
     @collaboration = Collaboration.new(role: 'collaborator')
