@@ -1,1 +1,15 @@
-// Specific CSS for your home-page
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: $m-blue;
+  color: white;
+}
+
+.mission-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgb(15,2,48);
+  color: white;
+}
