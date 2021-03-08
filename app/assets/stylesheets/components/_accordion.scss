@@ -78,7 +78,7 @@ a:hover,a:focus{
 
 .panel-grid{
   display: grid;
-  grid-column: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   overflow: scroll;
   max-height: 250px;
