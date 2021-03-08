@@ -8,10 +8,6 @@
   justify-content: center;
 }
 
-.small-banner {
-  height: 400px;
-  background-color: black;
-}
 
 // homepage(title)
 .banner-title {
@@ -30,3 +26,21 @@
   opacity: 85%;
 }
 //
+
+.small-banner {
+  height: 400px;
+  display: flex;
+}
+
+.small-banner-text{
+  h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 0px;
+  }
+  a{
+    color: white;
+  }
+}
