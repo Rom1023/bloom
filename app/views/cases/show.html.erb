@@ -1,11 +1,12 @@
 <div class="small-banner" style="background-image: url('<%= cl_image_path "pexels-rfstudio-3825539_v0zo7h", crop: :fill %>')">
-  <div class="row d-flex justify-content-center">
+  <div class="container">
     <div class="small-banner-text col-md-8">
       <h2>CASE</h2>
       <h1 class="banner-title">Name<%= @case.title %></h1>
       <a href="#case-title">Read more</a>
     </div>
   </div>
+
 </div>
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
@@ -16,6 +17,12 @@
         <% end %>
         <h2 id="case-title" class="title">Case: <%= @case.title %></h2>
         <p class="global-text"><%= @case.description %></p>
+        <hr>
+        <div>
+          <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
+          <p class="doctor-specialization"><%= @case.user.specialization %></p>
+        </div>
+        <p class="doctor-email"><%= @case.user.email %></p>
       </div>
 
       <div>
@@ -30,28 +37,30 @@
       </div>
     </div>
 
-  <div class="container py-5">
+<!--   <div class="container py-5">
     <div class="mt-3">
       <div class="row">
         <div class="col-md-6">
           <div class="d-flex justify-content-between">
+        <hr>
             <div>
               <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
               <p class="doctor-specialization"><%= @case.user.specialization %></p>
             </div>
             <p class="doctor-email"><%= @case.user.email %></p>
         </div>
-        <hr>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="accordion-container py-5">
       <div class="row d-flex justify-content-center">
           <div class="col-md-8">
             <h2 class="title mb-5">Medical Report</h2>
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+
                   <div class="panel panel-default">
                       <div class="panel-heading" role="tab" id="headingOne">
                           <h4 class="panel-title">
@@ -61,11 +70,22 @@
                           </h4>
                       </div>
                       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="panel-body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          <div class="panel-body panel-grid">
+
+                              <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p> -->
+                              <% if @case.patient.medications.attached? %>
+                                <% @case.patient.medications.each do |medication| %>
+                                <div class="file-thumbnail" style="background-image: url('<%= cl_image_path medication.key%>')"> </div>
+                                <% end %>
+                              <% end %>
                           </div>
                       </div>
                   </div>
+
+
+
+
+
                   <div class="panel panel-default">
                       <div class="panel-heading" role="tab" id="headingTwo">
                           <h4 class="panel-title">
