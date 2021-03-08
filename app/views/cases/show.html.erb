@@ -1,50 +1,143 @@
-<div class="container py-5">
-
-  <div>
-    <h2 class="mb-3">Case: <%= @case.title %></h2>
-    <% if current_user == @case.user %>
-      <%= link_to "Edit", edit_case_path(@case), class: "btn-s-blue" %>
-      <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-s-blue" %>
-    <% end %>
-    <h4 class="mt-3">Description:</h4>
-    <p><%= @case.description %></p>
-    <hr>
-
-    <div>
-      <% @case.patient.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
+<div class="small-banner"></div>
+  <div class="container py-5">
+    <div class="mt-3">
+      <h4>Doctor info:</h4>
+      <p>Dr <%= @case.user.first_name %><%= @case.user.last_name %></p>
+      <p><%= @case.user.specialization %></p>
+      <p><%= @case.user.email %></p>
     </div>
-    <div>
-      <% @case.patient.documents.each do |document| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-    </div>
-
+    <%= link_to "Back to list of cases", cases_path, class: "btn-s-blue mt-2" %>
   </div>
 
-  <div class="mt-3">
-    <h4>Associated projects</h4>
-    <ul>
-      <% @links.each do |link| %>
-        <% if link.case == @case %>
-          <li>
-            <%= link_to(project_path(link.project)) do %>
-              <%= link.project.name %>
-            <% end %>
-          </li>
+    <div>
+      <h2 class="mb-3">Case: <%= @case.title %></h2>
+      <% if current_user == @case.user %>
+        <%= link_to "Edit", edit_case_path(@case), class: "btn-s-blue" %>
+        <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-s-blue" %>
+      <% end %>
+      <h4 class="mt-3">Description:</h4>
+      <p><%= @case.description %></p>
+
+      <div>
+        <% @case.patient.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
-      <% end %>
-    </ul>
+      </div>
+      <div>
+        <% @case.patient.documents.each do |document| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      </div>
+
+    </div>
+
+
+  <div class="accordion-container py-5">
+    <h2>Medical Report</h2>
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="headingOne">
+                          <h4 class="panel-title">
+                              <a style="background-color: #F6F9FF" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  Medication
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                          <div class="panel-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="headingTwo">
+                          <h4 class="panel-title">
+                              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  Treatment or Therapy
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                          <div class="panel-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="headingThree">
+                          <h4 class="panel-title">
+                              <a style="background-color: #F6F9FF" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                  Procedure or Surgery
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                          <div class="panel-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="headingFour">
+                          <h4 class="panel-title">
+                              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                  Lab or Test
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                          <div class="panel-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="headingFive">
+                          <h4 class="panel-title">
+                              <a style="background-color: #F6F9FF" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                  Genetic Result
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                          <div class="panel-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="panel panel-default">
+                      <div class="panel-heading" role="tab" id="headingSix">
+                          <h4 class="panel-title">
+                              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                  Allergy
+                              </a>
+                          </h4>
+                      </div>
+                      <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                          <div class="panel-body">
+                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
 
   <div class="mt-3">
-    <h4>Doctor info:</h4>
-    <p>Dr <%= @case.user.first_name %><%= @case.user.last_name %></p>
-    <p><%= @case.user.specialization %></p>
-    <p><%= @case.user.email %></p>
-  </div>
-
-  <%= link_to "Back to list of cases", cases_path, class: "btn-s-blue mt-2" %>
-
-</div>
+    <h2>Projects</h2>
+      <p>List of the projects this case is involved in</p>
+      <ul>
+        <% @links.each do |link| %>
+          <% if link.case == @case %>
+            <li>
+              <%= link_to(project_path(link.project)) do %>
+                <%= link.project.name %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
