@@ -4,6 +4,13 @@ class Patient < ApplicationRecord
   has_many_attached :photos
   has_many_attached :documents
 
+  has_many_attached :medications
+  has_many_attached :treatments
+  has_many_attached :surgeries
+  has_many_attached :lab_tests
+  has_many_attached :genetic_results
+  has_many_attached :allergies
+
   validates :first_name, :last_name, presence: true
   validates :gender, inclusion: { in: ['male', 'female'] }
 

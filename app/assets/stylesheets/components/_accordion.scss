@@ -75,3 +75,20 @@ a:hover,a:focus{
     color: #615f5f;
     line-height: 27px;
 }
+
+.panel-grid{
+  display: grid;
+  grid-column: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  overflow: scroll;
+  max-height: 250px;
+}
+
+.file-thumbnail{
+  border-radius: 4px;
+  height: 100px;
+  width: 75px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

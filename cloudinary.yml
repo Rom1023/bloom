@@ -1,0 +1,5 @@
+development:
+  cloud_name: "elenice"
+
+production:
+  cloud_name: "elenice"

@@ -34,6 +34,12 @@
                 <%= fp.input :address %>
                 <%= fp.input :photos, as: :file, input_html: { multiple: true } %>
                 <%= fp.input :documents, as: :file, input_html: { multiple: true } %>
+                <%= fp.input :medications, as: :file, input_html: { multiple: true } %>
+                <%= fp.input :treatments, as: :file, input_html: { multiple: true } %>
+                <%= fp.input :surgeries, as: :file, input_html: { multiple: true } %>
+                <%= fp.input :lab_tests, as: :file, input_html: { multiple: true } %>
+                <%= fp.input :genetic_results, as: :file, input_html: { multiple: true } %>
+                <%= fp.input :allergies, as: :file, input_html: { multiple: true } %>
 
               <% end %>
             </div>
