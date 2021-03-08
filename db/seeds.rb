@@ -2,6 +2,8 @@ require 'faker'
 
 puts "destroying records..."
 
+Collaboration.destroy_all
+Comment.destroy_all
 User.destroy_all
 Case.destroy_all
 

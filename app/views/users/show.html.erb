@@ -1,18 +1,18 @@
 <div class="container">
   <div id="dashboard-top">
-    <div id="list-buttons">
-      <ul>
-        <li> <%= link_to "+ patient", new_case_path %></li>
-        <li><%= link_to "+ case", new_case_path %></li>
-        <li><%= link_to "+ project", new_project_path %></li>
-      </ul>
-    </div>
     <div>
       <div class="d-flex justify-content-between">
         <h1>Hello <%= @user.first_name %></h1>
         <p><%= @user.specialization %></p>
       </div>
       <p><%= @user.email %></p>
+    </div>
+    <div id="list-buttons">
+      <ul>
+        <li> <%= link_to "+ patient", new_case_path %></li>
+        <li><%= link_to "+ case", new_case_path %></li>
+        <li><%= link_to "+ project", new_project_path %></li>
+      </ul>
     </div>
   </div>
 
