@@ -32,23 +32,3 @@ a.navbar-brand {
   }
 }
 //
-
-//allpages(navbar-search)
-.search-bar-nav {
-  border-radius: 20px 0 0 20px;
-  border-right: none;
-  background: $m-blue;
-  color: rgb(206, 212, 218);
-}
-
-.btn-search {
-  border-radius: 0 20px 20px 0;
-  background: $m-blue;
-  color: rgb(206, 212, 218);
-  border: 0.1px solid rgb(206, 212, 218);
-  border-left: none;
-  &:hover {
-    color: white;
-  }
-}
-//
