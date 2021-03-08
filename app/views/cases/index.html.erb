@@ -2,6 +2,18 @@
 
   <div class="d-flex justify-content-between my-3">
     <h1>List all cases</h1>
+    <div>
+      <%= form_tag cases_path, method: :get, class: "d-flex justify-content-center" do %>
+        <%= button_tag :submit, class: "btn btn-search-index" do %>
+          <i class="fas fa-search"></i>
+        <% end %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control search-bar-index",
+          placeholder: ""
+        %>
+      <% end %>
+    </div>
     <%= link_to "+ case", new_case_path, class: "btn-s-blue my-2" %>
   </div>
 

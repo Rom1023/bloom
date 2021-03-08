@@ -9,15 +9,16 @@
 
   <div id="search-navbar" >
     <% unless current_page?(root_path) %>
-      <%= form_tag projects_path, method: :get, class: "d-flex justify-content-center" do %>
+      <%= form_tag search_path, method: :get, class: "d-flex justify-content-center" do %>
+          <%= button_tag :submit, class: "btn btn-search" do %>
+            <i class="fas fa-search"></i>
+          <% end %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control search-bar-nav",
             placeholder: ""
           %>
-          <%= button_tag :submit, class: "btn btn-search" do %>
-            <i class="fas fa-search"></i>
-          <% end %>
+          <%= select_tag(:search_option,  options_for_select([['All Projects', 'projects'], ['All Cases', 'cases']]), id: "search-opt-nav") %>
       <% end %>
     <% end %>
   </div>

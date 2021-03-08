@@ -1,6 +1,10 @@
 class CasesController < ApplicationController
   def index
-    @cases = Case.all
+    if params[:query].present?
+      @cases = Case.all.search_by_name_and_description(params[:query])
+    else
+      @cases = Case.all
+    end
   end
 
   def new
