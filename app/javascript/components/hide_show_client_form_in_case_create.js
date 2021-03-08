@@ -2,15 +2,17 @@
 const hideShowForm = (triger) => {
   const formChoose = document.getElementById('create-patient');
   const formAdd = document.getElementById('link-new-patient');
-  triger.addEventListener("input", (event) => {
-    if (triger.value === '1') {
-      formChoose.style.display = 'block';
-      formAdd.style.display = 'none';
-    } if (triger.value === '0') {
-      formChoose.style.display = 'none';
-      formAdd.style.display = 'block';
-    };
-  });
+  if (triger) {
+    triger.addEventListener("input", (event) => {
+      if (triger.value === '1') {
+        formChoose.style.display = 'block';
+        formAdd.style.display = 'none';
+      } if (triger.value === '0') {
+        formChoose.style.display = 'none';
+        formAdd.style.display = 'block';
+      };
+    });
+  }
 };
 
 const formTrigger = () => {
