@@ -1,0 +1,73 @@
+//homepage(searchbar)
+.search-bar-lg {
+  border-radius: 0;
+  padding: 38px 38px;
+  opacity: 85%;
+  margin-right: 0 !important;
+  border: none;
+  border-right: 1px solid $m-blue;
+  box-shadow: 0 8px 4px -4px rgba(0,0,0,0.2);
+}
+
+#search-opt  {
+  border-radius: 0 36px 36px 0;
+  border: none;
+  padding: 10px 16px;
+  background: white;
+  opacity: 85%;
+  box-shadow: 0px 4px 4px rgba(0,0,0,0.2);
+}
+//
+
+//allpages(navbar-search)
+.search-bar-nav {
+  border: 1px solid rgb(206, 212, 218);
+  border-right: none;
+  border-left: none;
+  background: $m-blue;
+  color: rgb(206, 212, 218);
+}
+
+.btn-search {
+  border-radius: 20px 0 0 20px;
+  background: $m-blue;
+  color: rgb(206, 212, 218);
+  border: 1px solid rgb(206, 212, 218);
+  border-right: none;
+  padding: 5px 12px 5px 16px;
+  &:hover {
+    color: white;
+  }
+}
+
+#search-opt-nav {
+  border-radius: 0 20px 20px 0;
+  border: 1px solid rgb(206, 212, 218);
+  padding: 5px 10px;
+  background: $m-blue;
+  color: rgb(206, 212, 218);
+  box-shadow: 0px 4px 4px -4px rgba(0,0,0,0.2);
+}
+//
+
+//Project&Case-index-pages(searchbar)
+.search-bar-index {
+  border-radius: 0 20px 20px 0;
+  border: 1px solid $m-blue;
+  border-left: none;
+  background: transparent;
+  color: $m-blue;
+}
+
+.btn-search-index {
+  border-radius: 20px 0 0 20px;
+  background: transparent;
+  color: $m-blue;
+  border: 1px solid $m-blue;
+  border-right: none;
+  padding: 5px 12px 5px 16px;
+  &:hover {
+    color: $m-blue;
+  }
+}
+//

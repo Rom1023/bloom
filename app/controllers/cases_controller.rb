@@ -1,6 +1,10 @@
 class CasesController < ApplicationController
   def index
-    @cases = Case.all
+    if params[:query].present?
+      @cases = Case.all.search_by_name_and_description(params[:query])
+    else
+      @cases = Case.all
+    end
   end
 
   def new
@@ -54,6 +58,6 @@ class CasesController < ApplicationController
     # Nested Attributes: create patient and case at the same time
     params.require(:case).permit(:description,
                                  patient_attributes: [:first_name, :last_name, :gender,
-                                                      :date_of_birth, :address, photos: [], documents: []])
+                                                      :date_of_birth, :address, photos: [], documents: [], medications: []])
   end
 end
