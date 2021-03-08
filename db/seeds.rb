@@ -3,6 +3,7 @@ require 'faker'
 puts "destroying records..."
 
 User.destroy_all
+Case.destroy_all
 
 puts "start seeding..."
 
@@ -209,4 +210,86 @@ link_5.case = user_2.cases[0]
 link_5.save!
 
 
+# == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
+specializations = ["psychiatry", "rheumatologist", "neurologist", "gynaecologist",
+                   "cardiologist", "oncologist", "urologist", "gastroenterologist"]
+case_descriptions = ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+              dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+              em. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+              vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+              Nullamo dictum felis eu pede lismos pretium. Integer tincidunt. Cras dapibus. Vivamus
+              elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
+              onsequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat
+              a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrumt. Aenean
+              imperdiet. Etiam ultricies nisi vel augue. Curabiture ullamcorper ultricies nisi."]
+case_titles = ["Curabiture at lacus (blocked blood vessels)", "Pellentesque rutrumt(inflammation)",
+              "Varius tincidunt()", "Nullamos quis antef()"]
+project_names = ["Felis eu depe mollis prutism()", "Pellentfsesque eu prefatium()",
+                "Viverra qusis fegiat()", "ultrifcies mid eu turpids hendfrerit()",
+                "Etiavm impdiet imposerdiet orc()", "Consectetuer lacinia nam pretfaium()"]
+project_descriptions = ["Lorem ipsum vestibulum purus quam, scelerisque ut, mslios sed, nonummy id, metus.
+                      Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla.
+                      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                      Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu
+                      tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices
+                      mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent
+                      adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Phasellus
+                      viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                      ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
+                      rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero."]
+comments = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+            quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque.",
+            "Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis.",
+            "Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+            condimentum rhoncus, sem quam semper libero.", "Imperdiet feugiat, pede. Sed lectus. Donec mollis
+            hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci.",
+            "Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus."]
+
+10.times do
+  user_sample = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+               specialization: specializations.sample, email: Faker::Internet.email, password: "123456")
+  # Case
+  rand(3..6).times do
+  case_sample = Case.new(description: case_descriptions.sample, title: case_titles.sample,
+               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
+                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+  case_sample.user = user_sample
+  case_sample.save!
+  end
+  # Project
+  rand(2..4).times do
+    project_sample = Project.create!(name: project_names.sample, description: project_descriptions.sample)
+    # Collaboratiob (admin)
+    collaboration_sample = Collaboration.new
+    collaboration_sample.project = project_sample
+    collaboration_sample.user = user_sample
+    collaboration_sample.role = 'admin'
+    collaboration_sample.save!
+    # Link
+    rand(4..6).times do
+      link_sample = Link.new
+      link_sample.project = project_sample
+      link_sample.case = Case.all.sample
+      link_sample.save!
+    end
+    # Collaboration (collaborators)
+    rand(4..7).times do
+      collaboration_sample = Collaboration.new
+      collaboration_sample.project = project_sample
+      collaboration_sample.user = User.where.not(id: user_sample.id).sample
+      collaboration_sample.role = 'collaborator'
+      collaboration_sample.save!
+    end
+    #Comments
+    rand(5..8).times do
+      comment_sample = Comment.new(content: comments.sample)
+      comment_sample.user = User.all.sample
+      comment_sample.project = project_sample
+      comment_sample.save!
+    end
+  end
+end
+# =====
 puts "done seeding..."
