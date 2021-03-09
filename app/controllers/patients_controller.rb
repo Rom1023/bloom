@@ -7,7 +7,6 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     @case = Case.find(params[:case_id])
-      raise
 
     if @patient.save
       # case/show page, when patient created successfully
