@@ -39,31 +39,35 @@ ul{
     }
 }
 
-.card-main-infos{
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-top: 0px;
-  // position: absolute;
-  // top: 50px;
-    h2{
-      font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-    }
-    p{
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      font-weight: 400;
-      overflow-y: hidden;
-      text-overflow: ellipsis;
-      max-height: 4.6em;
-      color: #374A59;
-    }
-}
-
 .card-project-top-infos{
   display: flex;
   justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  margin-bottom: 0px;
+}
+
+.card-project-bottom-infos{
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  bottom: 15px;
+    a{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3734AA;
+    }
+    span{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3734AA;
+    }
 }
 
 /*Smallest device*/
