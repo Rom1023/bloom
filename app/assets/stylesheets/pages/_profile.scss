@@ -1,3 +1,21 @@
 #list-buttons{
   display: flex;
 }
+.col-customized{
+  transition: border .3s ease-in;
+  position: relative!important;
+  margin: 10px!important;
+  padding: 4px!important;
+  height: 60px!important;
+  border: 1px solid transparent!important;
+  border-radius: 16px!important;
+}
+
+.col-customized:hover {
+  border-radius: 16px!important;
+  border: 1px solid lightgray!important;
+}
+
+.row-customized {
+  height: 65px!important;
+}

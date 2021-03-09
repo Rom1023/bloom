@@ -1,0 +1,19 @@
+<div>
+  <ul id ="project-container">
+    <% @user.my_collaborations.each do |collaboration| %>
+    <li >
+        <div class="card-project">
+          <div class="card-main-infos">
+            <div class="card-project-top-infos">
+              <p><strong><%= collaboration.project.links.count %></strong> cases</p>
+              <p><strong><%= collaboration.project.collaborations.count %></strong> collaborators</p>
+            </div>
+            <h2><%= link_to collaboration.project.name, project_path(collaboration.project) %></h2>
+            <p><%= collaboration.project.description %></p>
+            <span>PROJECT</span>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
