@@ -1,9 +1,14 @@
 .display-file {
   padding-left: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   grid-gap: 16px;
+  grid-template-areas:
+    "case comment comment";
 }
+.case { grid-area: case; }
+.comment { grid-area: comment; }
 
 .cards-project{
   padding-left: 0;
