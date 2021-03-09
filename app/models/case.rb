@@ -6,7 +6,8 @@ class Case < ApplicationRecord
 
   accepts_nested_attributes_for :patient
 
-  default_scope { order("created_at DESC") }
+  default_scope { order(created_at: :desc) }
+
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
                   against: [:title, :description],
