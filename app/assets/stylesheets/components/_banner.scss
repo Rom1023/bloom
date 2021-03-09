@@ -1,17 +1,4 @@
-.banner {
-  min-height: 300px;
-  height: 45vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .banner-text {
-    color: white;
-  }
-}
-
+// homepage(banner)
 .banner-home {
   height: 80vh;
   background-size: cover;
@@ -43,6 +30,7 @@
 
 // index and show pages of case and project
 .small-banner {
+  min-height: 300px;
   height: 500px;
   display: flex;
   align-items: center;

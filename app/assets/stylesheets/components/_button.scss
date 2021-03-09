@@ -48,3 +48,14 @@
   background-color: transparent;
   border: none;
 }
+// project show(collaborator)
+.btn-s-blue-white {
+  background: $m-blue;
+  color: white;
+  text-decoration: none;
+  &:hover {
+    color: $m-bluelight;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-decoration: none;
+  }
+}//
