@@ -1,0 +1,113 @@
+.card-patient{
+  height: 135px;
+  width: 385px;
+  border-radius: 16px;
+  position: relative;
+  border-left: 25px solid $m-blue-dark;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.2);
+  background-color: white;
+  text-decoration: none;
+  position: relative;
+    &:hover{
+      background-color: #3734AA;
+      border-left: 25px solid #01E1F0;
+        p{
+          color: white;
+        }
+        h2{
+          color: white;
+          text-decoration: none;
+        }
+        span{
+          color: white;
+        }
+        .rounded-gender{
+          background-color: #01E1F0
+        }
+        a{
+          color: white;
+        }
+
+    }
+}
+
+.patient-card-main-infos{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 0px;
+  position: absolute;
+  top: 40px;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  max-height: 5.6em;
+    h2{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      // overflow-y: hidden;
+      // text-overflow: ellipsis;
+      // max-height: 3em;
+    }
+    p{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      // overflow-y: hidden;
+      // text-overflow: ellipsis;
+      // max-height: 2.6em;
+      color: #374A59;
+    }
+}
+
+.card-patient-top-infos{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  margin-bottom: 0px;
+    span{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6E798C;
+    }
+    p{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 100;
+      color: #6E798C;
+    }
+}
+
+.card-patient-bottom-infos{
+  display: flex;
+  justify-content: space-between;
+    width: 350px;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  bottom: 10px;
+    a{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3734AA;
+    }
+}
+
+.card-patient-gender-age{
+  display: flex;
+}
+
+.patient-rounded-gender{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: $m-blue-dark;
+  color: white;
+  margin-right: 10px;
+  text-align: center;
+  margin-bottom: 0px;
+}
