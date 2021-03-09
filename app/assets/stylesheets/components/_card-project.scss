@@ -13,7 +13,8 @@ ul{
 
 .card-project{
   height: 200px;
-  width: 385px;
+  min-width: 300px;
+  max-height: 385px;
   border-radius: 16px;
   position: relative;
   border-left: 25px solid #E8F2FF;
@@ -51,7 +52,7 @@ ul{
 .card-project-bottom-infos{
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   position: absolute;

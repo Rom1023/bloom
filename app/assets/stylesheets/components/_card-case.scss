@@ -7,13 +7,14 @@ ul{
 .cards-container{
   padding-left: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
 }
 
 .card-case{
   height: 200px;
-  width: 385px;
+  min-width: 300px;
+  max-height: 385px;
   border-radius: 16px;
   position: relative;
   border-left: 25px solid #3734AA;
@@ -105,7 +106,7 @@ ul{
 .card-bottom-infos{
   display: flex;
   justify-content: space-between;
-    width: 350px;
+    width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   position: absolute;
