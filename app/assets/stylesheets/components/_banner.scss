@@ -28,15 +28,25 @@
 }
 //
 
+// index and show pages of case and project
 .small-banner {
-  height: 400px;
+  height: 500px;
   display: flex;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
 }
 
 .small-banner-text{
+  h1{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+  }
   h2{
     font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+    font-size: 24px;
     font-weight: 400;
     color: white;
     margin-bottom: 0px;
