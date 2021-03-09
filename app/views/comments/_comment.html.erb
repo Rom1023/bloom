@@ -1,5 +1,13 @@
-<div class="comment-container" id="comment-<%= comment.id %>">
-  <span>Dr.<%= comment.user.last_name %></span>
-  <small><%= comment.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-  <p><%=  comment.content %></p>
+<div class="comment-container d-flex" id="comment-<%= comment.id %>">
+  <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+  <div>
+    <div class="user-info flex-column">
+        <%= link_to comment.user.full_name, user_path(comment.user), class: "user-info-name" %>
+        <div>
+          <span class="user-info-detail"><%= comment.user.specialization %></span>
+          <small><%= comment.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+        </div>
+    </div>
+    <p class="comment-text"><%=  comment.content %></p>
+  </div>
 </div>
