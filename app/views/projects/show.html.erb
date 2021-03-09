@@ -1,5 +1,5 @@
 <div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
-                           url('../../assets/images/project-show.jpg')">
+                           url('https://res.cloudinary.com/dpt0tj9je/image/upload/v1615221923/pexels-oles-kanebckuu-127873_1_lzg0mx.jpg')">
   <div class="container">
     <div class="small-banner-text col-md-8">
       <h2>Project</h2>
@@ -7,51 +7,60 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="description">
-    <h3><%= @project.name %></h3>
-    <div class="user-info">
-      <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
-      <% @project.creator_collaborations.each do |c| %>
-        <div>
-          <%= link_to c.user.full_name, user_path(c.user), class: "user-info-name" %>
-          <p class="user-info-detail"><%= c.user.specialization %></p>
-        </div>
-        <div class="ml-auto mt-1 user-info-detail"><%= c.user.email %></div>
-      <% end %>
-    </div>
-    <hr>
-    <div>
-      <p><%= @project.description %></p>
-      <!--<p>Completed: < @project.completed ? "yes" : "no" %></p>-->
-      <% if @project.is_admin?(current_user.id) %>
-        <p><%= link_to "Edit", edit_project_path(@project), class: "btn-s-blue" %></p>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="collaborator mt-3">
+<div class="project-description">
   <div class="container">
-    <h4>Collaborators</h4>
-    <div class="collaborator-list">
-      <ul>
-       <% @project.my_collaborations.each do |collaboration| %>
-         <li>
-           <%= link_to collaboration.user.full_name, user_path(collaboration.user) %>
-         </li>
-       <% end %>
-      </ul>
-      <div>
-        <%= link_to 'Become a collaborator', collaboration_path(@project), class: "btn-s-blue" %>
+    <div class="w-50">
+      <div class="pl-0 pt-5 d-flex justify-content-between">
+        <div><%= link_to "Back to projects", projects_path, class: "purple-button" %></div>
+        <div class="col-md-3 d-flex justify-content-end">
+          <% if @project.is_admin?(current_user.id) %>
+            <p><%= link_to "Edit", edit_project_path(@project), class: "purple-button mr-3" %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="global-text pt-3 pb-5">
+      <%= @project.description %>
+      <!--<p>Completed: < @project.completed ? "yes" : "no" %></p>-->
+      <hr>
+      <div class="user-info">
+        <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+        <% @project.creator_collaborations.each do |c| %>
+          <div>
+            <%= link_to c.user.full_name, user_path(c.user), class: "user-info-name" %>
+            <p class="user-info-detail"><%= c.user.specialization %></p>
+          </div>
+          <div class="ml-auto mt-1 user-info-detail"><%= c.user.email %></div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-<div class="container py-5">
-  <div class="display-file">
-    <div class="case">
-        <div class="d-flex align-item-center">
-          <h4>Case</h4>
+<div class="project-collaborator pt-1">
+  <div class="container py-5">
+    <div class="d-flex">
+      <h4 class="mb-3 pr-5">Collaborators</h4>
+      <%= link_to collaboration_path(@project), class: "btn-s-blue-white" do %>
+        <i class="fas fa-user-plus"></i>
+      <% end %>
+    </div>
+    <div class="collaborator-list">
+      <ul>
+       <% @project.my_collaborations.each do |collaboration| %>
+         <li class="text-p-white mb-1">
+           <%= link_to collaboration.user.full_name, user_path(collaboration.user) %>
+         </li>
+       <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="project-body pt-3">
+  <div class="container py-3">
+    <div class="display-project-detail">
+      <div class="case">
+        <div class="d-flex align-items-center">
+          <h3 class="mb-0 pr-5"><strong>Case</strong></h3>
           <%= form_tag cases_path, method: :get, class: "d-flex justify-content-center" do %>
             <%= button_tag :submit, class: "btn btn-search-index" do %>
               <i class="fas fa-search"></i>
@@ -63,76 +72,74 @@
             %>
           <% end %>
         </div>
-      <div class="mt-3">
-        <h4>Asccotiated cases</h4>
-        <ul class="cards-project" >
-          <% @links.each do |link| %>
-            <% if link.project == @project %>
-              <li class="card-case">
-                <div class="card-doctor-email">
-                  <span><%= link.case.user.full_name.upcase %></span>
-                  <p><%= link.case.user.email %></p>
-                </div>
-                <div class="card-main-infos">
-                  <%= link_to(case_path(link.case)) do %>
-                    <!-- should be link.case.title after title added to Case-->
-                    <h2>Case <%= link.case.id %> : <%= link.case.title %></h2>
-                    <p><%= link.case.description %></p>
-                  <% end %>
-                </div>
-                <div class="card-bottom-infos">
-                  <div class="card-gender-age">
-                    <!-- add link to patient profile page-->
-                    <% if  link.case.patient.gender == "female"%>
-                        <p class="rounded-gender">F</p>
-                    <% else %>
-                        <p class="rounded-gender">M</p>
+        <div class="mt-3">
+          <ul class="cards-project" >
+            <% @links.each do |link| %>
+              <% if link.project == @project %>
+                <li class="card-case">
+                  <div class="card-doctor-email">
+                    <span><%= link.case.user.full_name.upcase %></span>
+                    <p><%= link.case.user.email %></p>
+                  </div>
+                  <div class="card-main-infos">
+                    <%= link_to(case_path(link.case)) do %>
+                      <!-- should be link.case.title after title added to Case-->
+                      <h2>Case <%= link.case.id %> : <%= link.case.title %></h2>
+                      <p><%= link.case.description %></p>
                     <% end %>
-                    <span class="card-age"><%= link.case.patient.age %> <span class="card-year">year</span></span>
-                   <!--  <span>Patient: <%= link.case.patient.id %></span> -->
                   </div>
-                  <div>
-                    <%= link_to "Read more ￫",case_path(link.case) %>
+                  <div class="card-bottom-infos">
+                    <div class="card-gender-age">
+                      <!-- add link to patient profile page-->
+                      <% if  link.case.patient.gender == "female"%>
+                          <p class="rounded-gender">F</p>
+                      <% else %>
+                          <p class="rounded-gender">M</p>
+                      <% end %>
+                      <span class="card-age"><%= link.case.patient.age %> <span class="card-year">year</span></span>
+                     <!--  <span>Patient: <%= link.case.patient.id %></span> -->
+                    </div>
+                    <div>
+                      <%= link_to "Read more ￫",case_path(link.case) %>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
       </div>
-      <div class="w-50">
-        <h4>Add my case</h4>
-          <%= simple_form_for([@project, @link]) do |f| %>
-            <%= f.association :case, label: false, collection: current_user.cases %>
-            <%= f.button :submit, class: "btn btn-s-blue" %>
-          <% end %>
-      </div>
-    </div>
-    <div class="comment">
-      <div id="comments" class="card" data-project-id="<%= @project.id %>">
-        <% @project.comments.each do |comment| %>
-          <%= render 'comments/comment', comment: comment %>
-        <% end %>
-      </div>
-      <div class="">
-        <div class="user-info">
-          <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
-          <% @project.creator_collaborations.each do |c| %>
-            <div>
-              <%= link_to c.user.full_name, user_path(c.user), class: "user-info-name" %>
-              <p class="user-info-detail"><%= c.user.specialization %></p>
-            </div>
+      <div class="comment">
+        <div id="comments" class="pb-1" data-project-id="<%= @project.id %>">
+          <% @project.comments.each do |comment| %>
+            <%= render 'comments/comment', comment: comment %>
           <% end %>
         </div>
-        <%= simple_form_for [@project, @comment], remote: true do |f| %>
-          <%= f.input :content, label: false, placeholder: "Comment #{current_user.full_name}" %>
-          <%= f.button :submit, class: "btn btn-s-blue" %>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
+<div class="project-bottom pb-5">
+  <div class="container">
+    <div class="project-bottom-display">
+      <div class="case-link">
+        <%= simple_form_for([@project, @link]) do |f| %>
+          <%= f.association :case, label: false, collection: current_user.cases %>
+          <%= f.button :submit, "Link my case", class: "btn btn-s-blue" %>
         <% end %>
+      </div>
+      <div class="comment-input d-flex">
+        <div class="pl-3 mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+        <div class="comment-input-field w-100">
+          <%= simple_form_for [@project, @comment], remote: true do |f| %>
+            <%= f.input :content, label: false, placeholder: "Enter your comment here #{current_user.full_name}" %>
+            <%= f.button :submit, class: "btn btn-s-blue" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
-
 
 <!-- /projects/:project_id/comments(.:format) -->

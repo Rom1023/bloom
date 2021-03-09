@@ -13,7 +13,7 @@
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="pl-0 mt-5 col-md-6 d-flex justify-content-between">
-          <div><%= link_to "Back to cases", cases_path, class: " purple-button" %></div>
+          <div><%= link_to "Back to cases", cases_path, class: "purple-button" %></div>
           <div class="col-md-3 d-flex justify-content-between">
             <% if current_user == @case.user %>
                 <div><%= link_to "Edit", edit_case_path(@case), class: "purple-button" %></div>
@@ -22,7 +22,8 @@
           </div>
         </div>
 
-        <div class="global-text pt-3 pb-5"><%= @case.description %>
+        <div class="global-text pt-3 pb-5">
+          <%= @case.description %>
           <hr>
           <div class="d-flex justify-content-between">
             <div>
