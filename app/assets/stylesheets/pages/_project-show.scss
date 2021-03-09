@@ -2,12 +2,52 @@
   padding-left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   grid-gap: 16px;
+  grid-template-areas:
+    "case comment comment";
 }
+.case { grid-area: case; }
+.comment { grid-area: comment; }
 
 .cards-project{
   padding-left: 0;
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 16px;
+}
+
+.description {
+  column-count: 2;
+}
+
+.user-info {
+  display: flex;
+}
+
+.user-info-name {
+  text-decoration: none;
+  color: black;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.user-info-detail {
+  font-family: "Arial";
+  font-size: 12px;
+  color:grey;
+}
+
+.collaborator {
+  background: $m-blue;
+  color: white;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: bold;
+}
+.collaborator-list {
+  column-count: 3;
+  font-size: 16px;
+  font-weight: normal;
 }

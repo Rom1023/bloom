@@ -1,0 +1,10 @@
+.comment-container {
+  border-radius: 16px;
+  background: $comment-blue;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  .comment-text {
+    font-family: "Montserrat";
+    font-size: 16px;
+  }
+}
