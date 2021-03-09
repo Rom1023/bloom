@@ -1,23 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
-
-ul{
-  list-style-type: none;
-}
-
-.cards-container{
-  padding-left: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
-}
-
-.card-case{
-  height: 200px;
-  min-width: 300px;
-  max-height: 385px;
+.card-patient{
+  height: 135px;
+  width: 385px;
   border-radius: 16px;
   position: relative;
-  border-left: 25px solid #3734AA;
+  border-left: 25px solid $m-blue-dark;
   box-shadow: 1px 2px 6px rgba(0,0,0,0.2);
   background-color: white;
   text-decoration: none;
@@ -45,11 +31,12 @@ ul{
     }
 }
 
-.card-main-infos{
+.patient-card-main-infos{
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 0px;
-  top: 50px;
+  position: absolute;
+  top: 40px;
   overflow-y: hidden;
   text-overflow: ellipsis;
   max-height: 5.6em;
@@ -57,6 +44,7 @@ ul{
       font-family: 'Montserrat', sans-serif;
       font-size: 20px;
       font-weight: 700;
+      margin-bottom: 3px;
       // overflow-y: hidden;
       // text-overflow: ellipsis;
       // max-height: 3em;
@@ -72,12 +60,12 @@ ul{
     }
 }
 
-.card-doctor-email{
+.card-patient-top-infos{
   display: flex;
   justify-content: space-between;
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 15px;
+  padding-top: 10px;
   margin-bottom: 0px;
     span{
       font-family: 'Montserrat', sans-serif;
@@ -92,25 +80,15 @@ ul{
       color: #6E798C;
     }
 }
-.rounded-gender{
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background-color: #3734AA;
-  color: white;
-  margin-right: 10px;
-  text-align: center;
-  margin-bottom: 0px;
-}
 
-.card-bottom-infos{
+.card-patient-bottom-infos{
   display: flex;
   justify-content: space-between;
-    width: 100%;
+    width: 350px;
   padding-left: 15px;
   padding-right: 15px;
   position: absolute;
-  bottom: 15px;
+  bottom: 10px;
     a{
       font-family: 'Montserrat', sans-serif;
       font-size: 12px;
@@ -119,47 +97,17 @@ ul{
     }
 }
 
-.card-gender-age{
+.card-patient-gender-age{
   display: flex;
 }
 
-.card-age{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.card-year{
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: #6E798C;
-}
-
-/*Smallest device*/
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-  .cards-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-  .cards-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-/*Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-  .cards-container {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.patient-rounded-gender{
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: $m-blue-dark;
+  color: white;
+  margin-right: 10px;
+  text-align: center;
+  margin-bottom: 0px;
 }

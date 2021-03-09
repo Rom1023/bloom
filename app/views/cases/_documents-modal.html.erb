@@ -1,6 +1,6 @@
 
 <!-- Button trigger modal -->
-<button type="button" data-toggle="modal" data-target="#myModal<%= item.id %>">
+<button type="button" class="modal-button" data-toggle="modal" data-target="#myModal<%= item.id %>">
   <div class="file-thumbnail" style="background-image: url('<%= cl_image_path item.key%>')"> </div>
 </button>
 
@@ -9,7 +9,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

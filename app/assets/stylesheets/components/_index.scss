@@ -7,15 +7,14 @@
 @import "button";
 @import "card-case";
 @import "card-project";
+@import "card-patient";
 @import "accordion";
 @import "utilities";
 @import "doctor-infos";
 @import "search-bar";
+@import "comment";
 @import "projects-list";
 @import "create-case-form";
-
-
-
 
 html, body {
   padding: 0;
@@ -41,4 +40,3 @@ html, body {
   // overflow: auto;
   // padding-bottom: 250px;
 }
-

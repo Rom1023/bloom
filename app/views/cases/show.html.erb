@@ -1,19 +1,19 @@
-<div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= cl_image_path "pexels-rfstudio-3825539_v0zo7h", crop: :fill %>')">
+<div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= cl_image_path "pexels-tima-miroshnichenko-5407212_nwdzks", crop: :fill %>')">
   <div class="container">
     <div>
       <div class="small-banner-text col-md-8">
         <h2>CASE</h2>
-        <h1 class="banner-title">Name<%= @case.title %></h1>
+        <h1 class="banner-title"><%= @case.title %></h1>
         <a href="#medical-report-anchor">Medical report</a>
       </div>
     </div>
   </div>
-
 </div>
+
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
         <div class="pl-0 mt-5 col-md-6 d-flex justify-content-between">
-          <div><%= link_to "Back to cases", cases_path, class: " purple-button" %></div>
+          <div><%= link_to "Back to cases", cases_path, class: "purple-button" %></div>
           <div class="col-md-3 d-flex justify-content-between">
             <% if current_user == @case.user %>
                 <div><%= link_to "Edit", edit_case_path(@case), class: "purple-button" %></div>
@@ -22,7 +22,8 @@
           </div>
         </div>
 
-        <div class="global-text pt-3 pb-5"><%= @case.description %>
+        <div class="global-text pt-3 pb-5">
+          <%= @case.description %>
           <hr>
           <div class="d-flex justify-content-between">
             <div>
@@ -53,7 +54,6 @@
             <h2 id="medical-report-anchor" class="title mb-5">Medical Report</h2>
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-
                   <div class="panel panel-default">
                       <div class="panel-heading" role="tab" id="headingOne">
                           <h4 class="panel-title">
@@ -63,17 +63,16 @@
                           </h4>
                       </div>
                       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                          <div class="panel-body panel-grid">
-                              <% if @case.patient.medications.attached? %>
-                                <% @case.patient.medications.each do |medication| %>
+                        <div class="panel-body panel-grid">
+                            <% if @case.patient.medications.attached? %>
+                              <% @case.patient.medications.each do |medication| %>
 
-                                  <%= render partial: 'medication-modal', locals: { item: medication } %>
-                                <% end %>
+                                <%= render partial: 'documents-modal', locals: { item: medication } %>
                               <% end %>
-                          </div>
+                            <% end %>
+                        </div>
                       </div>
                   </div>
-
 
                   <div class="panel panel-default">
                       <div class="panel-heading" role="tab" id="headingTwo">
@@ -84,11 +83,17 @@
                           </h4>
                       </div>
                       <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                          <div class="panel-body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
-                          </div>
+                        <div class="panel-body panel-grid">
+                            <% if @case.patient.treatments.attached? %>
+                              <% @case.patient.treatments.each do |treatment| %>
+
+                                <%= render partial: 'documents-modal', locals: { item: treatment } %>
+                              <% end %>
+                            <% end %>
+                        </div>
                       </div>
                   </div>
+
                   <div class="panel panel-default">
                       <div class="panel-heading" role="tab" id="headingThree">
                           <h4 class="panel-title">
@@ -98,9 +103,14 @@
                           </h4>
                       </div>
                       <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                          <div class="panel-body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
-                          </div>
+                        <div class="panel-body panel-grid">
+                          <% if @case.patient.surgeries.attached? %>
+                            <% @case.patient.surgeries.each do |surgery| %>
+
+                              <%= render partial: 'documents-modal', locals: { item: surgery } %>
+                            <% end %>
+                          <% end %>
+                        </div>
                       </div>
                   </div>
                   <div class="panel panel-default">
@@ -112,10 +122,15 @@
                           </h4>
                       </div>
                       <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                          <div class="panel-body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
-                          </div>
+                        <div class="panel-body panel-grid">
+                        <% if @case.patient.lab_tests.attached? %>
+                          <% @case.patient.lab_tests.each do |lab| %>
+
+                            <%= render partial: 'documents-modal', locals: { item: lab } %>
+                          <% end %>
+                        <% end %>
                       </div>
+                    </div>
                   </div>
                   <div class="panel panel-default">
                       <div class="panel-heading" role="tab" id="headingFive">
@@ -126,9 +141,14 @@
                           </h4>
                       </div>
                       <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                          <div class="panel-body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
-                          </div>
+                        <div class="panel-body panel-grid">
+                          <% if @case.patient.genetic_results.attached? %>
+                            <% @case.patient.genetic_results.each do |result| %>
+
+                              <%= render partial: 'documents-modal', locals: { item: result } %>
+                            <% end %>
+                          <% end %>
+                        </div>
                       </div>
                   </div>
                   <div class="panel panel-default">
@@ -140,10 +160,15 @@
                           </h4>
                       </div>
                       <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-                          <div class="panel-body">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
-                          </div>
+                        <div class="panel-body panel-grid">
+                          <% if @case.patient.allergies.attached? %>
+                            <% @case.patient.allergies.each do |allergy| %>
+
+                            <%= render partial: 'documents-modal', locals: { item: allergy } %>
+                          <% end %>
+                        <% end %>
                       </div>
+                    </div>
                   </div>
               </div>
           </div>

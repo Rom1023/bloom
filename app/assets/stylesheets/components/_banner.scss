@@ -1,4 +1,5 @@
-.banner {
+// homepage(banner)
+.banner-home {
   height: 80vh;
   background-size: cover;
   background-position: center;
@@ -7,7 +8,6 @@
   align-items: center;
   justify-content: center;
 }
-
 
 // homepage(title)
 .banner-title {
@@ -30,6 +30,7 @@
 
 // index and show pages of case and project
 .small-banner {
+  min-height: 300px;
   height: 500px;
   display: flex;
   align-items: center;
