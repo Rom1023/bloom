@@ -10,17 +10,19 @@ Case.destroy_all
 puts "start seeding..."
 
 # == User ==
-user_1 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Orthopaedic", email: "user1@test.com", password: "123456")
+user_5 = User.create!(first_name: 'Gregory', last_name: 'House',
+                      specialization: "Rheumatologist", email: "gh@bloom.com", password: "123456")
 
-user_2 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Rheumatologist", email: "user2@test.com", password: "123456")
 
-user_3 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Neurologist", email: "user3@test.com", password: "123456")
 
-user_4 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Cardiologist", email: "user4@test.com", password: "123456")
+user_1 = User.create!(first_name: 'Elenice', last_name: 'H',
+                      specialization: "Orthopaedic", email: "eh@bloom.com", password: "123456")
+user_2 = User.create!(first_name: 'Romuald', last_name: 'G',
+                      specialization: "Cardiologist", email: "rg@bloom.com", password: "123456")
+user_3 = User.create!(first_name: 'Marjorie', last_name: 'J',
+                      specialization: "Orthopaedic", email: "mj@bloom.com", password: "123456")
+user_4 = User.create!(first_name: 'Yuanyuan', last_name: 'Z',
+                      specialization: "Neurologist", email: "yyz@bloom.com", password: "123456")
 
 # == Case + Patient==
 # -- case description --
@@ -212,6 +214,7 @@ link_5.case = user_2.cases[0]
 link_5.save!
 
 
+
 # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
 specializations = ["psychiatry", "rheumatologist", "neurologist", "gynaecologist",
                    "cardiologist", "oncologist", "urologist", "gastroenterologist"]
@@ -294,4 +297,87 @@ comments = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum soda
   end
 end
 # =====
+
+# -------- Pitch Doctor J offer solution -----------
+case_descriptions_dj = ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+              dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+              nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+              em. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec,
+              vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.
+              Nullamo dictum felis eu pede lismos pretium. Integer tincidunt. Cras dapibus. Vivamus
+              elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu,
+              onsequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat
+              a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrumt. Aenean
+              imperdiet. Etiam ultricies nisi vel augue. Curabiture ullamcorper ultricies nisi."]
+case_titles_dj = ["Curabiture at lacus (blocked blood vessels)", "Pellentesque rutrumt(inflammation)",
+              "Varius tincidunt()", "Nullamos quis antef()"]
+project_names_dj = ["Felis eu depe mollis prutism()", "Pellentfsesque eu prefatium()",
+                "Viverra qusis fegiat()", "ultrifcies mid eu turpids hendfrerit()",
+                "Etiavm impdiet imposerdiet orc()", "Consectetuer lacinia nam pretfaium()"]
+project_descriptions_dj = ["Lorem ipsum vestibulum purus quam, scelerisque ut, mslios sed, nonummy id, metus.
+                      Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla.
+                      Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                      Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu
+                      tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices
+                      mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent
+                      adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Phasellus
+                      viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+                      ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam
+                      rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero."]
+comments_dj = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,
+            quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque.",
+            "Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis.",
+            "Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget
+            condimentum rhoncus, sem quam semper libero.", "Imperdiet feugiat, pede. Sed lectus. Donec mollis
+            hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci.",
+            "Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus."]
+doctor_j = User.create!(first_name: "Jennifer", last_name: "Green",
+                      specialization: "Cardiologist", email: "jg@bloom.com", password: "123456")
+# -- DJ Patient --
+Patient.new(first_name: John, last_name: Smith,
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "Mar, 28 Mar 1952")
+# -- DJ Case --
+6.times do
+  case_dj = Case.new(description: case_descriptions.sample, title: case_titles.sample,
+               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
+                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+  case_dj.user = doctor_j
+  case_dj.save!
+end
+# -- DJ Project --
+4.times do
+  project_dj = Project.create!(name: project_names.sample, description: project_descriptions.sample)
+  # Collaboratiob (admin)
+  collaboration_dj = Collaboration.new
+  collaboration_dj.project = project_dj
+  collaboration_dj.user = user_dj
+  collaboration_dj.role = 'admin'
+  collaboration_dj.save!
+  # Link
+  4.times do
+    link_dj = Link.new
+    link_dj.project = project_dj
+    link_dj.case = Case.all.sample
+    link_dj.save!
+  end
+  # Collaboration (collaborators)
+  7.times do
+    collaboration_dj = Collaboration.new
+    collaboration_dj.project = project_dj
+    collaboration_dj.user = User.where.not(id: user_dj.id).sample
+    collaboration_dj.role = 'collaborator'
+    collaboration_dj.save!
+  end
+  #Comments
+  rand(5..8).times do
+    comment_dj = Comment.new(content: comments.sample)
+    comment_dj.user = User.all.sample
+    comment_dj.project = project_dj
+    comment_dj.save!
+  end
+end
+
+
 puts "done seeding..."
