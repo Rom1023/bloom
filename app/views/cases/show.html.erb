@@ -1,28 +1,37 @@
-<div class="small-banner" style="background-image: url('<%= cl_image_path "pexels-rfstudio-3825539_v0zo7h", crop: :fill %>')">
+<div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= cl_image_path "pexels-rfstudio-3825539_v0zo7h", crop: :fill %>')">
   <div class="container">
-    <div class="small-banner-text col-md-8">
-      <h2>CASE</h2>
-      <h1 class="banner-title">Name<%= @case.title %></h1>
-      <a href="#case-title">Read more</a>
+    <div>
+      <div class="small-banner-text col-md-8">
+        <h2>CASE</h2>
+        <h1 class="banner-title">Name<%= @case.title %></h1>
+        <a href="#medical-report-anchor">Medical report</a>
+      </div>
     </div>
   </div>
 
 </div>
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
-    <%= link_to "Back to list of cases", cases_path, class: "btn-s-blue mt-2" %>
-        <% if current_user == @case.user %>
-          <%= link_to "Edit", edit_case_path(@case), class: "btn-s-blue" %>
-          <%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"}, class: "btn-s-blue" %>
-        <% end %>
-        <h2 id="case-title" class="title">Case: <%= @case.title %></h2>
-        <div class="global-text"><%= @case.description %></div>
-        <hr>
-        <div>
-          <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
-          <p class="doctor-specialization"><%= @case.user.specialization %></p>
+        <div class="pl-0 mt-5 col-md-6 d-flex justify-content-between">
+          <div><%= link_to "Back to cases", cases_path, class: " purple-button" %></div>
+          <div class="col-md-3 d-flex justify-content-between">
+            <% if current_user == @case.user %>
+                <div><%= link_to "Edit", edit_case_path(@case), class: "purple-button" %></div>
+                <div><%= link_to "Delete", case_path(@case), method: :delete, data: { confirm: "Are you sure?"}, class: "purple-button" %></div>
+            <% end %>
+          </div>
         </div>
-        <p class="doctor-email"><%= @case.user.email %></p>
+
+        <div class="global-text pt-3 pb-5"><%= @case.description %>
+          <hr>
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
+              <p class="doctor-specialization"><%= @case.user.specialization %></p>
+            </div>
+            <p class="doctor-email"><%= @case.user.email %></p>
+          </div>
+        </div>
       </div>
 
       <div>
@@ -37,27 +46,11 @@
       </div>
     </div>
 
-<!--   <div class="container py-5">
-    <div class="mt-3">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="d-flex justify-content-between">
-        <hr>
-            <div>
-              <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
-              <p class="doctor-specialization"><%= @case.user.specialization %></p>
-            </div>
-            <p class="doctor-email"><%= @case.user.email %></p>
-        </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
 
   <div class="accordion-container py-5">
       <div class="row d-flex justify-content-center">
           <div class="col-md-8">
-            <h2 class="title mb-5">Medical Report</h2>
+            <h2 id="medical-report-anchor" class="title mb-5">Medical Report</h2>
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
 
@@ -80,9 +73,6 @@
                           </div>
                       </div>
                   </div>
-
-
-
 
 
                   <div class="panel panel-default">
@@ -160,23 +150,74 @@
       </div>
   </div>
 
+  <div id="symptoms-section">
+    <div class="symptoms-container">
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 d-flex">
+          <div class="col-md-6 mb-5">
+            <h2>Description of the symptoms</h2>
+         </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 d-flex">
+          <div class="col-md-6 mb-5">
+            <h3>Sed ut perspiciatis</h3>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
+          </div>
+          <div class="col-md-6  mb-5">
+            <h3>Sed ut perspiciatis</h3>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-8 d-flex">
+          <div class="col-md-6">
+            <h3>Sed ut perspiciatis</h3>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
+          </div>
+          <div class="col-md-6">
+            <h3>Sed ut perspiciatis</h3>
+            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
+            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="light-blue-rectangle"></div>
 
-  <div class="row d-flex justify-content-center">
+  <div class="row d-flex justify-content-center pb-5">
     <div class="col-md-8">
-      <h2 class="projects-title pt-5 mb-2">PROJECTS</h2>
-      <ul class="list-inline">
-        <li class="list-inline-item">List of the projects this case is involved in</li>
-        <li class="list-inline-item">Collaborator</li>
-      </ul>
+      <h2 class="projects-title pt-5 mb-2 pl-0">PROJECTS</h2>
+        <div>
+          <div class="row">
+            <div class="col-md-6 d-flex justify-content-between pr-0">
+              <p>Projects in which this case is involved</p>
+              <p><i class="fas fa-user-friends"></i></p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+              <p><i class="fas fa-user-friends"></i></p>
+            </div>
 
-      <ul class=" pl-0">
+          </div>
+        </div>
+
+
+      <ul class=" project-list pl-0">
         <% @links.each do |link| %>
           <% if link.case == @case %>
-            <li> <%= link_to(project_path(link.project)) do %>
+            <li class="project-list-items"> <%= link_to(project_path(link.project)) do %>
               <%= link.project.name %>
             <% end %>
-              <%= link.project.collaborations.count %>
+              <%= link.project.collaborations.count%>
             </li>
           <% end %>
         <% end %>

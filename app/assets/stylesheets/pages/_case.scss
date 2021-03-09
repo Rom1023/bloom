@@ -21,6 +21,31 @@
 }
 
 .light-blue-rectangle{
-  height: 50px;
+  height: 35px;
   background-color: #38E1ED;
+}
+
+#symptoms-section{
+  display: flex;
+  align-items: center;
+  height: 500px;
+  background-color: #3734AA;
+    h2{
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+    }
+    h3{
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    p{
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 100;
+    }
 }
