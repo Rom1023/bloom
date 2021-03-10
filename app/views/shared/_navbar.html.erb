@@ -18,7 +18,14 @@
             class: "form-control search-bar-nav",
             placeholder: ""
           %>
-          <%= select_tag(:search_option,  options_for_select([['All Projects', 'projects'], ['All Cases', 'cases']]), id: "search-opt-nav") %>
+          <%= select_tag(
+            :search_option,
+            options_for_select([
+              ['All Projects', 'projects'],
+              ['All Cases', 'cases']
+              ]),
+            id: "search-opt-nav"
+            ) %>
       <% end %>
     <% end %>
   </div>
