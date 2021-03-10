@@ -1,4 +1,11 @@
-.blue-bloc {
+.top-left-bloc{
+  background-color: $light-gray;
+  height: 350px;
+  background-position: center;
+  background-size: cover;
+}
+
+.top-right-bloc {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -7,28 +14,39 @@
   border-top: 50px solid $m-bluelight;
 }
 
-.dark-blue-bloc {
+.bottom-left-bloc {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: rgb(15,2,48);
+  background-color: $light-gray;
   color: white;
   border-bottom: 50px solid $m-bluelight;
     h2{
       font-family: 'Montserrat', sans-serif;
-      font-size: 48px;
+      font-size: 56px;
       font-weight: 700;
+      color: $m-blue-dark;
     }
     p{
         font-family: 'Montserrat', sans-serif;
-        font-size: 24px;
+        font-size: 32px;
         font-weight: 100;
+        color: $m-blue-dark;
       }
 }
 
-.left-bloc{
-  background-color: $light-gray;
+.bottom-right-bloc{
+  background-color: $m-blue-dark;
   height: 350px;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+      p{
+      column-count: 2;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      margin: auto;
+    }
 }
+
