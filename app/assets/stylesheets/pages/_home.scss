@@ -1,17 +1,29 @@
 .top-left-bloc{
   background-color: $light-gray;
-  height: 350px;
+  height: 375px;
   background-position: center;
   background-size: cover;
 }
 
 .top-right-bloc {
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background: $m-blue;
   color: white;
   border-top: 50px solid $m-bluelight;
+    h2{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+    p{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 100;
+      color: white;
+      }
 }
 
 .bottom-left-bloc {
@@ -37,7 +49,7 @@
 
 .bottom-right-bloc{
   background-color: $m-blue-dark;
-  height: 350px;
+  height: 375px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
