@@ -24,8 +24,12 @@
       <!--<p>Completed: < @project.completed ? "yes" : "no" %></p>-->
       <hr>
       <div class="user-info">
-        <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
         <% @project.creator_collaborations.each do |c| %>
+          <% if c.user.avatar.attached? %>
+            <div class="mr-2"><%= cl_image_tag c.user.avatar.key, class: "avatar" %></div>
+          <% else %>
+            <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+          <% end %>
           <div>
             <%= link_to c.user.full_name, user_path(c.user), class: "user-info-name" %>
             <p class="user-info-detail"><%= c.user.specialization %></p>
@@ -130,7 +134,11 @@
         <% end %>
       </div>
       <div class="comment-input d-flex">
-        <div class="pl-3 mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+        <% if current_user.avatar.attached? %>
+          <div class="pl-3 mr-2"><%= cl_image_tag current_user.avatar.key, class: "avatar" %></div>
+        <% else %>
+          <div class="pl-3 mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+        <% end %>
         <div class="comment-input-field w-100">
           <%= simple_form_for [@project, @comment], remote: true do |f| %>
             <%= f.input :content, label: false, placeholder: "Enter your comment here #{current_user.full_name}" %>
