@@ -1,12 +1,17 @@
 <div class="container">
-  <div class="my-5">
-    <h1>Create a case</h1>
-
-    <div class="form">
+  <div class="my-5 d-flex justify-content-center">
+    <div class="form col">
       <!-- form to create a case(+ option to add a patient) -->
-      <form>
-        <fieldset id="linkPatient">
-          <input type="radio" value="1" name="linkPatient" id="chooseExist" checked>
+      <div class="d-flex align-items-center">
+        <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306259/patient-icon_vx0jp6.png" alt="" style="width: 55px"></div>
+        <div class="mb-0 ml-3">
+          <h1 class="mb-0 ">Create a case</h1>
+        </div>
+      </div>
+
+      <form class="my-3">
+        <fieldset id="linkPatient" class="d-flex justify-content-between">
+          <input type="radio" value="1" name="linkPatient" id="chooseExist">
           <label class="radio1" for="chooseExist">Choose existing patient</label>
           <input type="radio" value="0" name="linkPatient" id="createNew">
           <label class="radio1" for="createNew">Create new patient</label>
@@ -18,13 +23,13 @@
           <!-- 1. pick an existing patient -->
           <div id="create-patient">
             <%= f.association :patient, label: "Choose from my patient list",
-                              collection: current_user.patients.ids,
+                              collection: @names,
                               id: "link-exit-patient" %>
           </div>
           <div id="link-new-patient">
             <!-- 2. create a new patient (JS: when click add a new patient, following form appear???) -->
             <h4>Add a new patient</h4>
-            <div class="w-50">
+            <div>
               <!-- nested simple_fields_for: nested attributes -->
               <%= f.simple_fields_for(:patient) do |fp| %>
                 <%= fp.input :first_name %>
@@ -33,8 +38,6 @@
                 <%= fp.input :date_of_birth, as: :date,
                                              start_year: 2021, end_year: 1910 %>
                 <%= fp.input :address %>
-                <%= fp.input :photos, as: :file, input_html: { multiple: true } %>
-                <%= fp.input :documents, as: :file, input_html: { multiple: true } %>
                 <%= fp.input :medications, as: :file, input_html: { multiple: true } %>
                 <%= fp.input :treatments, as: :file, input_html: { multiple: true } %>
                 <%= fp.input :surgeries, as: :file, input_html: { multiple: true } %>
