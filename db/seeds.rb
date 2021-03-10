@@ -3,10 +3,10 @@ require "open-uri"
 
 puts "destroying records..."
 
-Collaboration.destroy_all
-Comment.destroy_all
-User.destroy_all
-Case.destroy_all
+# Collaboration.destroy_all
+# Comment.destroy_all
+# User.destroy_all
+# Case.destroy_all
 
 puts "start seeding..."
 
@@ -16,12 +16,20 @@ puts "start seeding..."
 
 user_1 = User.create!(first_name: 'Elenice', last_name: 'H',
                       specialization: "Orthopaedic", email: "eh@bloom.com", password: "123456")
+# user_1.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01J27W4PEF-23724d3d8829-512"), filename: "avatar_1.png", content_type: "image/png")
+
 user_2 = User.create!(first_name: 'Romuald', last_name: 'G',
                       specialization: "Cardiologist", email: "rg@bloom.com", password: "123456")
+# user_2.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01J83M6SRZ-1c3dff70eb37-512"), filename: "avatar_1.png", content_type: "image/png")
+
 user_3 = User.create!(first_name: 'Marjorie', last_name: 'J',
                       specialization: "Orthopaedic", email: "mj@bloom.com", password: "123456")
+# user_3.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01JXP55880-3899cfaf530a-512"), filename: "avatar_1.png", content_type: "image/png")
+
 user_4 = User.create!(first_name: 'Yuanyuan', last_name: 'Z',
                       specialization: "Neurologist", email: "yyz@bloom.com", password: "123456")
+# user_4.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01HTK42FEK-9fcffda83ff6-512"), filename: "avatar_1.png", content_type: "image/png")
+
 
 # # == Case + Patient==
 # # -- case description --
@@ -234,20 +242,36 @@ comments = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum soda
             condimentum rhoncus, sem quam semper libero.", "Imperdiet feugiat, pede. Sed lectus. Donec mollis
             hendrerit risus. Phasellus nec sem in justo pellentesque facilisis. Etiam imperdiet imperdiet orci.",
             "Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus."]
-
-10.times do
+avatars = [ { io: File.open("app/assets/images/avatars/dr-f-1.jpg"), filename: "dr-f-1.jpg", content_type: "image/jpg"},
+            { io: File.open("app/assets/images/avatars/dr-f-2.jpg"), filename: "dr-f-2.jpg", content_type: "image/jpg"},
+            { io: File.open("app/assets/images/avatars/dr-f-3.png"), filename: "dr-f-3.png", content_type: "image/png"},
+            { io: File.open("app/assets/images/avatars/dr-f-4.png"), filename: "dr-f-4.png", content_type: "image/png"},
+            { io: File.open("app/assets/images/avatars/dr-m-1.jpg"), filename: "dr-m-1.jpg", content_type: "image/jpg"},
+            { io: File.open("app/assets/images/avatars/dr-m-2.jpg"), filename: "dr-m-2.jpg", content_type: "image/jpg"},
+            { io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/png"},
+            { io: File.open("app/assets/images/avatars/dr-m-4.png"), filename: "dr-m-4.png", content_type: "image/png"},
+          ]
+counter = 0
+8.times do
+  # User
+  puts "user creating #{counter}"
   user_sample = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                specialization: specializations.sample, email: Faker::Internet.email, password: "123456")
+  avatar_pick = avatars[counter]
+  user_sample.avatar.attach(io: avatar_pick[:io], filename: avatar_pick[:filename], content_type: avatar_pick[:content_type])
+
   # Case
   rand(3..6).times do
-  case_sample = Case.new(description: case_descriptions.sample, title: case_titles.sample,
-               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
-                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
-  case_sample.user = user_sample
-  case_sample.save!
+    case_sample = Case.new(description: case_descriptions.sample, title: case_titles.sample,
+                 patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                                      gender: ["female", "male"].sample, address: Faker::Address.street_address,
+                                      date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+    case_sample.user = user_sample
+    case_sample.save!
   end
   # Project
+  puts "project creating #{counter}"
+
   rand(2..4).times do
     project_sample = Project.create!(name: project_names.sample, description: project_descriptions.sample)
     # Collaboratiob (admin)
@@ -279,8 +303,10 @@ comments = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum soda
       comment_sample.save!
     end
   end
+  counter += 1
+
 end
-=====
+# =====
 
 # -------- Pitch Dr. Green (offer help) -----------
 cardiologist = []
@@ -305,10 +331,11 @@ medications = []
 # -- Dr Green --
 doctor_green = User.create!(first_name: "Judy", last_name: "Green",
                       specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
+doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-f-1.jpg"), filename: "dr-f-1.jpg", content_type: "image/jpg")
+
 john = Patient.new(first_name: "John", last_name: "Smith",
             gender: "male", address: Faker::Address.street_address,
             date_of_birth: "1952-03-28")
-john.user = doctor_green
 john.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
 john.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-1-baloon.jpg", content_type: "image/jpg")
 john.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
@@ -331,10 +358,11 @@ case_john.save!
 # -- Dr House --
 doctor_house = User.create!(first_name: "Gregory", last_name: "House",
                       specialization: "Cardiologist", email: "gregoryhouse@bloom.com", password: "123456")
+doctor_house.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/png")
+
 may = Patient.new(first_name: "May", last_name: "Lee",
             gender: "male", address: Faker::Address.street_address,
             date_of_birth: "1980-09-02")
-may.user = doctor_house
 may.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
 may.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
 may.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
@@ -357,10 +385,11 @@ case_may.save!
 # -- Dr Gasparindo --
 doctor_leo = User.create!(first_name: "Leo", last_name: "Gasparindo",
                       specialization: "Cardiologist", email: "leogasparindo@bloom.com", password: "123456")
+doctor_leo.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-1.jpg"), filename: "dr-m-1.jpg", content_type: "image/jpg")
+
 bob = Patient.new(first_name: "Bob", last_name: "Miller",
             gender: "male", address: Faker::Address.street_address,
             date_of_birth: "1966-10-21")
-bob.user = doctor_leo
 bob.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
 bob.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
 bob.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-3-laser.jpg"), filename: "treatment-3-laser.jpg", content_type: "image/jpg")
