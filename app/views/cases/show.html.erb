@@ -25,12 +25,17 @@
         <div class="global-text pt-3 pb-5">
           <%= @case.description %>
           <hr>
-          <div class="d-flex justify-content-between">
+          <div class="user-info">
+            <% if @case.user.avatar.attached? %>
+              <div class="mr-2"><%= cl_image_tag @case.user.avatar.key, class: "avatar" %></div>
+            <% else %>
+              <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
+            <% end %>
             <div>
               <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
               <p class="doctor-specialization"><%= @case.user.specialization %></p>
             </div>
-            <p class="doctor-email"><%= @case.user.email %></p>
+            <p class="doctor-email ml-auto mt-1"><%= @case.user.email %></p>
           </div>
         </div>
       </div>

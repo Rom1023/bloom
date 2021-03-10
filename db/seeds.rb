@@ -208,8 +208,8 @@ user_4 = User.create!(first_name: 'Yuanyuan', last_name: 'Z',
 
 
 # # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
-specializations = ["psychiatry", "rheumatologist", "neurologist", "gynaecologist",
-                   "cardiologist", "oncologist", "urologist", "gastroenterologist"]
+specializations = ["Psychiatry", "Rheumatologist", "Neurologist", "Gynaecologist",
+                   "Cardiologist", "Oncologist", "Urologist", "Gastroenterologist"]
 case_descriptions = ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
               dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
               nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,

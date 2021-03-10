@@ -31,10 +31,10 @@
             <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
           <% end %>
           <div>
-            <%= link_to c.user.full_name, user_path(c.user), class: "user-info-name" %>
-            <p class="user-info-detail"><%= c.user.specialization %></p>
+            <%= link_to c.user.full_name, user_path(c.user), class: "doctor-name" %>
+            <p class="doctor-specialization"><%= c.user.specialization %></p>
           </div>
-          <div class="ml-auto mt-1 user-info-detail"><%= c.user.email %></div>
+          <div class="doctor-email ml-auto mt-1"><%= c.user.email %></div>
         <% end %>
       </div>
     </div>
