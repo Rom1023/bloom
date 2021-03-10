@@ -15,6 +15,7 @@ puts "start seeding..."
 
 user_1 = User.create!(first_name: 'Elenice', last_name: 'H',
                       specialization: "Orthopaedic", email: "eh@bloom.com", password: "123456")
+user_1.avatar =
 user_2 = User.create!(first_name: 'Romuald', last_name: 'G',
                       specialization: "Cardiologist", email: "rg@bloom.com", password: "123456")
 user_3 = User.create!(first_name: 'Marjorie', last_name: 'J',
