@@ -23,31 +23,42 @@
 
 <div class="container-auto">
   <div class="block-top d-flex justify-content-center">
-    <div class="w-50">
-      <%= cl_image_tag("https://res.cloudinary.com/dpt0tj9je/image/upload/v1615221922/pexels-pixabay-40568_mwrsbw.jpg", :width => 555, :height => 350, :crop => :fill, :class => "w-100 object-fit") %>
+    <div class="left-bloc w-50" style="background-image: url(<%= cl_image_path("homePage-diagram_tmkho2") %>);">
     </div>
     <div class=" d-flex flex-column w-50">
-      <div class="about-text px-5 flex-grow-1">
-        <h2><strong>ABOUT US</strong></h2>
-        <p><i class="fas fa-user-md mr-2"></i> Community of licensed doctors.</p>
-        <p><i class="far fa-address-card mr-1"></i> Anonymous patient cases.</p>
-        <p class = "text-justify">Everyday, there are countless patients who suffer from rare diseases. One doctor couldn’t find a solution, the community would offer the help.</p>
-        <p>Face the unknown, connect the wise minds.</p>
+      <div class="d-flex flex-grow-1">
+        <div class="blue-bloc px-5">
+          <h2><strong>ABOUT US</strong></h2>
+          <p>Community of licensed doctors.</p>
+        </div>
+        <div class="blue-bloc px-5">
+          <h2><strong>ABOUT US</strong></h2>
+          <p>Community of licensed doctors.</p>
+        </div>
+        <div class="blue-bloc px-5">
+          <h2><strong>ABOUT US</strong></h2>
+          <p>Community of licensed doctors.</p>
+        </div>
       </div>
-      <div style="height: 50px; background-color: #F8F8F8"></div>
     </div>
   </div>
 
   <div class="d-flex justify-content-center mb-3">
-    <div class="d-flex flex-column w-50">
-      <div class="mission-text px-5 flex-grow-1">
-        <h2><strong>OUR MISSION</strong></h2>
-        <p><i class="fas fa-user-md mr-2"></i> Community of licensed doctors.</p>
-        <p><i class="far fa-address-card mr-1"></i> Anonymous patient cases.</p>
-        <p class = "text-justify">Everyday, there are countless patients who suffer from rare diseases. One doctor couldn’t find a solution, the community would offer the help.</p>
-        <p>Face the unknown, connect the wise minds.</p>
+    <div class="d-flex w-50 dark-blue-bloc">
+      <div class="d-flex justify-content-center">
+        <div class="px-5">
+          <h2>+7K</h2>
+          <p>users</p>
+        </div>
+        <div class="px-5">
+          <h2>+25K</h2>
+          <p>cases</p>
+        </div>
+        <div class="px-5">
+          <h2>+15K</h2>
+          <p>projects</p>
+        </div>
       </div>
-      <div style="height: 50px; background-color: #F8F8F8"></div>
     </div>
 
     <div class="w-50">

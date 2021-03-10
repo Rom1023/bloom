@@ -1,15 +1,34 @@
-.about-text {
+.blue-bloc {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: $m-blue;
   color: white;
+  border-top: 50px solid $m-bluelight;
 }
 
-.mission-text {
+.dark-blue-bloc {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: rgb(15,2,48);
   color: white;
+  border-bottom: 50px solid $m-bluelight;
+    h2{
+      font-family: 'Montserrat', sans-serif;
+      font-size: 48px;
+      font-weight: 700;
+    }
+    p{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 24px;
+        font-weight: 100;
+      }
+}
+
+.left-bloc{
+  background-color: $light-gray;
+  height: 350px;
+  background-position: center;
+  background-size: cover;
 }
