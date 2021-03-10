@@ -1,21 +1,23 @@
 //homepage(searchbar)
 .search-bar-lg {
   border-radius: 0;
-  padding: 38px 38px;
+  padding: 25px 25px;
   opacity: 85%;
   margin-right: 0 !important;
   border: none;
   border-right: 1px solid $m-blue;
   box-shadow: 0 8px 4px -4px rgba(0,0,0,0.2);
+  font-size: 15px;
 }
 
 #search-opt  {
-  border-radius: 0 36px 36px 0;
+  border-radius: 0 25px 25px 0;
   border: none;
-  padding: 10px 16px;
+  padding: 10px 12px;
   background: white;
   opacity: 85%;
   box-shadow: 0px 4px 4px rgba(0,0,0,0.2);
+  font-size: 15px;
 }
 //
 
@@ -26,9 +28,13 @@
   border-left: none;
   background: $m-blue;
   color: rgb(206, 212, 218);
+  font-weight: lighter;
+  justify-content: center;
 }
 
 .btn-search {
+  font-weight: lighter;
+  font-size: 12px;
   border-radius: 20px 0 0 20px;
   background: $m-blue;
   color: rgb(206, 212, 218);
@@ -41,6 +47,8 @@
 }
 
 #search-opt-nav {
+  font-weight: lighter;
+  font-size: 12px;
   border-radius: 0 20px 20px 0;
   border: 1px solid rgb(206, 212, 218);
   padding: 5px 10px;
@@ -52,6 +60,8 @@
 
 //Project&Case-index-pages(searchbar)
 .search-bar-index {
+  font-weight: lighter;
+  font-size: 12px;
   border-radius: 0 20px 20px 0;
   border: 1px solid $m-blue;
   border-left: none;
@@ -60,6 +70,8 @@
 }
 
 .btn-search-index {
+  font-weight: lighter;
+  font-size: 12px;
   border-radius: 20px 0 0 20px;
   background: transparent;
   color: $m-blue;
@@ -67,7 +79,11 @@
   border-right: none;
   padding: 5px 12px 5px 16px;
   &:hover {
-    color: $m-blue;
+    color: white;
   }
+}
+
+#search-navbar {
+  margin-left: 150px;
 }
 //
