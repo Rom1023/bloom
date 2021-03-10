@@ -12,6 +12,7 @@ class CasesController < ApplicationController
     # same as:
     # @case.build_patient
     @case.patient = Patient.new
+    @names = current_user.patients.map { |patient| [patient.patient_full_name, patient.id] }.uniq
   end
 
   def show

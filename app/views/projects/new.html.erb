@@ -1,13 +1,20 @@
 <div class="container">
-  <div class="my-5">
-    <h1>Create a new project</h1>
+  <div class="my-5 d-flex justify-content-center">
+    <div class="form col">
+      <div class="d-flex align-items-end">
+        <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/case-icon_jh1vbt.png" alt="" style="width: 54px"></div>
+        <div class="ml-3">
+          <h1 class="mb-0">Create a new project</h1>
+        </div>
+      </div>
 
-    <div class="w-50">
-      <%= simple_form_for(@project) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.button :submit, class: "btn-s-blue" %>
-      <% end %>
+      <div>
+        <%= simple_form_for(@project) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.button :submit, class: "btn-s-blue" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
