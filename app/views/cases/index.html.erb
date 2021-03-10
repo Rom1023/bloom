@@ -1,16 +1,40 @@
-<div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= cl_image_path "pexels-tima-miroshnichenko-5407212_nwdzks", crop: :fill %>')">
+<div class="small-banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= cl_image_path "jonathan-borba-v_2FRXEba94-unsplash_ic83ok", crop: :fill %>')">
   <div class="container">
     <div>
       <div class="small-banner-text col-md-8">
-        <h2>CASE</h2>
       </div>
     </div>
   </div>
 </div>
 
+<div class="container-auto">
+  <div style="background-color: #071532" class="index-icons d-flex justify-content-center align-items-start py-3">
+    <div class="col-md-3 index-icons d-flex flex-column align-items-center">
+      <img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615410924/index-search-icon_pdizpl.png" alt="">
+      <div>
+        <p>Look for a case and help doctors <br>to find solutions for their patients</p>
+      </div>
+    </div>
+
+    <div class="col-md-3 index-icons d-flex flex-column align-items-center">
+      <img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615410955/index-case-icon_zciaqa.png" alt="">
+      <div>
+        <p>Create your own case in order <br>to seek a second opinion</p>
+      </div>
+    </div>
+
+    <div class="col-md-3 index-icons d-flex flex-column align-items-center">
+      <img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615410926/index-project-icon_u46wzp.png" alt="">
+      <div>
+        <p>Link your case to a project to get <br>connected with doctors working <br>on similar cases </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <div class="container">
   <div class="d-flex justify-content-between my-3">
-    <h1>List all cases</h1>
     <div>
       <%= form_tag cases_path, method: :get, class: "d-flex justify-content-center" do %>
         <%= button_tag :submit, class: "btn btn-search-index" do %>
@@ -27,7 +51,7 @@
   </div>
 
   <div>
-    <ul class="cards-container">
+    <ul class="cards-container pb-5">
       <% @cases.each do |c| %>
         <li class="card-case">
           <div class="card-doctor-email">
@@ -59,3 +83,34 @@
     </ul>
   </div>
 </div>
+
+ <div class="light-blue-rectangle"></div>
+
+  <div class="row d-flex justify-content-center pb-5">
+    <div class="col-md-8">
+      <h2 class="projects-title pt-5 mb-2 pl-0">CASES</h2>
+        <div>
+          <div class="row">
+            <div class="col-md-6 d-flex justify-content-between pr-0">
+              <p>Cases recently solved by collaborations of doctors</p>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+      <ul class="case-list pl-0">
+        <% @cases.first(12).each do |c| %>
+            <li class="project-list-items"> <%= link_to(case_path(c)) do %>
+              <%= c.title %>
+            <% end %>
+            </li>
+        <% end %>
+      </ul>
+        </div>
+    </div>
+  </div>
+
+
+
