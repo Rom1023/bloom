@@ -33,7 +33,8 @@ import { initProjectCable } from "../channels/project_channel";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  hidePatientForm();
   formTrigger();
+  hidePatientForm();
+
   initProjectCable();
 });

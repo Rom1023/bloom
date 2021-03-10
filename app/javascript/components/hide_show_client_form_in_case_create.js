@@ -18,9 +18,10 @@ const hideShowForm = (triger) => {
 const formTrigger = () => {
   const choose = document.getElementById('chooseExist');
   const add = document.getElementById('createNew');
-
-  hideShowForm(choose);
-  hideShowForm(add);
+  if (choose && add) {
+    hideShowForm(choose);
+    hideShowForm(add);
+  }
 };
 
 export { formTrigger };

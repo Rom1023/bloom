@@ -1,8 +1,6 @@
 class Patient < ApplicationRecord
   has_many :cases
   has_many :users, through: :cases
-  has_many_attached :photos
-  has_many_attached :documents
 
   has_many_attached :medications
   has_many_attached :treatments
@@ -17,4 +15,9 @@ class Patient < ApplicationRecord
   def age
     Date.today.year - self.date_of_birth.year
   end
+
+  def patient_full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
+
 end
