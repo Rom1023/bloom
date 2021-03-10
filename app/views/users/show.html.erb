@@ -2,10 +2,19 @@
   <div id="dashboard-top">
     <div>
       <div class="d-flex align-items-end mt-3">
-        <h2 class="mb-2"><strong>Hello <%= @user.first_name %></strong></h2>
-        <p class="mb-2 ml-5"><%= @user.specialization %></p>
+        <div class="mr-3">
+         <% if @user.avatar.attached? %>
+            <div class="mr-2"><%= cl_image_tag @user.avatar.key, class: "avatar-square" %></div>
+          <% else %>
+            <div class="mr-2"><%= image_tag "logo.png", class: "avatar-square" %></div>
+          <% end %>
+        </div>
+        <div>
+          <h2 class="mb-2"><strong>Hello <%= @user.first_name %></strong></h2>
+          <p class="mb-2"><%= @user.specialization %></p>
+          <p class="mb-3 text-muted small"><%= @user.email %></p>
+        </div>
       </div>
-      <p class="mb-5 text-muted small"><%= @user.email %></p>
     </div>
     <%= render("creation_menu") %>
   </div>
