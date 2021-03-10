@@ -1,4 +1,5 @@
 require 'faker'
+require "open-uri"
 
 puts "destroying records..."
 
@@ -22,183 +23,183 @@ user_3 = User.create!(first_name: 'Marjorie', last_name: 'J',
 user_4 = User.create!(first_name: 'Yuanyuan', last_name: 'Z',
                       specialization: "Neurologist", email: "yyz@bloom.com", password: "123456")
 
-# == Case + Patient==
-# -- case description --
-orthopaedic = []
-rheumatologist = []
-neurologist = []
-descriptions = [orthopaedic, rheumatologist, neurologist]
+# # == Case + Patient==
+# # -- case description --
+# orthopaedic = []
+# rheumatologist = []
+# neurologist = []
+# descriptions = [orthopaedic, rheumatologist, neurologist]
 
-orthopaedic << "Low back pain is classified as acute (or short term) and chronic. Acute low back pain
-               lasts from a few days to a few weeks. Most acute low back pain will resolve on its own.
-               Chronic low back pain lasts for more than 3 months and often gets worse. The cause of
-               chronic low back pain can be hard to find. These are the most common symptoms of low
-               back pain. Symptoms may include discomfort or pain in the lower back that is: Aching,
-               Burning, Stabbing, Sharp or dull, Well-defined or vague. The pain may radiate into one
-               or both buttocks or even into the thigh or hip area. The symptoms of low back pain may
-               look like other health problems. Always see your healthcare provider for a diagnosis."
-orthopaedic << "Bursitis is the inflammation of a fluid-filled sac around a joint. The bursa helps
-               tendons slide smoothly over and around bones, and when it is inflamed (bursitis), you
-               may experience pain, swelling and stiffness in the affected joint. Bursitis most commonly
-               occurs in the knees, elbows, shoulders, and hips. Bursitis can develop acutely or can
-               be a chronic condition that comes and goes over a long period of time. Bursitis can be
-               caused by trauma to a joint, the overuse of a joint, or medical conditions such as
-               arthritis or gout. Bursitis is most common in middle-aged individuals. Bursitis can
-               affect anyone, but people who use a specific joint a great deal, such as the way a
-               tennis player uses his or her elbow, and older people who have arthritis or gout are
-               at the most risk. Bursitis is not a life-threatening condition, but it can severely
-               impair mobility in the affected joint."
-rheumatologist << "A rheumatologist is a board certified internist or pediatrician who is qualified by
-                  additional training and experience in the diagnosis and treatment of arthritis and
-                  other diseases of the joints, muscles, and bones. After four years of medical school
-                  and three years of training in either internal medicine or pediatrics, rheumatologists
-                  devote an additional two to three years in specialized rheumatology training. Most
-                  rheumatologists who plan to treat patients choose to become board certified. Upon
-                  completion of their training, they must pass a rigorous exam conducted by the American
-                  Board of Internal Medicine to become certified."
-rheumatologist << "Rheumatoid arthritis is a long-term, progressive, and disabling autoimmune disease.
-                  It causes inflammation, swelling, and pain in and around the joints and other body
-                  organs. Rheumatoid arthritis (RA) usually affects the hands and feet first, but it
-                  can occur in any joint. It usually involves the same joints on both sides of the body.
-                  Common symptoms include stiff joints, especially upon getting up in the mornings or
-                  after sitting down for a while. Some people often experience fatigue and a general
-                  feeling of being unwell.The Rheumatoid Arthritis Support Network estimate that RA
-                  affects up to 1 percent of the world’s population and over 1.3 million people in America."
-neurologist << "Alzheimer’s disease is a progressive form of dementia. Dementia is a broader term for
-               conditions caused by brain injuries or diseases that negatively affect memory, thinking,
-               and behavior. These changes interfere with daily living. According to the Alzheimer’s
-               Association, Alzheimer’s disease accounts for 60 to 80 percent of dementia cases. Most
-               people with the disease get a diagnosis after age 65. If it’s diagnosed before then,
-               it’s generally referred to as early onset Alzheimer’s disease. There’s no cure for
-               Alzheimer’s, but there are treatments that can slow the progression of the disease."
-neurologist << "Seizures are changes in the brain’s electrical activity. These changes can cause dramatic,
-               noticeable symptoms, or in other cases no symptoms at all. The symptoms of a severe seizure
-               include violent shaking and a loss of control. However, mild seizures can also be a sign of a
-               significant medical problem, so recognizing them is important. Because some seizures can lead
-               to injury or be a sign of an underlying medical condition, it’s important to seek treatment if
-               you experience them."
-# -- Cases + Patients ()--
-1.times do
-  c = Case.new(description: descriptions[0].sample, title: Faker::Book.title,
-               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
-                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
-  c.user = user_1
-  c.save!
-end
+# orthopaedic << "Low back pain is classified as acute (or short term) and chronic. Acute low back pain
+#                lasts from a few days to a few weeks. Most acute low back pain will resolve on its own.
+#                Chronic low back pain lasts for more than 3 months and often gets worse. The cause of
+#                chronic low back pain can be hard to find. These are the most common symptoms of low
+#                back pain. Symptoms may include discomfort or pain in the lower back that is: Aching,
+#                Burning, Stabbing, Sharp or dull, Well-defined or vague. The pain may radiate into one
+#                or both buttocks or even into the thigh or hip area. The symptoms of low back pain may
+#                look like other health problems. Always see your healthcare provider for a diagnosis."
+# orthopaedic << "Bursitis is the inflammation of a fluid-filled sac around a joint. The bursa helps
+#                tendons slide smoothly over and around bones, and when it is inflamed (bursitis), you
+#                may experience pain, swelling and stiffness in the affected joint. Bursitis most commonly
+#                occurs in the knees, elbows, shoulders, and hips. Bursitis can develop acutely or can
+#                be a chronic condition that comes and goes over a long period of time. Bursitis can be
+#                caused by trauma to a joint, the overuse of a joint, or medical conditions such as
+#                arthritis or gout. Bursitis is most common in middle-aged individuals. Bursitis can
+#                affect anyone, but people who use a specific joint a great deal, such as the way a
+#                tennis player uses his or her elbow, and older people who have arthritis or gout are
+#                at the most risk. Bursitis is not a life-threatening condition, but it can severely
+#                impair mobility in the affected joint."
+# rheumatologist << "A rheumatologist is a board certified internist or pediatrician who is qualified by
+#                   additional training and experience in the diagnosis and treatment of arthritis and
+#                   other diseases of the joints, muscles, and bones. After four years of medical school
+#                   and three years of training in either internal medicine or pediatrics, rheumatologists
+#                   devote an additional two to three years in specialized rheumatology training. Most
+#                   rheumatologists who plan to treat patients choose to become board certified. Upon
+#                   completion of their training, they must pass a rigorous exam conducted by the American
+#                   Board of Internal Medicine to become certified."
+# rheumatologist << "Rheumatoid arthritis is a long-term, progressive, and disabling autoimmune disease.
+#                   It causes inflammation, swelling, and pain in and around the joints and other body
+#                   organs. Rheumatoid arthritis (RA) usually affects the hands and feet first, but it
+#                   can occur in any joint. It usually involves the same joints on both sides of the body.
+#                   Common symptoms include stiff joints, especially upon getting up in the mornings or
+#                   after sitting down for a while. Some people often experience fatigue and a general
+#                   feeling of being unwell.The Rheumatoid Arthritis Support Network estimate that RA
+#                   affects up to 1 percent of the world’s population and over 1.3 million people in America."
+# neurologist << "Alzheimer’s disease is a progressive form of dementia. Dementia is a broader term for
+#                conditions caused by brain injuries or diseases that negatively affect memory, thinking,
+#                and behavior. These changes interfere with daily living. According to the Alzheimer’s
+#                Association, Alzheimer’s disease accounts for 60 to 80 percent of dementia cases. Most
+#                people with the disease get a diagnosis after age 65. If it’s diagnosed before then,
+#                it’s generally referred to as early onset Alzheimer’s disease. There’s no cure for
+#                Alzheimer’s, but there are treatments that can slow the progression of the disease."
+# neurologist << "Seizures are changes in the brain’s electrical activity. These changes can cause dramatic,
+#                noticeable symptoms, or in other cases no symptoms at all. The symptoms of a severe seizure
+#                include violent shaking and a loss of control. However, mild seizures can also be a sign of a
+#                significant medical problem, so recognizing them is important. Because some seizures can lead
+#                to injury or be a sign of an underlying medical condition, it’s important to seek treatment if
+#                you experience them."
+# # -- Cases + Patients ()--
+# 1.times do
+#   c = Case.new(description: descriptions[0].sample, title: Faker::Book.title,
+#                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+#                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
+#                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+#   c.user = user_1
+#   c.save!
+# end
 
-1.times do
-  c = Case.new(description: descriptions[1].sample, title: Faker::Book.title,
-               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
-                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
-  c.user = user_2
-  c.save!
-end
+# 1.times do
+#   c = Case.new(description: descriptions[1].sample, title: Faker::Book.title,
+#                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+#                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
+#                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+#   c.user = user_2
+#   c.save!
+# end
 
-1.times do
-  c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
-               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
-                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
-  c.user = user_3
-  c.save!
-end
+# 1.times do
+#   c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
+#                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+#                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
+#                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+#   c.user = user_3
+#   c.save!
+# end
 
-1.times do
-  c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
-               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
-                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
-  c.user = user_4
-  c.save!
-end
+# 1.times do
+#   c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
+#                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+#                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
+#                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+#   c.user = user_4
+#   c.save!
+# end
 
-case_2 = Case.new(
-                  description: "Painless masses in the mouth or face. Respiratory problems",
-                  patient_attributes: {
-                    first_name: "John",
-                    last_name: "Test",
-                    gender: "male",
-                    date_of_birth: "1962-10-10",
-                    address: "123 Fake st, Montreal"
-                  }
-                )
+# case_2 = Case.new(
+#                   description: "Painless masses in the mouth or face. Respiratory problems",
+#                   patient_attributes: {
+#                     first_name: "John",
+#                     last_name: "Test",
+#                     gender: "male",
+#                     date_of_birth: "1962-10-10",
+#                     address: "123 Fake st, Montreal"
+#                   }
+#                 )
 
-case_2.user = user_1
-case_2.save!
+# case_2.user = user_1
+# case_2.save!
 
-case_3 = Case.new(
-                  description: "Painless masses in the mouth or face. Respiratory problems",
-                  patient_attributes: {
-                    first_name: "John",
-                    last_name: "Test",
-                    gender: "male",
-                    date_of_birth: "1962-10-10",
-                    address: "123 Fake st, Montreal"
-                  }
-                )
+# case_3 = Case.new(
+#                   description: "Painless masses in the mouth or face. Respiratory problems",
+#                   patient_attributes: {
+#                     first_name: "John",
+#                     last_name: "Test",
+#                     gender: "male",
+#                     date_of_birth: "1962-10-10",
+#                     address: "123 Fake st, Montreal"
+#                   }
+#                 )
 
-case_3.user = user_2
-case_3.save!
+# case_3.user = user_2
+# case_3.save!
 
-# Project
-project_1 = Project.create!(name: "Adenoid Cystic Carcinoma (ACC)", description: "Adenoid cystic carcinoma (ACC) is a rare form of cancer (adenocarcinoma)
- that most often arises in the salivary glands but may occur in other locations like the breast or uterus.")
+# # Project
+# project_1 = Project.create!(name: "Adenoid Cystic Carcinoma (ACC)", description: "Adenoid cystic carcinoma (ACC) is a rare form of cancer (adenocarcinoma)
+#  that most often arises in the salivary glands but may occur in other locations like the breast or uterus.")
 
-link_1 = Link.new
-link_1.project = project_1
-link_1.case = case_2
-link_1.save!
+# link_1 = Link.new
+# link_1.project = project_1
+# link_1.case = case_2
+# link_1.save!
 
-project_2 = Project.create!(name: "Ileostomy (Ulcerative Colitis Surgery)", description: "Ulcerative colitis is a chronic (long-term) inflammatory disease.
-  It affects the lining of the large intestine, or colon, and rectum. The rectum is the last section of the colon and is located just above the anus.
-  People with ulcerative colitis have tiny ulcers and abscesses in their colon and rectum. These flare up periodically and cause bloody stools and diarrhea.
-  Ulcerative colitis may also cause severe abdominal pain and anemia. Anemia is marked by low levels of healthy red blood cells.")
+# project_2 = Project.create!(name: "Ileostomy (Ulcerative Colitis Surgery)", description: "Ulcerative colitis is a chronic (long-term) inflammatory disease.
+#   It affects the lining of the large intestine, or colon, and rectum. The rectum is the last section of the colon and is located just above the anus.
+#   People with ulcerative colitis have tiny ulcers and abscesses in their colon and rectum. These flare up periodically and cause bloody stools and diarrhea.
+#   Ulcerative colitis may also cause severe abdominal pain and anemia. Anemia is marked by low levels of healthy red blood cells.")
 
-link_2 = Link.new
-link_2.project = project_2
-link_2.case = case_3
-link_2.save!
+# link_2 = Link.new
+# link_2.project = project_2
+# link_2.case = case_3
+# link_2.save!
 
-project_3 = Project.create!(name: "Pain Management: Neuropathic Pain", description: "Neuropathic pain is a complex, chronic pain state that usually is accompanied by tissue injury.
-  With neuropathic pain, the nerve fibers themselves may be damaged, dysfunctional or injured.
-  These damaged nerve fibers send incorrect signals to other pain centers.
-  The impact of nerve fiber injury includes a change in nerve function both at the site of injury and areas around the injury.
+# project_3 = Project.create!(name: "Pain Management: Neuropathic Pain", description: "Neuropathic pain is a complex, chronic pain state that usually is accompanied by tissue injury.
+#   With neuropathic pain, the nerve fibers themselves may be damaged, dysfunctional or injured.
+#   These damaged nerve fibers send incorrect signals to other pain centers.
+#   The impact of nerve fiber injury includes a change in nerve function both at the site of injury and areas around the injury.
 
-One example of neuropathic pain is called phantom limb syndrome. This occurs when an arm or a leg has been removed because of illness or injury,
-but the brain still gets pain messages from the nerves that originally carried impulses from the missing limb. These nerves now misfire and cause pain.")
+# One example of neuropathic pain is called phantom limb syndrome. This occurs when an arm or a leg has been removed because of illness or injury,
+# but the brain still gets pain messages from the nerves that originally carried impulses from the missing limb. These nerves now misfire and cause pain.")
 
-link_3 = Link.new
-link_3.project = project_3
-link_3.case = user_3.cases[1]
-link_3.save!
+# link_3 = Link.new
+# link_3.project = project_3
+# link_3.case = user_3.cases[1]
+# link_3.save!
 
-project_4 = Project.create!(name: "Parenchymal Diffuse Lung Disease (Interstitial Lung Disease (Interstitial Pneumonia))", description: "Interstitial lung disease includes a group of
-  diseases that have thickening of the supporting tissues between the air sacs of the lungs. This thickening can be due to a variety of causes such as:
-Associated autoimmune or collagen vascular diseases
-Exposure to medications or toxins such as asbestos, tobacco smoke, or environmental toxins
-Associated genetic diseases
-The cause is not known (idiopathic).
-The most common symptoms of interstitial lung disease are a dry cough and shortness of breath.")
+# project_4 = Project.create!(name: "Parenchymal Diffuse Lung Disease (Interstitial Lung Disease (Interstitial Pneumonia))", description: "Interstitial lung disease includes a group of
+#   diseases that have thickening of the supporting tissues between the air sacs of the lungs. This thickening can be due to a variety of causes such as:
+# Associated autoimmune or collagen vascular diseases
+# Exposure to medications or toxins such as asbestos, tobacco smoke, or environmental toxins
+# Associated genetic diseases
+# The cause is not known (idiopathic).
+# The most common symptoms of interstitial lung disease are a dry cough and shortness of breath.")
 
-link_4 = Link.new
-link_4.project = project_4
-link_4.case = user_4.cases[0]
-link_4.save!
+# link_4 = Link.new
+# link_4.project = project_4
+# link_4.case = user_4.cases[0]
+# link_4.save!
 
-project_5 = Project.create!(name: "DeQuervains Tenosynovitis (De Quervain's Tenosynovitis)", description: "De Quervain's tenosynovitis is inflammation of
-  tendons on the side of the wrist at the base of the thumb. These tendons include the extensor pollicis brevis and the abductor pollicis longus tendons,
-  which extend the joints of the thumb.")
+# project_5 = Project.create!(name: "DeQuervains Tenosynovitis (De Quervain's Tenosynovitis)", description: "De Quervain's tenosynovitis is inflammation of
+#   tendons on the side of the wrist at the base of the thumb. These tendons include the extensor pollicis brevis and the abductor pollicis longus tendons,
+#   which extend the joints of the thumb.")
 
-link_5 = Link.new
-link_5.project = project_5
-link_5.case = user_2.cases[0]
-link_5.save!
+# link_5 = Link.new
+# link_5.project = project_5
+# link_5.case = user_2.cases[0]
+# link_5.save!
 
 
 
-# == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
+# # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
 specializations = ["psychiatry", "rheumatologist", "neurologist", "gynaecologist",
                    "cardiologist", "oncologist", "urologist", "gastroenterologist"]
 case_descriptions = ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
@@ -212,10 +213,10 @@ case_descriptions = ["Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
               a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrumt. Aenean
               imperdiet. Etiam ultricies nisi vel augue. Curabiture ullamcorper ultricies nisi."]
 case_titles = ["Curabiture at lacus (blocked blood vessels)", "Pellentesque rutrumt(inflammation)",
-              "Varius tincidunt()", "Nullamos quis antef()"]
-project_names = ["Felis eu depe mollis prutism()", "Pellentfsesque eu prefatium()",
-                "Viverra qusis fegiat()", "ultrifcies mid eu turpids hendfrerit()",
-                "Etiavm impdiet imposerdiet orc()", "Consectetuer lacinia nam pretfaium()"]
+              "Varius tincidunt", "Nullamos quis antef"]
+project_names = ["Felis eu depe mollis prutism", "Pellentfsesque eu prefatium",
+                "Viverra qusis fegiat", "ultrifcies mid eu turpids hendfrerit",
+                "Etiavm impdiet imposerdiet orc", "Consectetuer lacinia nam pretfaium"]
 project_descriptions = ["Lorem ipsum vestibulum purus quam, scelerisque ut, mslios sed, nonummy id, metus.
                       Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla.
                       Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
@@ -279,7 +280,7 @@ comments = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum soda
     end
   end
 end
-# =====
+=====
 
 # -------- Pitch Dr. Green (offer help) -----------
 cardiologist = []
@@ -300,18 +301,28 @@ cardiologist << "A buildup of fatty plaques in your arteries, or atherosclerosis
                 tightness, chest pressure and chest discomfort (angina). Shortness of breath. Pain, numbness,
                 weakness or coldness in your legs or arms if the blood vessels in those parts of your body
                 are narrowed. Pain in the neck, jaw, throat, upper abdomen or back"
+medications = []
 # -- Dr Green --
 doctor_green = User.create!(first_name: "Judy", last_name: "Green",
                       specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
 john = Patient.new(first_name: "John", last_name: "Smith",
             gender: "male", address: Faker::Address.street_address,
             date_of_birth: "1952-03-28")
-            # medications:,
-            # treatments:,
-            # surgeries:,
-            # lab_tests:,
-            # genetic_results:,
-            # allergies: )
+john.user = doctor_green
+john.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
+john.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-1-baloon.jpg", content_type: "image/jpg")
+john.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+john.surgeries.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+john.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-1.jpg"), filename: "x-ray-1.jpg", content_type: "image/jpg")
+john.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-2.jpg"), filename: "x-ray-2.jpg", content_type: "image/jpg")
+john.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-1.png"), filename: "electrocardiogram-1.png", content_type: "image/png")
+john.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-2.png"), filename: "electrocardiogram-2.png", content_type: "image/png")
+john.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-1.jpeg"), filename: "labtest-1.jpeg", content_type: "image/jpeg")
+john.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-2.png"), filename: "labtest-1.png", content_type: "image/png")
+john.lab_tests.attach(io: File.open("app/assets/images/dr_green/blood-test-1.png"), filename: "blood-test-1.png", content_type: "image/png")
+john.genetic_results.attach(io: File.open("app/assets/images/dr_green/genetic-report-1.png"), filename: "genetic-report-1.png", content_type: "image/png")
+john.allergies.attach(io: File.open("app/assets/images/dr_green/allergy-test-1.jpg"), filename: "allergy-test-1.jpg", content_type: "image/jpg")
+john.save!
 case_john = Case.new(description: cardiologist[0],
                      title: "Balloon Angioplasty")
 case_john.patient = john
@@ -323,12 +334,21 @@ doctor_house = User.create!(first_name: "Gregory", last_name: "House",
 may = Patient.new(first_name: "May", last_name: "Lee",
             gender: "male", address: Faker::Address.street_address,
             date_of_birth: "1980-09-02")
-            # medications:,
-            # treatments:,
-            # surgeries:,
-            # lab_tests:,
-            # genetic_results:,
-            # allergies: )
+may.user = doctor_house
+may.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
+may.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
+may.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+may.surgeries.attach(io: File.open("app/assets/images/dr_green/treatment-3-laser.jpg"), filename: "treatment-3-laser.jpg", content_type: "image/jpg")
+may.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-1.jpg"), filename: "x-ray-1.jpg", content_type: "image/jpg")
+may.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-2.jpg"), filename: "x-ray-2.jpg", content_type: "image/jpg")
+may.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-1.png"), filename: "electrocardiogram-1.png", content_type: "image/png")
+may.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-2.png"), filename: "electrocardiogram-2.png", content_type: "image/png")
+may.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-1.jpeg"), filename: "labtest-1.jpeg", content_type: "image/jpeg")
+may.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-2.png"), filename: "labtest-2.png", content_type: "image/png")
+may.lab_tests.attach(io: File.open("app/assets/images/dr_green/blood-test-1.png"), filename: "blood-test-1.png", content_type: "image/png")
+may.genetic_results.attach(io: File.open("app/assets/images/dr_green/genetic-report-1.png"), filename: "genetic-report-1.png", content_type: "image/png")
+may.allergies.attach(io: File.open("app/assets/images/dr_green/allergy-test-1.jpg"), filename: "allergy-test-1.jpg", content_type: "image/jpg")
+may.save!
 case_may = Case.new(description: cardiologist[1],
                      title: "Laser Angioplasty")
 case_may.patient = may
@@ -340,12 +360,21 @@ doctor_leo = User.create!(first_name: "Leo", last_name: "Gasparindo",
 bob = Patient.new(first_name: "Bob", last_name: "Miller",
             gender: "male", address: Faker::Address.street_address,
             date_of_birth: "1966-10-21")
-            # medications:,
-            # treatments:,
-            # surgeries:,
-            # lab_tests:,
-            # genetic_results:,
-            # allergies: )
+bob.user = doctor_leo
+bob.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
+bob.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
+bob.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-3-laser.jpg"), filename: "treatment-3-laser.jpg", content_type: "image/jpg")
+bob.surgeries.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+bob.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-1.jpg"), filename: "x-ray-1.jpg", content_type: "image/jpg")
+bob.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-2.jpg"), filename: "x-ray-2.jpg", content_type: "image/jpg")
+bob.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-1.png"), filename: "electrocardiogram-1.png", content_type: "image/png")
+bob.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-2.png"), filename: "electrocardiogram-2.png", content_type: "image/png")
+bob.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-1.jpeg"), filename: "labtest-1.jpeg", content_type: "image/jpeg")
+bob.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-2.png"), filename: "labtest-1.png", content_type: "image/png")
+bob.lab_tests.attach(io: File.open("app/assets/images/dr_green/blood-test-1.png"), filename: "blood-test-1.png", content_type: "image/png")
+bob.genetic_results.attach(io: File.open("app/assets/images/dr_green/genetic-report-1.png"), filename: "genetic-report-1.png", content_type: "image/png")
+bob.allergies.attach(io: File.open("app/assets/images/dr_green/allergy-test-1.jpg"), filename: "allergy-test-1.jpg", content_type: "image/jpg")
+bob.save!
 case_bob = Case.new(description: cardiologist[1],
                      title: "Carotid Artery Surgery")
 case_bob.patient = bob
@@ -353,7 +382,7 @@ case_bob.user = doctor_leo
 case_bob.save!
 
 project_leo = Project.create!(name: "Carotid Artery Treatement",
-                             description: "to be created")
+                             description: cardiologist[1])
 # Collaboratiob (admin)
 collaboration_leo = Collaboration.new
 collaboration_leo.project = project_leo
