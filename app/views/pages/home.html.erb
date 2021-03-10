@@ -22,35 +22,47 @@
 </div>
 
 <div class="container-auto">
-  <div class="block-top d-flex justify-content-center">
-    <div class="w-50">
-      <%= cl_image_tag("https://res.cloudinary.com/dpt0tj9je/image/upload/v1615221922/pexels-pixabay-40568_mwrsbw.jpg", :width => 555, :height => 350, :crop => :fill, :class => "w-100 object-fit") %>
-    </div>
+  <div class="d-flex justify-content-center">
+    <div class="top-left-bloc w-50" style="background-image: url(<%= cl_image_path("homePage-diagram_tmkho2") %>);">
+  </div>
     <div class=" d-flex flex-column w-50">
-      <div class="about-text px-5 flex-grow-1">
-        <h2><strong>ABOUT US</strong></h2>
-        <p><i class="fas fa-user-md mr-2"></i> Community of licensed doctors.</p>
-        <p><i class="far fa-address-card mr-1"></i> Anonymous patient cases.</p>
-        <p class = "text-justify">Everyday, there are countless patients who suffer from rare diseases. One doctor couldn’t find a solution, the community would offer the help.</p>
-        <p>Face the unknown, connect the wise minds.</p>
+      <div class="d-flex flex-grow-1 top-right-bloc">
+        <div class="px-5 col-md-4">
+          <h2>SEEK FOR HELP </h2>
+          <p>Having patients with rare diseases?</p>
+        </div>
+        <div class="px-5 col-md-4">
+          <h2>BUILD A CASE</h2>
+          <p>Gather informations and connect with doctors.</p>
+        </div>
+        <div class="px-5 col-md-4">
+          <h2>SHARE</h2>
+          <p>Join forces and find solutions together.</p>
+        </div>
       </div>
-      <div style="height: 50px; background-color: #F8F8F8"></div>
     </div>
   </div>
 
   <div class="d-flex justify-content-center mb-3">
-    <div class="d-flex flex-column w-50">
-      <div class="mission-text px-5 flex-grow-1">
-        <h2><strong>OUR MISSION</strong></h2>
-        <p><i class="fas fa-user-md mr-2"></i> Community of licensed doctors.</p>
-        <p><i class="far fa-address-card mr-1"></i> Anonymous patient cases.</p>
-        <p class = "text-justify">Everyday, there are countless patients who suffer from rare diseases. One doctor couldn’t find a solution, the community would offer the help.</p>
-        <p>Face the unknown, connect the wise minds.</p>
+    <div class="d-flex flex-column align-items-center w-50 bottom-left-bloc">
+      <p id="welcome">WELCOME TO BLOOM'S COMMUNITY</p>
+      <div class="d-flex justify-content-center">
+        <div class="px-5 border-top border-dark pt-5">
+          <p class="h2 mb-0">+7K <br><span class="h3">users</span></p>
+        </div>
+        <div class="px-5 border-top border-dark pt-5">
+          <p class="h2 mb-0">+25K <br><span class="h3">cases</span></p>
+        </div>
+        <div class="px-5 border-top border-dark pt-5">
+           <p class="h2 mb-0">+50K <br><span class="h3">projects</span></p>
+        </div>
       </div>
-      <div style="height: 50px; background-color: #F8F8F8"></div>
     </div>
 
-    <div class="w-50">
-      <%= cl_image_tag("https://res.cloudinary.com/dpt0tj9je/image/upload/v1615221923/pexels-tima-miroshnichenko-5452223_r2xk49.jpg", :width => 555, :height => 350, :crop => :fill, :class => "w-100 object-fit") %>
+    <div class=" d-flex flex-column justify-content-center align-items-center w-50 bottom-right-bloc ">
+      <div class="w-50 bottom-right-bloc" style="background-image: url(<%= cl_image_path("homePage-diagram-84_zsgja2") %>);"></div>
+      <div>
+        <p class="col-md-8 mb-5" style="color: white">84% of <strong>Bloom</strong> users said that they received a precious help from collaborators contributing to the resolution of some of their cases.</p>
+      </div>
     </div>
   </div>
