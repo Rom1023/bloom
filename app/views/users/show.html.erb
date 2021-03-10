@@ -31,7 +31,7 @@
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade" id="patients" role="tabpanel" aria-labelledby="patients-tab">
-        <p>1</p>
+        <%= render("patients_card") %>
       </div>
       <div class="tab-pane fade show active" id="cases" role="tabpanel" aria-labelledby="cases-tab">
         <%= render("case_card") %>
@@ -44,42 +44,6 @@
       </div>
     </div>
 
-  </div>
-
-  <hr>
-
-  <div>
-    <div class="d-flex justify-content-between my-3">
-      <h4>My patients</h4>
-    </div>
-      <ul>
-        <% @user.patients.each do |patient| %>
-          <li class="card-patient">
-            <div class="card-patient-top-infos">
-              <%= link_to(patient_path(patient)) do %>
-                <p>Patient <%= patient.id %> :</p>
-              <% end %>
-                <p><span><%= patient.cases.count %></span> cases</p>
-            </div>
-            <div class="patient-card-main-infos">
-              <h2><%= patient.first_name %>  <%= patient.last_name %></h2>
-              <p><%= patient.address %></p>
-            </div>
-
-            <div class="card-patient-bottom-infos">
-              <div class="card-patient-gender-age">
-                <% if  patient.gender == "female"%>
-                    <p class="patient-rounded-gender">F</p>
-                <% else %>
-                    <p class="patient-rounded-gender">M</p>
-                <% end %>
-                <span class="card-age"><%= patient.age %> <span class="card-year">year</span></span>
-              </div>
-              <a href="">Read more ￫</a>
-          </div>
-          </li>
-        <% end %>
-      </ul>
   </div>
 
 </div>

@@ -1,0 +1,28 @@
+<ul class="cards-container">
+  <% @user.patients.each do |patient| %>
+    <li class="card-patient">
+      <div class="card-patient-top-infos">
+        <%= link_to(patient_path(patient)) do %>
+          <p>Patient <%= patient.id %> :</p>
+        <% end %>
+          <p><span><%= patient.cases.count %></span> cases</p>
+      </div>
+      <div class="patient-card-main-infos">
+        <h2><%= patient.first_name %>  <%= patient.last_name %></h2>
+        <p><%= patient.address %></p>
+      </div>
+
+      <div class="card-patient-bottom-infos">
+        <div class="card-patient-gender-age">
+          <% if  patient.gender == "female"%>
+              <p class="patient-rounded-gender">F</p>
+          <% else %>
+              <p class="patient-rounded-gender">M</p>
+          <% end %>
+          <span class="card-age"><%= patient.age %> <span class="card-year">year</span></span>
+        </div>
+        <a href="">Read more ￫</a>
+    </div>
+    </li>
+  <% end %>
+</ul>

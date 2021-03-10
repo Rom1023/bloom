@@ -10,25 +10,24 @@ Case.destroy_all
 puts "start seeding..."
 
 # == User ==
-user_1 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Orthopaedic", email: "user1@test.com", password: "123456")
+# user_5 = User.create!(first_name: 'Gregory', last_name: 'House',
+#                       specialization: "Rheumatologist", email: "gh@bloom.com", password: "123456")
 
-user_2 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Rheumatologist", email: "user2@test.com", password: "123456")
-
-user_3 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Neurologist", email: "user3@test.com", password: "123456")
-
-user_4 = User.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
-                      specialization: "Cardiologist", email: "user4@test.com", password: "123456")
+user_1 = User.create!(first_name: 'Elenice', last_name: 'H',
+                      specialization: "Orthopaedic", email: "eh@bloom.com", password: "123456")
+user_2 = User.create!(first_name: 'Romuald', last_name: 'G',
+                      specialization: "Cardiologist", email: "rg@bloom.com", password: "123456")
+user_3 = User.create!(first_name: 'Marjorie', last_name: 'J',
+                      specialization: "Orthopaedic", email: "mj@bloom.com", password: "123456")
+user_4 = User.create!(first_name: 'Yuanyuan', last_name: 'Z',
+                      specialization: "Neurologist", email: "yyz@bloom.com", password: "123456")
 
 # == Case + Patient==
 # -- case description --
 orthopaedic = []
 rheumatologist = []
 neurologist = []
-cardiologist = []
-descriptions = [orthopaedic, rheumatologist, neurologist, cardiologist]
+descriptions = [orthopaedic, rheumatologist, neurologist]
 
 orthopaedic << "Low back pain is classified as acute (or short term) and chronic. Acute low back pain
                lasts from a few days to a few weeks. Most acute low back pain will resolve on its own.
@@ -65,20 +64,6 @@ rheumatologist << "Rheumatoid arthritis is a long-term, progressive, and disabli
                   after sitting down for a while. Some people often experience fatigue and a general
                   feeling of being unwell.The Rheumatoid Arthritis Support Network estimate that RA
                   affects up to 1 percent of the world’s population and over 1.3 million people in America."
-cardiologist << "Heart and blood vessel disease (also called heart disease) includes numerous problems,
-                many of which are related to a process called atherosclerosis. Atherosclerosis is a
-                condition that develops when a substance called plaque builds up in the walls of the
-                arteries. This buildup narrows the arteries, making it harder for blood to flow through.
-                If a blood clot forms, it can block the blood flow. This can cause a heart attack or stroke."
-cardiologist << "A buildup of fatty plaques in your arteries, or atherosclerosis (ath-ur-o-skluh-ROE-sis) can
-                damage your blood vessels and heart. Plaque buildup causes narrowed or blocked blood vessels
-                that can lead to a heart attack, chest pain (angina) or stroke. Coronary artery disease symptoms
-                may be different for men and women. For instance, men are more likely to have chest pain. Women
-                are more likely to have other signs and symptoms along with chest discomfort, such as shortness
-                of breath, nausea and extreme fatigue. Signs and symptoms can include: Chest pain, chest
-                tightness, chest pressure and chest discomfort (angina). Shortness of breath. Pain, numbness,
-                weakness or coldness in your legs or arms if the blood vessels in those parts of your body
-                are narrowed. Pain in the neck, jaw, throat, upper abdomen or back"
 neurologist << "Alzheimer’s disease is a progressive form of dementia. Dementia is a broader term for
                conditions caused by brain injuries or diseases that negatively affect memory, thinking,
                and behavior. These changes interfere with daily living. According to the Alzheimer’s
@@ -93,7 +78,7 @@ neurologist << "Seizures are changes in the brain’s electrical activity. These
                to injury or be a sign of an underlying medical condition, it’s important to seek treatment if
                you experience them."
 # -- Cases + Patients ()--
-4.times do
+1.times do
   c = Case.new(description: descriptions[0].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
@@ -102,7 +87,7 @@ neurologist << "Seizures are changes in the brain’s electrical activity. These
   c.save!
 end
 
-6.times do
+1.times do
   c = Case.new(description: descriptions[1].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
@@ -111,7 +96,7 @@ end
   c.save!
 end
 
-3.times do
+1.times do
   c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
@@ -120,8 +105,8 @@ end
   c.save!
 end
 
-7.times do
-  c = Case.new(description: descriptions[3].sample, title: Faker::Book.title,
+1.times do
+  c = Case.new(description: descriptions[2].sample, title: Faker::Book.title,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
                                     gender: ["female", "male"].sample, address: Faker::Address.street_address,
                                     date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
@@ -212,6 +197,7 @@ link_5.case = user_2.cases[0]
 link_5.save!
 
 
+
 # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
 specializations = ["psychiatry", "rheumatologist", "neurologist", "gynaecologist",
                    "cardiologist", "oncologist", "urologist", "gastroenterologist"]
@@ -294,4 +280,188 @@ comments = ["Donec sodales sagittis magna. Sed consequat, leo eget bibendum soda
   end
 end
 # =====
+
+# -------- Pitch Dr. Green (offer help) -----------
+cardiologist = []
+cardiologist << "Heart and blood vessel disease (also called heart disease) includes numerous problems,
+                many of which are related to a process called atherosclerosis. A special catheter (long
+                hollow tube) is inserted into the coronary artery to be treated. This catheter has a tiny
+                balloon at its tip. The balloon is inflated once the catheter has been placed into the
+                narrowed area of the coronary artery.Atherosclerosis is a condition that develops when
+                a substance called plaque builds up in the walls of the arteries. This buildup narrows
+                the arteries, making it harder for blood to flow through. If a blood clot forms, it can
+                block the blood flow. This can cause a heart attack or stroke."
+cardiologist << "A buildup of fatty plaques in your arteries, or atherosclerosis (ath-ur-o-skluh-ROE-sis) can
+                damage your blood vessels and heart. Plaque buildup causes narrowed or blocked blood vessels
+                that can lead to a heart attack, chest pain (angina) or stroke. Coronary artery disease symptoms
+                may be different for men and women. For instance, men are more likely to have chest pain. Women
+                are more likely to have other signs and symptoms along with chest discomfort, such as shortness
+                of breath, nausea and extreme fatigue. Signs and symptoms can include: Chest pain, chest
+                tightness, chest pressure and chest discomfort (angina). Shortness of breath. Pain, numbness,
+                weakness or coldness in your legs or arms if the blood vessels in those parts of your body
+                are narrowed. Pain in the neck, jaw, throat, upper abdomen or back"
+# -- Dr Green --
+doctor_green = User.create!(first_name: "Judy", last_name: "Green",
+                      specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
+john = Patient.new(first_name: "John", last_name: "Smith",
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "1952-03-28")
+            # medications:,
+            # treatments:,
+            # surgeries:,
+            # lab_tests:,
+            # genetic_results:,
+            # allergies: )
+case_john = Case.new(description: cardiologist[0],
+                     title: "Balloon Angioplasty")
+case_john.patient = john
+case_john.user = doctor_green
+case_john.save!
+# -- Dr House --
+doctor_house = User.create!(first_name: "Gregory", last_name: "House",
+                      specialization: "Cardiologist", email: "gregoryhouse@bloom.com", password: "123456")
+may = Patient.new(first_name: "May", last_name: "Lee",
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "1980-09-02")
+            # medications:,
+            # treatments:,
+            # surgeries:,
+            # lab_tests:,
+            # genetic_results:,
+            # allergies: )
+case_may = Case.new(description: cardiologist[1],
+                     title: "Laser Angioplasty")
+case_may.patient = may
+case_may.user = doctor_house
+case_may.save!
+# -- Dr Gasparindo --
+doctor_leo = User.create!(first_name: "Leo", last_name: "Gasparindo",
+                      specialization: "Cardiologist", email: "leogasparindo@bloom.com", password: "123456")
+bob = Patient.new(first_name: "Bob", last_name: "Miller",
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "1966-10-21")
+            # medications:,
+            # treatments:,
+            # surgeries:,
+            # lab_tests:,
+            # genetic_results:,
+            # allergies: )
+case_bob = Case.new(description: cardiologist[1],
+                     title: "Carotid Artery Surgery")
+case_bob.patient = bob
+case_bob.user = doctor_leo
+case_bob.save!
+
+project_leo = Project.create!(name: "Carotid Artery Treatement",
+                             description: "to be created")
+# Collaboratiob (admin)
+collaboration_leo = Collaboration.new
+collaboration_leo.project = project_leo
+collaboration_leo.user = doctor_leo
+collaboration_leo.role = 'admin'
+collaboration_leo.save!
+# ------ Link ------
+# Link - case_bob
+link_bob = Link.new
+link_bob.project = project_leo
+link_bob.case = case_bob
+link_bob.save!
+# Link - case_john
+link_john = Link.new
+link_john.project = project_leo
+link_john.case = case_john
+link_john.save!
+# Link - case_may
+link_may = Link.new
+link_may.project = project_leo
+link_may.case = case_may
+link_may.save!
+4.times do
+  link_leo = Link.new
+  link_leo.project = project_leo
+  link_leo.case = Case.all.sample
+  link_leo.save!
+end
+# ------ Collaboration (collaborators) ------
+# Collaboration - Green
+collaboration_green = Collaboration.new
+collaboration_green.project = project_leo
+collaboration_green.user = doctor_green
+collaboration_green.role = 'collaborator'
+collaboration_green.save!
+# Collaboration - House
+collaboration_house = Collaboration.new
+collaboration_house.project = project_leo
+collaboration_house.user = doctor_house
+collaboration_house.role = 'collaborator'
+collaboration_house.save!
+6.times do
+  collaboration_leo = Collaboration.new
+  collaboration_leo.project = project_leo
+  collaboration_leo.user = User.where.not(id: doctor_leo.id).sample
+  collaboration_leo.role = 'collaborator'
+  collaboration_leo.save!
+end
+# ------ Comments ------
+# Comment - Green
+comment_green = Comment.new(content: "Based on the project description, Balloon Angioplasty would be a
+                                     low risk option to consider.")
+comment_green.user = doctor_green
+comment_green.project = project_leo
+comment_green.save!
+# Comment - House
+comment_house = Comment.new(content: "Laser Angioplasty is used to 'vaporize' the blockage in the artery.
+                                     Low risk with good results.")
+comment_house.user = doctor_house
+comment_house.project = project_leo
+comment_house.save!
+8.times do
+  comment_leo = Comment.new(content: comments.sample)
+  comment_leo.user = User.all.sample
+  comment_leo.project = project_leo
+  comment_leo.save!
+end
+# -- Dr Green fake data to fill space --
+# -- DrJ Case --
+5.times do
+  case_jg = Case.new(description: case_descriptions.sample, title: case_titles.sample,
+               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
+                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+  case_jg.user = doctor_green
+  case_jg.save!
+end
+# -- DrJ Project --
+2.times do
+  project_jg = Project.create!(name: project_names.sample, description: project_descriptions.sample)
+  # Collaboratiob (admin)
+  collaboration_jg = Collaboration.new
+  collaboration_jg.project = project_jg
+  collaboration_jg.user = doctor_green
+  collaboration_jg.role = 'admin'
+  collaboration_jg.save!
+  # Link
+  rand(5..7).times do
+    link_jg = Link.new
+    link_jg.project = project_jg
+    link_jg.case = Case.all.sample
+    link_jg.save!
+  end
+  # Collaboration (collaborators)
+  rand(9..12).times do
+    collaboration_jg = Collaboration.new
+    collaboration_jg.project = project_jg
+    collaboration_jg.user = User.where.not(id: doctor_green.id).sample
+    collaboration_jg.role = 'collaborator'
+    collaboration_jg.save!
+  end
+  #Comments
+  rand(5..8).times do
+    comment_jg = Comment.new(content: comments.sample)
+    comment_jg.user = User.all.sample
+    comment_jg.project = project_jg
+    comment_jg.save!
+  end
+end
+
 puts "done seeding..."
