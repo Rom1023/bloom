@@ -33,17 +33,21 @@
   background-color: $light-gray;
   color: white;
   border-bottom: 50px solid $m-bluelight;
-    h2{
+    .h2{
       font-family: 'Montserrat', sans-serif;
       font-size: 56px;
       font-weight: 700;
       color: $m-blue-dark;
+      line-height: 0.5;
     }
     p{
         font-family: 'Montserrat', sans-serif;
         font-size: 32px;
         font-weight: 100;
         color: $m-blue-dark;
+      }
+      .h3{
+        margin-left: 32px;
       }
 }
 
@@ -60,5 +64,12 @@
       font-weight: 400;
       margin: auto;
     }
+}
+
+#welcome{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: $m-blue-dark;
 }
 
