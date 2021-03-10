@@ -1,8 +1,8 @@
 <div>
-  <ul id ="project-container">
+  <ul class ="project-container pt-2 pb-3">
     <% @user.admin_projects.each do |project| %>
-      <li >
-        <div class="card-project">
+      <li class="card-project">
+        <div>
             <div class="card-project-top-infos">
               <p><strong><%= project.links.count %></strong> cases</p>
               <p><strong><%= project.collaborations.count %></strong> collaborators</p>

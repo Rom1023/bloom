@@ -11,6 +11,13 @@ ul{
   grid-gap: 16px;
 }
 
+.project-container{
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}
+
 .card-project{
   height: 200px;
   min-width: 300px;
@@ -18,7 +25,10 @@ ul{
   border-radius: 16px;
   position: relative;
   border-left: 25px solid #E8F2FF;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.2);
   background-color: white;
+  text-decoration: none;
+  position: relative;
     &:hover{
       background-color: #3734AA;
       border-left: 25px solid #01E1F0;
