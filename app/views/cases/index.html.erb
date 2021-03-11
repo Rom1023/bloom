@@ -17,100 +17,61 @@
     </div>
 
     <div class="col-md-3 index-icons d-flex flex-column align-items-center">
-      <img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615410955/index-case-icon_zciaqa.png" alt="">
+      <div class="d-flex">
+        <img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615410955/index-case-icon_zciaqa.png" alt="">
+      </div>
+        <div class="add-button"><%= link_to "new", new_case_path, class: "my-2" %></div>
       <div>
-        <p>Create your own case in order <br>to seek a second opinion</p>
+        <p>Create your own case in order to<br> seek a second opinion</p>
       </div>
     </div>
 
     <div class="col-md-3 index-icons d-flex flex-column align-items-center">
       <img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615410926/index-project-icon_u46wzp.png" alt="">
       <div>
-        <p>Link your case to a project to get <br>connected with doctors working <br>on similar cases </p>
+        <p>Link your case to a project to get <br>connected with doctors</p>
       </div>
     </div>
 
   </div>
 </div>
 
-<div class="container">
-  <div class="d-flex justify-content-between my-3">
+  <div class="container pt-5">
     <div>
-      <%= form_tag cases_path, method: :get, class: "d-flex justify-content-center" do %>
-        <%= button_tag :submit, class: "btn btn-search-index" do %>
-          <i class="fas fa-search"></i>
-        <% end %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control search-bar-index",
-          placeholder: ""
-        %>
-      <% end %>
-    </div>
-    <%= link_to "+ case", new_case_path, class: "btn-s-blue my-2" %>
-  </div>
-
-  <div>
-    <ul class="cards-container pb-5">
-      <% @cases.each do |c| %>
-        <li class="card-case">
-          <div class="card-doctor-email">
-            <span><%= c.user.full_name.upcase %></span>
-            <p><%= c.user.email %></p>
-          </div>
-          <div class="card-main-infos">
-              <!-- should show case title-->
-            <h2><%= c.title %></h2>
-            <p><%= c.description %></p>
-          </div>
-          <div class="card-bottom-infos">
-            <div class="card-gender-age">
-              <!-- add link to patient profile page-->
-              <% if  c.patient.gender == "female"%>
-                  <p class="rounded-gender">F</p>
-              <% else %>
-                  <p class="rounded-gender">M</p>
-              <% end %>
-              <span class="card-age"><%= c.patient.age %> <span class="card-year">year</span></span>
-             <!--  <span>Patient: <%= c.patient.id %></span> -->
+      <ul class="overflow cards-container pb-5 mb-0">
+        <% @cases.each do |c| %>
+          <li class="card-case">
+            <div class="card-doctor-email">
+              <span><%= c.user.full_name.upcase %></span>
+              <p><%= c.user.email %></p>
             </div>
-            <div>
-              <%= link_to "Read more ￫",case_path(c) %>
+            <div class="card-main-infos">
+                <!-- should show case title-->
+              <h2><%= c.title %></h2>
+              <p><%= c.description %></p>
             </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
- <div class="light-blue-rectangle"></div>
-
-  <div class="row d-flex justify-content-center pb-5">
-    <div class="col-md-8">
-      <h2 class="projects-title pt-5 mb-2 pl-0">CASES</h2>
-        <div>
-          <div class="row">
-            <div class="col-md-6 d-flex justify-content-between pr-0">
-              <p>Cases recently solved by collaborations of doctors</p>
+            <div class="card-bottom-infos">
+              <div class="card-gender-age">
+                <!-- add link to patient profile page-->
+                <% if  c.patient.gender == "female"%>
+                    <p class="rounded-gender">F</p>
+                <% else %>
+                    <p class="rounded-gender">M</p>
+                <% end %>
+                <span class="card-age"><%= c.patient.age %> <span class="card-year">year</span></span>
+               <!--  <span>Patient: <%= c.patient.id %></span> -->
+              </div>
+              <div>
+                <%= link_to "Read more ￫",case_path(c) %>
+              </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-end">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-
-      <ul class="case-list pl-0">
-        <% @cases.first(12).each do |c| %>
-            <li class="project-list-items"> <%= link_to(case_path(c)) do %>
-              <%= c.title %>
-            <% end %>
-            </li>
+          </li>
         <% end %>
       </ul>
-        </div>
     </div>
   </div>
+
+ <div class="light-blue-rectangle"></div>
 
 
 

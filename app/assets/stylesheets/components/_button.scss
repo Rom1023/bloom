@@ -58,3 +58,19 @@
     text-decoration: none;
   }
 }//
+
+.add-button{
+  border-radius: 20px;
+  border: 1px solid $m-bluelight;
+  padding: 4px 10px;
+  text-decoration: none;
+  position: absolute;
+  right: 100px;
+  top: 10px;
+    a{
+      color: $m-bluelight;
+      &:hover{
+        color: white;
+      }
+    }
+}
