@@ -456,7 +456,7 @@ collaboration_house.save!
 6.times do
   collaboration_leo = Collaboration.new
   collaboration_leo.project = project_leo
-  collaboration_leo.user = User.where.not(id: doctor_leo.id).sample
+  collaboration_leo.user = User.where.not(id: doctor_leo).sample
   collaboration_leo.role = 'collaborator'
   collaboration_leo.save!
 end
@@ -521,5 +521,233 @@ end
     comment_jg.save!
   end
 end
+
+#Dr Pharell
+doctor_pharell = User.create!(first_name: "Mike", last_name: "Pharell",
+                      specialization: "Rheumatologist", email: "mikepharell@bloom.com", password: "123456")
+doctor_pharell.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-pharell.jpg"), filename: "dr-m-pharell.jpg", content_type: "image/jpg")
+
+catsandrine = Patient.new(first_name: "Catsandrine", last_name: "Levesque",
+            gender: "female", address: Faker::Address.street_address,
+            date_of_birth: "1983-02-14")
+catsandrine.medications.attach(io: File.open("app/assets/images/dr_pharell/blood-test-1.jpg"), filename: "blood-test-1.jpg", content_type: "image/png")
+catsandrine.medications.attach(io: File.open("app/assets/images/dr_pharell/blood-test-2.png"), filename: "blood-test-2.png", content_type: "image/png")
+catsandrine.medications.attach(io: File.open("app/assets/images/dr_pharell/blood-test-3.png"), filename: "blood-test-3.png", content_type: "image/png")
+
+catsandrine.treatments.attach(io: File.open("app/assets/images/dr_pharell/treatment-1.jpeg"), filename: "treatment-1.jpeg", content_type: "image/jpg")
+catsandrine.treatments.attach(io: File.open("app/assets/images/dr_pharell/treatment-2.jpg"), filename: "treatment-2.jpg", content_type: "image/jpg")
+catsandrine.treatments.attach(io: File.open("app/assets/images/dr_pharell/treatment-3.jpg"), filename: "treatment-3.jpg", content_type: "image/jpg")
+
+catsandrine.surgeries.attach(io: File.open("app/assets/images/dr_pharell/surgery-1.png"), filename: "surgery-1.png", content_type: "image/jpg")
+catsandrine.surgeries.attach(io: File.open("app/assets/images/dr_pharell/surgery-2.png"), filename: "surgery-2.png", content_type: "image/jpg")
+catsandrine.surgeries.attach(io: File.open("app/assets/images/dr_pharell/surgery-3.png"), filename: "surgery-3.png", content_type: "image/jpg")
+catsandrine.surgeries.attach(io: File.open("app/assets/images/dr_pharell/surgery-4.png"), filename: "surgery-4.png", content_type: "image/jpg")
+catsandrine.surgeries.attach(io: File.open("app/assets/images/dr_pharell/surgery-5.jpg"), filename: "surgery-5.jpg", content_type: "image/jpg")
+
+catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-1.jpg"), filename: "xray-1.jpg", content_type: "image/jpeg")
+catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-2.jpg"), filename: "xray-2.jpg", content_type: "image/jpeg")
+catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-3.jpg"), filename: "xray-3.jpg", content_type: "image/jpeg")
+catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-4.jpg"), filename: "xray-4.jpg", content_type: "image/jpeg")
+catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-5.jpg"), filename: "xray-5.jpg", content_type: "image/jpeg")
+
+catsandrine.save!
+case_catsandrine = Case.new(description: case_descriptions.sample, title: case_titles.sample)
+case_catsandrine.user = doctor_pharell
+case_catsandrine.patient = catsandrine
+case_catsandrine.save!
+
+
+sam = Patient.new(first_name: "Sam", last_name: "Bridge",
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "1988-04-06")
+sam.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
+sam.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
+sam.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-3-laser.jpg"), filename: "treatment-3-laser.jpg", content_type: "image/jpg")
+sam.surgeries.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+sam.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-1.jpg"), filename: "x-ray-1.jpg", content_type: "image/jpg")
+sam.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-2.jpg"), filename: "x-ray-2.jpg", content_type: "image/jpg")
+sam.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-1.png"), filename: "electrocardiogram-1.png", content_type: "image/png")
+sam.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-2.png"), filename: "electrocardiogram-2.png", content_type: "image/png")
+sam.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-1.jpeg"), filename: "labtest-1.jpeg", content_type: "image/jpeg")
+sam.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-2.png"), filename: "labtest-1.png", content_type: "image/png")
+sam.lab_tests.attach(io: File.open("app/assets/images/dr_green/blood-test-1.png"), filename: "blood-test-1.png", content_type: "image/png")
+sam.genetic_results.attach(io: File.open("app/assets/images/dr_green/genetic-report-1.png"), filename: "genetic-report-1.png", content_type: "image/png")
+sam.allergies.attach(io: File.open("app/assets/images/dr_green/allergy-test-1.jpg"), filename: "allergy-test-1.jpg", content_type: "image/jpg")
+sam.save!
+case_sam = Case.new(description: cardiologist[0],
+                     title: "Enlargement of the liver and spleen, swollen lymph nodes")
+case_sam.patient = sam
+case_sam.user = doctor_pharell
+case_sam.save!
+
+# Doctor Pharell fake data to fill space
+5.times do
+  case_mp = Case.new(description: case_descriptions.sample, title: case_titles.sample,
+               patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
+                                    gender: ["female", "male"].sample, address: Faker::Address.street_address,
+                                    date_of_birth: Faker::Date.birthday(min_age: 10, max_age: 65)})
+  case_mp.user = doctor_pharell
+  case_mp.save!
+end
+# -- DrJ Project --
+2.times do
+  project_mp = Project.create!(name: project_names.sample, description: project_descriptions.sample)
+  # Collaboratiob (admin)
+  collaboration_mp = Collaboration.new
+  collaboration_mp.project = project_mp
+  collaboration_mp.user = doctor_pharell
+  collaboration_mp.role = 'admin'
+  collaboration_mp.save!
+  # Link
+  rand(5..7).times do
+    link_mp = Link.new
+    link_mp.project = project_mp
+    link_mp.case = Case.all.sample
+    link_mp.save!
+  end
+  # Collaboration (collaborators)
+  rand(9..12).times do
+    collaboration_mp = Collaboration.new
+    collaboration_mp.project = project_mp
+    collaboration_mp.user = User.where.not(id: doctor_pharell.id).sample
+    collaboration_mp.role = 'collaborator'
+    collaboration_mp.save!
+  end
+  #Comments
+  rand(5..8).times do
+    comment_mp = Comment.new(content: comments.sample)
+    comment_mp.user = User.all.sample
+    comment_mp.project = project_mp
+    comment_mp.save!
+  end
+end
+
+# -- Dr Bigras --
+doctor_big = User.create!(first_name: "Frank", last_name: "Bigras",
+                      specialization: "Cardiologist", email: "frankbigras@bloom.com", password: "123456")
+doctor_big.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-bigras.jpg"), filename: "dr-m-bigras.jpg", content_type: "image/jpg")
+
+chad = Patient.new(first_name: "Chad", last_name: "Leonard",
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "1974-10-21")
+chad.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
+chad.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
+chad.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-3-laser.jpg"), filename: "treatment-3-laser.jpg", content_type: "image/jpg")
+chad.surgeries.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+chad.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-1.jpg"), filename: "x-ray-1.jpg", content_type: "image/jpg")
+chad.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-2.jpg"), filename: "x-ray-2.jpg", content_type: "image/jpg")
+chad.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-1.png"), filename: "electrocardiogram-1.png", content_type: "image/png")
+chad.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-2.png"), filename: "electrocardiogram-2.png", content_type: "image/png")
+chad.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-1.jpeg"), filename: "labtest-1.jpeg", content_type: "image/jpeg")
+chad.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-2.png"), filename: "labtest-1.png", content_type: "image/png")
+chad.lab_tests.attach(io: File.open("app/assets/images/dr_green/blood-test-1.png"), filename: "blood-test-1.png", content_type: "image/png")
+chad.genetic_results.attach(io: File.open("app/assets/images/dr_green/genetic-report-1.png"), filename: "genetic-report-1.png", content_type: "image/png")
+chad.allergies.attach(io: File.open("app/assets/images/dr_green/allergy-test-1.jpg"), filename: "allergy-test-1.jpg", content_type: "image/jpg")
+chad.save!
+case_chad = Case.new(description: cardiologist[1],
+                     title: "Adult-onset Still's disease")
+case_chad.patient = chad
+case_chad.user = doctor_big
+case_chad.save!
+
+# -- Dr Parker
+doctor_parker = User.create!(first_name: "Tony", last_name: "Parker",
+                      specialization: "Rheumatologist", email: "tonyparker@bloom.com", password: "123456")
+doctor_big.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/jpg")
+
+mark = Patient.new(first_name: "Mark", last_name: "Collin",
+            gender: "male", address: Faker::Address.street_address,
+            date_of_birth: "1990-11-15")
+mark.medications.attach(io: File.open("app/assets/images/dr_green/medication-1.png"), filename: "medication-1.png", content_type: "image/png")
+mark.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-2-baloon.jpg"), filename: "treatment-2-baloon.jpg", content_type: "image/jpg")
+mark.treatments.attach(io: File.open("app/assets/images/dr_green/treatment-3-laser.jpg"), filename: "treatment-3-laser.jpg", content_type: "image/jpg")
+mark.surgeries.attach(io: File.open("app/assets/images/dr_green/treatment-1-surgery.jpg"), filename: "treatment-1-surgery.jpg", content_type: "image/jpg")
+mark.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-1.jpg"), filename: "x-ray-1.jpg", content_type: "image/jpg")
+mark.surgeries.attach(io: File.open("app/assets/images/dr_green/x-ray-2.jpg"), filename: "x-ray-2.jpg", content_type: "image/jpg")
+mark.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-1.png"), filename: "electrocardiogram-1.png", content_type: "image/png")
+mark.surgeries.attach(io: File.open("app/assets/images/dr_green/electrocardiogram-2.png"), filename: "electrocardiogram-2.png", content_type: "image/png")
+mark.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-1.jpeg"), filename: "labtest-1.jpeg", content_type: "image/jpeg")
+mark.lab_tests.attach(io: File.open("app/assets/images/dr_green/labtest-2.png"), filename: "labtest-1.png", content_type: "image/png")
+mark.lab_tests.attach(io: File.open("app/assets/images/dr_green/blood-test-1.png"), filename: "blood-test-1.png", content_type: "image/png")
+mark.genetic_results.attach(io: File.open("app/assets/images/dr_green/genetic-report-1.png"), filename: "genetic-report-1.png", content_type: "image/png")
+mark.allergies.attach(io: File.open("app/assets/images/dr_green/allergy-test-1.jpg"), filename: "allergy-test-1.jpg", content_type: "image/jpg")
+mark.save!
+case_mark = Case.new(description: cardiologist[1],
+                     title: "Systemic autoinflammatory disease")
+case_mark.patient = mark
+case_mark.user = doctor_parker
+case_mark.save!
+
+
+project_big = Project.create!(name: "Adult-onset Still's disease Treatement",
+                             description: cardiologist[1])
+# Collaboratiob (admin)
+collaboration_big = Collaboration.new
+collaboration_big.project = project_big
+collaboration_big.user = doctor_big
+collaboration_big.role = 'admin'
+collaboration_big.save!
+# ------ Link ------
+# Link - case_chad
+link_chad = Link.new
+link_chad.project = project_big
+link_chad.case = case_chad
+link_chad.save!
+# Link - case_sam
+link_sam = Link.new
+link_sam.project = project_big
+link_sam.case = case_sam
+link_sam.save!
+# Link - case_mark
+link_mark = Link.new
+link_mark.project = project_big
+link_mark.case = case_mark
+link_mark.save!
+4.times do
+  link_big = Link.new
+  link_big.project = project_big
+  link_big.case = Case.all.sample
+  link_big.save!
+end
+# ------ Collaboration (collaborators) ------
+# Collaboration - Pharell
+collaboration_pharell = Collaboration.new
+collaboration_pharell.project = project_big
+collaboration_pharell.user = doctor_pharell
+collaboration_pharell.role = 'collaborator'
+collaboration_pharell.save!
+# Collaboration - Parker
+collaboration_parker = Collaboration.new
+collaboration_parker.project = project_big
+collaboration_parker.user = doctor_parker
+collaboration_parker.role = 'collaborator'
+collaboration_parker.save!
+6.times do
+  collaboration_big = Collaboration.new
+  collaboration_big.project = project_big
+  collaboration_big.user = User.where.not(id: doctor_big.id).sample
+  collaboration_big.role = 'collaborator'
+  collaboration_big.save!
+end
+# ------ Comments ------
+# Comment - Pharell
+comment_pharell = Comment.new(content: "Based on the project description, Balloon Angioplasty would be a
+                                     low risk option to consider.")
+comment_pharell.user = doctor_pharell
+comment_pharell.project = project_big
+comment_pharell.save!
+# Comment - Parker
+comment_parker = Comment.new(content: "Laser Angioplasty is used to 'vaporize' the blockage in the artery.
+                                     Low risk with good results.")
+comment_parker.user = doctor_parker
+comment_parker.project = project_big
+comment_parker.save!
+8.times do
+  comment_big = Comment.new(content: comments.sample)
+  comment_big.user = User.all.sample
+  comment_big.project = project_big
+  comment_big.save!
+end
+
 
 puts "done seeding..."
