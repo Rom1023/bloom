@@ -4,14 +4,13 @@
       <div class="d-flex align-items-end mb-3">
         <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/case-icon_jh1vbt.png" alt="" style="width: 55px"></div>
           <div class="ml-3">
-            <h2 class="mb-0">Edit Case: <%= @case.title %></h2>
+            <h2 class="sub-title mb-0">Edit Case <%= @case.title %></h2>
           </div>
         </div>
-        <div class="row">
-          <!-- <div class=""> -->
-            <%= simple_form_for(@case) do |f| %>
 
-              <div>
+            <%= simple_form_for(@case) do |f| %>
+              <div class="form-wrapper">
+                <div class='w-50'>
 
                 <%= f.input :title %>
                 <%= f.input :description, as: :text, input_html: {rows: 16} %>
@@ -26,17 +25,16 @@
                     <%= fp.input :genetic_results, as: :file, input_html: { multiple: true } %>
                     <%= fp.input :allergies, as: :file, input_html: { multiple: true } %>
                   <% end %>
+
               </div>
               <%= f.button :submit, class: "btn-s-blue mb-5" %>
             <% end %>
-        </div>
 
         <div>
-          <h4>Associated patient:</h4>
+          <h4 class="sub-title">Associated patient</h4>
           <p>Patient <%= @case.patient.id %></p>
        <!--    < link_to "Edit this patient", edit_patient_path(@case.patient) %> -->
       <!--     <p>Patient medical reports to be listed here</p> -->
-        </div>
       </div>
     </div>
   </div>
