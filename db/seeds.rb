@@ -456,7 +456,7 @@ collaboration_house.save!
 6.times do
   collaboration_leo = Collaboration.new
   collaboration_leo.project = project_leo
-  collaboration_leo.user = User.where.not(id: doctor_leo.id).sample
+  collaboration_leo.user = User.where.not(id: doctor_leo).sample
   collaboration_leo.role = 'collaborator'
   collaboration_leo.save!
 end
