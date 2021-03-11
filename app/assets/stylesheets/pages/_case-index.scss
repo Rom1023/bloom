@@ -6,6 +6,7 @@
   img{
     width: 80px;
     margin-bottom: 10px;
+    position: relative;
   }
   p{
     font-family: 'Montserrat', sans-serif;
@@ -13,4 +14,9 @@
     font-weight: 100;
     color: white;
     }
+}
+
+.overflow{
+  max-height: 1000px;
+  overflow: scroll;
 }
