@@ -32,6 +32,7 @@ ul{
     &:hover{
       background-color: #3734AA;
       border-left: 25px solid #01E1F0;
+      transition: background-color 500ms;
         p{
           color: white;
         }
