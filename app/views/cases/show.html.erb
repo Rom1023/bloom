@@ -32,7 +32,7 @@
               <div class="mr-2"><%= image_tag "logo.png", class: "avatar" %></div>
             <% end %>
             <div>
-              <p class="doctor-name"><%= @case.user.first_name.upcase %> <%= @case.user.last_name.upcase %></p>
+              <p class="doctor-name"><%= @case.user.first_name&.upcase %> <%= @case.user.last_name&.upcase %></p>
               <p class="doctor-specialization"><%= @case.user.specialization %></p>
             </div>
             <p class="doctor-email ml-auto mt-1"><%= @case.user.email %></p>
