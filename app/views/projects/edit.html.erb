@@ -1,14 +1,21 @@
 <div class="container">
-  <div class="my-5">
-    <h2>Edit Project: <%= @project.name %></h2>
+  <div class="my-5 d-flex justify-content-center">
+    <div class="form col">
+      <div class="d-flex align-items-end mb-3">
+        <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/project-icon_dclyb9.png" alt="" style="width: 54px"></div>
+        <div class="ml-3">
+          <h2 class="mb-0">Edit Project: <%= @project.name %></h2>
+        </div>
+      </div>
 
-    <div class="w-50">
-      <%= simple_form_for(@project) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :completed %>
-        <%= f.button :submit, class: "btn-s-blue" %>
-      <% end %>
+      <div>
+        <%= simple_form_for(@project) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :completed %>
+          <%= f.button :submit, class: "btn-s-blue" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
