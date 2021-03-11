@@ -287,14 +287,15 @@ collaboration_house.save!
 end
 # ------ Comments ------
 # Comment - Green
-comment_green = Comment.new(content: "Based on the project description, Balloon Angioplasty would be a
-                                     low risk option to consider.")
+comment_green = Comment.new(content: "If the artery blockage is less than X%,
+                                     Balloon Angioplasty could be considered. It would
+                                     enlarge the artery path and reduce the risk for future stroke. ")
 comment_green.user = doctor_green
 comment_green.project = project_leo
 comment_green.save!
 # Comment - House
-comment_house = Comment.new(content: "Laser Angioplasty is used to 'vaporize' the blockage in the artery.
-                                     Low risk with good results.")
+comment_house = Comment.new(content: "If you already have had a stroke, the surgery may help you avoid
+                                     another one, especially if your arteries are very blocked.")
 comment_house.user = doctor_house
 comment_house.project = project_leo
 comment_house.save!
