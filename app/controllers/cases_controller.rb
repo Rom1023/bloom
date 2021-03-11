@@ -35,6 +35,7 @@ class CasesController < ApplicationController
   def edit
     @case = Case.find(params[:id])
     @names = current_user.patients.map { |patient| [patient.patient_full_name, patient.id] }.uniq
+
   end
 
   def update
@@ -43,6 +44,8 @@ class CasesController < ApplicationController
     if @case.update(case_params)
       redirect_to case_path(@case)
     else
+      raise
+      @names = current_user.patients.map { |patient| [patient.patient_full_name, patient.id] }.uniq
       render :edit
     end
   end
@@ -58,8 +61,8 @@ class CasesController < ApplicationController
 
   def case_params
     # Nested Attributes: create patient and case at the same time
-    params.require(:case).permit(:description, :title,
-                                 patient_attributes: [:first_name, :last_name, :gender,
+    params.require(:case).permit(:description, :title, :patient_id,
+                                 patient_attributes: [:id, :first_name, :last_name, :gender,
                                                       :date_of_birth, :address, photos: [], documents: [], medications: [],
                                                       treatments: [], surgeries: [], lab_tests: [], genetic_results: [],
                                                       allergies: []])
