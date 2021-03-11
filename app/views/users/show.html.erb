@@ -1,42 +1,52 @@
-<div class="container">
-  <div id="dashboard-top">
-    <div>
-      <div class="d-flex align-items-end mt-3">
-        <div class="mr-3">
-         <% if @user.avatar.attached? %>
-            <div class="mr-2"><%= cl_image_tag @user.avatar.key, class: "avatar-square" %></div>
-          <% else %>
-            <div class="mr-2"><%= image_tag "logo.png", class: "avatar-square" %></div>
-          <% end %>
+<div id="dashboard-top">
+
+  <div class="container">
+      <div class="d-flex justify-content-between align-items-end">
+        <div class="d-flex align-items-end mt-5 mb-3">
+          <div class="mr-3">
+           <% if @user.avatar.attached? %>
+              <div class="mr-2"><%= cl_image_tag @user.avatar.key, class: "avatar-large" %></div>
+            <% else %>
+              <div class="mr-2"><%= image_tag "logo.png", class: "avatar-large" %></div>
+            <% end %>
+          </div>
+          <div>
+            <h2 class="mb-2"><strong>Hello, Dr. <%= @user.full_name %></strong></h2>
+            <p class="mb-2"><%= @user.specialization %></p>
+            <p class="mb-3 text-muted small"><%= @user.email %></p>
+          </div>
         </div>
-        <div>
-          <h2 class="mb-2"><strong>Hello <%= @user.first_name %></strong></h2>
-          <p class="mb-2"><%= @user.specialization %></p>
-          <p class="mb-3 text-muted small"><%= @user.email %></p>
-        </div>
+        <%= render("creation_menu") %>
       </div>
-    </div>
-    <%= render("creation_menu") %>
   </div>
 
+</div>
 
-  <hr>
+<div class="tab-bar">
+  <div class="container">
+    <div class="nav-fill">
+
+      <ul class="nav custom nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" id="patients-tab" data-toggle="tab" href="#patients" role="tab" aria-controls="patients" aria-selected="false">My patients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" id="cases-tab" data-toggle="tab" href="#cases" role="tab" aria-controls="cases" aria-selected="true">My cases</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">My projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="collaborations" aria-selected="false">My collaborations</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="container mt-2">
   <div class="nav-fill">
-
-    <ul class="nav custom nav-tabs" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link" id="patients-tab" data-toggle="tab" href="#patients" role="tab" aria-controls="patients" aria-selected="false">My patients</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" id="cases-tab" data-toggle="tab" href="#cases" role="tab" aria-controls="cases" aria-selected="true">My cases</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="projects-tab" data-toggle="tab" href="#projects" role="tab" aria-controls="projects" aria-selected="false">My projects</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="collaborations-tab" data-toggle="tab" href="#collaborations" role="tab" aria-controls="collaborations" aria-selected="false">My collaborations</a>
-      </li>
-    </ul>
 
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade" id="patients" role="tabpanel" aria-labelledby="patients-tab">
@@ -54,5 +64,5 @@
     </div>
 
   </div>
-
 </div>
+

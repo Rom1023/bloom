@@ -1,4 +1,9 @@
-#list-buttons{
+#dashboard-top {
+  background: white;
+  padding-bottom: 15px;
+}
+
+#list-buttons {
   display: flex;
 }
 .col-customized{
@@ -9,17 +14,56 @@
   height: 60px!important;
   border: 1px solid transparent!important;
   border-radius: 16px!important;
+  align-items: center!important;
 }
 
 .col-customized:hover {
   border-radius: 16px!important;
   border: 1px solid lightgray!important;
+  // background: white;
 }
 
 .row-customized {
   height: 65px!important;
+  min-width: 560px !important;
 }
 
 .custom.nav-tabs .nav-link.active {
   background-color: transparent;
 }
+.tag-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+// tabbar
+#myTab {
+  background: $m-blue;
+}
+.tab-bar {
+  background: $m-blue;
+  height: 60px;
+  padding-top: 19px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  &:hover {
+    border-radius: 8px 8px 0px 0;
+    color: white;
+
+  }
+}
+
+.nav-link.active {
+  border-radius: 8px 8px 0 0;
+  color: $m-blue !important;
+  background: white !important;
+  font-weight: bold;
+}
+//
