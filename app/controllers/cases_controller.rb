@@ -34,6 +34,7 @@ class CasesController < ApplicationController
 
   def edit
     @case = Case.find(params[:id])
+    @names = current_user.patients.map { |patient| [patient.patient_full_name, patient.id] }.uniq
   end
 
   def update

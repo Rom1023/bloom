@@ -1,21 +1,30 @@
 <div class="container">
-  <div class="my-5">
-    <h1>Edit this case</h1>
-    <h4 class="my-3">Case <%= @case.id %>: <%= @case.title %></h4>
+  <div class="my-5 d-flex justify-content-center">
+    <div class="form col">
+      <div class="d-flex align-items-end mb-3">
+        <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/case-icon_jh1vbt.png" alt="" style="width: 55px"></div>
+          <div class="ml-3">
+            <h2 class="mb-0">Edit Case: <%= @case.id %>: <%= @case.title %></h2>
+          </div>
+        </div>
 
-    <div>
-      <%= simple_form_for(@case) do |f| %>
-        <%= f.input :description, as: :text %>
-        <%= f.association :patient, label: "Choose from existing patient" %>
-        <%= f.button :submit, class: "btn-s-blue mb-5" %>
-      <% end %>
-    </div>
+        <div>
+          <%= simple_form_for(@case) do |f| %>
+            <%= f.input :description, as: :text %>
+            <%= f.association :patient, label: "Choose from my patient list",
+                              collection: @names,
+                              id: "link-exit-patient" %>
+            <%= f.button :submit, class: "btn-s-blue mb-5" %>
+          <% end %>
+        </div>
 
-    <div>
-      <h4>Associated patient:</h4>
-      <p>Patient <%= @case.patient.id %></p>
-   <!--    < link_to "Edit this patient", edit_patient_path(@case.patient) %> -->
-  <!--     <p>Patient medical reports to be listed here</p> -->
+        <div>
+          <h4>Associated patient:</h4>
+          <p>Patient <%= @case.patient.id %></p>
+       <!--    < link_to "Edit this patient", edit_patient_path(@case.patient) %> -->
+      <!--     <p>Patient medical reports to be listed here</p> -->
+        </div>
+      </div>
     </div>
   </div>
 </div>
