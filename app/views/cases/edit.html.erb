@@ -4,12 +4,13 @@
       <div class="d-flex align-items-end mb-3">
         <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/case-icon_jh1vbt.png" alt="" style="width: 55px"></div>
           <div class="ml-3">
-            <h2 class="mb-0">Edit Case: <%= @case.id %>: <%= @case.title %></h2>
+            <h2 class="mb-0">Edit Case: <%= @case.title %></h2>
           </div>
         </div>
 
         <div>
           <%= simple_form_for(@case) do |f| %>
+            <%= f.input :title %>
             <%= f.input :description, as: :text %>
             <%= f.association :patient, label: "Choose from my patient list",
                               collection: @names,
