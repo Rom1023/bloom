@@ -12,24 +12,23 @@
               <div class="form-wrapper">
                 <div class='w-50'>
 
-                  <%= f.input :title %>
-                  <%= f.input :description, as: :text, input_html: {rows: 16} %>
-                </div>
-                <div class="col w-50 medical-attach">
-                  <h2 id="medical-report-anchor" class="title mb-5">Medical Report</h2>
-                    <%= f.simple_fields_for(:patient) do |fp| %>
-                      <%= fp.input :medications, as: :file, input_html: { multiple: true } %>
-                      <%= fp.input :treatments, as: :file, input_html: { multiple: true } %>
-                      <%= fp.input :surgeries, as: :file, input_html: { multiple: true } %>
-                      <%= fp.input :lab_tests, as: :file, input_html: { multiple: true } %>
-                      <%= fp.input :genetic_results, as: :file, input_html: { multiple: true } %>
-                      <%= fp.input :allergies, as: :file, input_html: { multiple: true } %>
-                    <% end %>
-                </div>
+                <%= f.input :title %>
+                <%= f.input :description, as: :text, input_html: {rows: 16} %>
+              </div>
+              <div class="col">
+                <h2 id="medical-report-anchor" class="title mb-5">Medical Report</h2>
+                  <%= f.simple_fields_for(:patient) do |fp| %>
+                    <%= fp.input :medications, as: :file, input_html: { multiple: true } %>
+                    <%= fp.input :treatments, as: :file, input_html: { multiple: true } %>
+                    <%= fp.input :surgeries, as: :file, input_html: { multiple: true } %>
+                    <%= fp.input :lab_tests, as: :file, input_html: { multiple: true } %>
+                    <%= fp.input :genetic_results, as: :file, input_html: { multiple: true } %>
+                    <%= fp.input :allergies, as: :file, input_html: { multiple: true } %>
+                  <% end %>
+
               </div>
               <%= f.button :submit, class: "btn-s-blue mb-5" %>
             <% end %>
-
 
         <div>
           <h4 class="sub-title">Associated patient</h4>
