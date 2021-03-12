@@ -260,7 +260,7 @@ collaboration_house.save!
 6.times do
   collaboration_leo = Collaboration.new
   collaboration_leo.project = project_leo
-  collaboration_leo.user = User.where.not(id: [doctor_leo, doctor_green]).sample
+  collaboration_leo.user = User.where.not(id: [doctor_leo, doctor_green, doctor_house]).sample
   collaboration_leo.role = 'collaborator'
   collaboration_leo.save!
 end
@@ -314,7 +314,7 @@ end
   rand(9..12).times do
     collaboration_jg = Collaboration.new
     collaboration_jg.project = project_jg
-    collaboration_jg.user = User.where.not(id: [doctor_leo, doctor_green]).sample
+    collaboration_jg.user = User.where.not(id: [doctor_leo, doctor_green, doctor_house]).sample
     collaboration_jg.role = 'collaborator'
     collaboration_jg.save!
   end
