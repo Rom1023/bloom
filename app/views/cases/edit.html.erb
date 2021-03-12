@@ -1,41 +1,40 @@
 <div class="container">
   <div class="my-5 d-flex justify-content-center">
     <div class="form col" style="max-width: unset;">
-      <div class="d-flex align-items-end mb-3">
-        <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/case-icon_jh1vbt.png" alt="" style="width: 55px"></div>
+      <div class="d-flex align-items-cenetr mb-3">
+        <div><img src="https://res.cloudinary.com/dpt0tj9je/image/upload/v1615306185/case-icon_jh1vbt.png" alt="" style="width: 65px"></div>
           <div class="ml-3">
             <h2 class="sub-title mb-0">Edit Case <%= @case.title %></h2>
+            <p>Patient: <%= @case.patient.first_name %> <%= @case.patient.last_name %></p>
           </div>
         </div>
 
-            <%= simple_form_for(@case) do |f| %>
-              <div class="form-wrapper">
-                <div class='w-50'>
-
+          <%= simple_form_for(@case) do |f| %>
+            <div class="form-wrapper">
+              <div class='w-50'>
                 <%= f.input :title %>
-                <%= f.input :description, as: :text, input_html: {rows: 16} %>
-              </div>
-              <div class="col">
-                <h2 id="medical-report-anchor" class="title mb-5">Medical Report</h2>
-                  <%= f.simple_fields_for(:patient) do |fp| %>
-                    <%= fp.input :medications, as: :file, input_html: { multiple: true } %>
-                    <%= fp.input :treatments, as: :file, input_html: { multiple: true } %>
-                    <%= fp.input :surgeries, as: :file, input_html: { multiple: true } %>
-                    <%= fp.input :lab_tests, as: :file, input_html: { multiple: true } %>
-                    <%= fp.input :genetic_results, as: :file, input_html: { multiple: true } %>
-                    <%= fp.input :allergies, as: :file, input_html: { multiple: true } %>
-                  <% end %>
-
-              </div>
-              <%= f.button :submit, class: "btn-s-blue mb-5" %>
-            <% end %>
-
+                <%= f.input :description, as: :text, input_html: {rows: 15} %>
+                <%= f.button :submit, class: "btn-s-blue mb-5" %>
+            </div>
+            <div class="col ml-5">
+              <h2 id="medical-report-anchor" class="title mb-2">Medical Report</h2>
+                <%= f.simple_fields_for(:patient) do |fp| %>
+                  <%= fp.input :medications, as: :file, input_html: { multiple: true } %>
+                  <%= fp.input :treatments, as: :file, input_html: { multiple: true } %>
+                  <%= fp.input :surgeries, as: :file, input_html: { multiple: true } %>
+                  <%= fp.input :lab_tests, as: :file, input_html: { multiple: true } %>
+                  <%= fp.input :genetic_results, as: :file, input_html: { multiple: true } %>
+                  <%= fp.input :allergies, as: :file, input_html: { multiple: true } %>
+                <% end %>
+            </div>
+          <% end %>
+<!--
         <div>
           <h4 class="sub-title">Associated patient</h4>
           <p>Patient <%= @case.patient.id %></p>
-       <!--    < link_to "Edit this patient", edit_patient_path(@case.patient) %> -->
-      <!--     <p>Patient medical reports to be listed here</p> -->
       </div>
+    -->
+
     </div>
   </div>
 </div>
