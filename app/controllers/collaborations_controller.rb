@@ -6,7 +6,7 @@ class CollaborationsController < ApplicationController
     @collaboration.user = current_user
 
     if @collaboration.save
-      redirect_to project_path(@project)
+      redirect_to project_path(@project, anchor: :collaborators)
     else
       render project_path(@project), alert: 'Could not create collaboration'
     end
