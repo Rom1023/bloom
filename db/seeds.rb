@@ -4,9 +4,9 @@ require "open-uri"
 
 puts "start seeding..."
 
-doctor_green = User.create!(first_name: "Judy", last_name: "Green",
-                      specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
-doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
+doctor_house = User.create!(first_name: "Gregory", last_name: "House",
+                      specialization: "Cardiologist", email: "gregoryhouse@bloom.com", password: "123456")
+doctor_house.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/png")
 
 
 # # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
@@ -54,6 +54,7 @@ avatars = [ { io: File.open("app/assets/images/avatars/dr-f-1.jpg"), filename: "
             { io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/png"},
             { io: File.open("app/assets/images/avatars/dr-m-4.png"), filename: "dr-m-4.png", content_type: "image/png"},
           ]
+
 counter = 0
 8.times do
   # User
@@ -130,11 +131,11 @@ cardiologist << "A buildup of fatty plaques in your arteries, or atherosclerosis
                 tightness, chest pressure and chest discomfort (angina). Shortness of breath. Pain, numbness,
                 weakness or coldness in your legs or arms if the blood vessels in those parts of your body
                 are narrowed. Pain in the neck, jaw, throat, upper abdomen or back"
-medications = []
+
 # -- Dr Green --
-# doctor_green = User.create!(first_name: "Judy", last_name: "Green",
-#                       specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
-# doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
+doctor_green = User.create!(first_name: "Judy", last_name: "Green",
+                      specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
+doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
 
 john = Patient.new(first_name: "John", last_name: "Smith",
             gender: "male", address: Faker::Address.street_address,
@@ -159,9 +160,9 @@ case_john.patient = john
 case_john.user = doctor_green
 case_john.save!
 # -- Dr House --
-doctor_house = User.create!(first_name: "Gregory", last_name: "House",
-                      specialization: "Cardiologist", email: "gregoryhouse@bloom.com", password: "123456")
-doctor_house.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/png")
+# doctor_house = User.create!(first_name: "Gregory", last_name: "House",
+#                       specialization: "Cardiologist", email: "gregoryhouse@bloom.com", password: "123456")
+# doctor_house.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-3.png"), filename: "dr-m-3.png", content_type: "image/png")
 
 may = Patient.new(first_name: "May", last_name: "Lee",
             gender: "male", address: Faker::Address.street_address,
@@ -284,7 +285,7 @@ comment_house.save!
   comment_leo.save!
 end
 # -- Dr Green fake data to fill space --
-# -- DrJ Case --
+# -- Dr Green Case --
 5.times do
   case_jg = Case.new(description: case_descriptions.sample, title: case_titles.sample,
                patient_attributes: {first_name: Faker::Name.first_name, last_name: Faker::Name.last_name,
@@ -313,7 +314,7 @@ end
   rand(9..12).times do
     collaboration_jg = Collaboration.new
     collaboration_jg.project = project_jg
-    collaboration_jg.user = User.where.not(id: doctor_green.id).sample
+    collaboration_jg.user = User.where.not(id: [doctor_leo, doctor_green]).sample
     collaboration_jg.role = 'collaborator'
     collaboration_jg.save!
   end
@@ -355,10 +356,20 @@ catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-4.
 catsandrine.lab_tests.attach(io: File.open("app/assets/images/dr_pharell/xray-5.jpg"), filename: "xray-5.jpg", content_type: "image/jpeg")
 
 catsandrine.save!
+# -- case --
 case_catsandrine = Case.new(description: case_descriptions.sample, title: case_titles.sample)
-case_catsandrine.user = doctor_pharell
 case_catsandrine.patient = catsandrine
+case_catsandrine.user = doctor_pharell
 case_catsandrine.save!
+
+case_catsandrine_2 = Case.new(description: "A normally functioning immune system can tell the difference between “attachers”, such as germs or viruses, and healthy cells. When the body is attacked by illness, the immune system fights back. But when autoimmune dysfunction occurs, the immune system mistakes healthy cells for invaders, and attacks them instead. In someone with RA, this causes inflammation of the tissue around the joints. RA can also affect the eyes, lungs, skin, and heart.
+
+Inflammation is a normal part of immune response. However, inflammation from RA is part of the problem. It causes considerable pain, damage to joints, and reduced mobility. The same substances that cause inflammation of the joints can also cause a fever, it is important to remember that infection is a real possibility. RA also causes an increase in metabolic rate, which can also result in a fever.",
+                     title: "Inflammatory arthritis that features fevers")
+case_catsandrine_2.patient = catsandrine
+case_catsandrine_2.user = doctor_pharell
+case_catsandrine_2.save!
+
 
 
 sam = Patient.new(first_name: "Sam", last_name: "Bridge",
@@ -403,7 +414,7 @@ end
   collaboration_mp.role = 'admin'
   collaboration_mp.save!
   # Link
-  rand(5..7).times do
+  6.times do
     link_mp = Link.new
     link_mp.project = project_mp
     link_mp.case = Case.all.sample
@@ -413,7 +424,7 @@ end
   rand(9..12).times do
     collaboration_mp = Collaboration.new
     collaboration_mp.project = project_mp
-    collaboration_mp.user = User.where.not(id: doctor_pharell.id).sample
+    collaboration_mp.user = User.where.not(id: [doctor_pharell, doctor_leo, doctor_green]).sample
     collaboration_mp.role = 'collaborator'
     collaboration_mp.save!
   end
@@ -529,7 +540,7 @@ collaboration_parker.save!
 6.times do
   collaboration_big = Collaboration.new
   collaboration_big.project = project_big
-  collaboration_big.user = User.where.not(id: doctor_big.id).sample
+  collaboration_big.user = User.where.not(id: [doctor_big, doctor_pharell, doctor_leo, doctor_green]).sample
   collaboration_big.role = 'collaborator'
   collaboration_big.save!
 end
