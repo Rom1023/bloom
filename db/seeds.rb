@@ -536,12 +536,12 @@ link_mark.save!
   link_big.save!
 end
 # ------ Collaboration (collaborators) ------
-# Collaboration - Pharell
-collaboration_pharell = Collaboration.new
-collaboration_pharell.project = project_big
-collaboration_pharell.user = doctor_pharell
-collaboration_pharell.role = 'collaborator'
-collaboration_pharell.save!
+# # Collaboration - Pharell
+# collaboration_pharell = Collaboration.new
+# collaboration_pharell.project = project_big
+# collaboration_pharell.user = doctor_pharell
+# collaboration_pharell.role = 'collaborator'
+# collaboration_pharell.save!
 # Collaboration - Parker
 collaboration_parker = Collaboration.new
 collaboration_parker.project = project_big
@@ -556,15 +556,16 @@ collaboration_parker.save!
   collaboration_big.save!
 end
 # ------ Comments ------
-# Comment - Pharell
-comment_pharell = Comment.new(content: "Based on the project description, Balloon Angioplasty would be a
-                                     low risk option to consider.")
-comment_pharell.user = doctor_pharell
-comment_pharell.project = project_big
-comment_pharell.save!
+# Comment - Bigras
+comment_big = Comment.new(content: "My patient was then referred to another institute for further rheumatology investigation and workup,
+                                    where a PET scan showed diffuse supraclavicular, mediastinal, and hilar lymphadenopathy")
+comment_big.user = doctor_big
+comment_big.project = project_big
+comment_big.save!
 # Comment - Parker
-comment_parker = Comment.new(content: "Laser Angioplasty is used to 'vaporize' the blockage in the artery.
-                                     Low risk with good results.")
+comment_parker = Comment.new(content: "Given the new findings in my patient's history, persistent fever, arthritis,
+                                      and rashes, the possibility of AOSD was raised and serum ferritin levels were ordered;
+                                      and revealed highly elevated levels (2,723 ng/mL).")
 comment_parker.user = doctor_parker
 comment_parker.project = project_big
 comment_parker.save!
