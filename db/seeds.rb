@@ -1,35 +1,8 @@
 require 'faker'
 require "open-uri"
 
-puts "destroying records..."
-
-# Collaboration.destroy_all
-# Comment.destroy_all
-# User.destroy_all
-# Case.destroy_all
 
 puts "start seeding..."
-
-# == User ==
-# user_5 = User.create!(first_name: 'Gregory', last_name: 'House',
-#                       specialization: "Rheumatologist", email: "gh@bloom.com", password: "123456")
-
-user_1 = User.create!(first_name: 'Elenice', last_name: 'H',
-                      specialization: "Orthopaedic", email: "eh@bloom.com", password: "123456")
-# user_1.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01J27W4PEF-23724d3d8829-512"), filename: "avatar_1.png", content_type: "image/png")
-
-user_2 = User.create!(first_name: 'Romuald', last_name: 'G',
-                      specialization: "Cardiologist", email: "rg@bloom.com", password: "123456")
-# user_2.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01J83M6SRZ-1c3dff70eb37-512"), filename: "avatar_1.png", content_type: "image/png")
-
-user_3 = User.create!(first_name: 'Marjorie', last_name: 'J',
-                      specialization: "Orthopaedic", email: "mj@bloom.com", password: "123456")
-# user_3.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01JXP55880-3899cfaf530a-512"), filename: "avatar_1.png", content_type: "image/png")
-
-user_4 = User.create!(first_name: 'Yuanyuan', last_name: 'Z',
-                      specialization: "Neurologist", email: "yyz@bloom.com", password: "123456")
-# user_4.avatar.attach(io: URI.open("https://ca.slack-edge.com/T02NE0241-U01HTK42FEK-9fcffda83ff6-512"), filename: "avatar_1.png", content_type: "image/png")
-
 
 # # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
 specializations = ["Psychiatry", "Rheumatologist", "Neurologist", "Gynaecologist",
@@ -156,7 +129,7 @@ medications = []
 # -- Dr Green --
 doctor_green = User.create!(first_name: "Judy", last_name: "Green",
                       specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
-doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-f-1.jpg"), filename: "dr-f-1.jpg", content_type: "image/jpg")
+doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
 
 john = Patient.new(first_name: "John", last_name: "Smith",
             gender: "male", address: Faker::Address.street_address,
@@ -289,7 +262,7 @@ end
 # Comment - Green
 comment_green = Comment.new(content: "If the artery blockage is less than X%,
                                      Balloon Angioplasty could be considered. It would
-                                     enlarge the artery path and reduce the risk for future stroke. ")
+                                     enlarge the artery path and reduce the risk for future stroke.")
 comment_green.user = doctor_green
 comment_green.project = project_leo
 comment_green.save!
@@ -351,7 +324,7 @@ end
 #Dr Pharell
 doctor_pharell = User.create!(first_name: "Mike", last_name: "Pharell",
                       specialization: "Rheumatologist", email: "mikepharell@bloom.com", password: "123456")
-doctor_pharell.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-pharell.jpg"), filename: "dr-m-pharell.jpg", content_type: "image/jpg")
+doctor_pharell.avatar.attach(io: File.open("app/assets/images/avatars/dr-pharell.png"), filename: "dr-pharell.png", content_type: "image/png")
 
 catsandrine = Patient.new(first_name: "Catsandrine", last_name: "Levesque",
             gender: "female", address: Faker::Address.street_address,
@@ -450,7 +423,7 @@ end
 
 # -- Dr Bigras --
 doctor_big = User.create!(first_name: "Frank", last_name: "Bigras",
-                      specialization: "Cardiologist", email: "frankbigras@bloom.com", password: "123456")
+                      specialization: "Rheumatologist", email: "frankbigras@bloom.com", password: "123456")
 doctor_big.avatar.attach(io: File.open("app/assets/images/avatars/dr-m-bigras.jpg"), filename: "dr-m-bigras.jpg", content_type: "image/jpg")
 
 chad = Patient.new(first_name: "Chad", last_name: "Leonard",
