@@ -4,6 +4,11 @@ require "open-uri"
 
 puts "start seeding..."
 
+doctor_green = User.create!(first_name: "Judy", last_name: "Green",
+                      specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
+doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
+
+
 # # == fill the space data: User, Case, Patient, Project, Link, Collaboration, Comment ==
 specializations = ["Psychiatry", "Rheumatologist", "Neurologist", "Gynaecologist",
                    "Cardiologist", "Oncologist", "Urologist", "Gastroenterologist"]
@@ -127,9 +132,9 @@ cardiologist << "A buildup of fatty plaques in your arteries, or atherosclerosis
                 are narrowed. Pain in the neck, jaw, throat, upper abdomen or back"
 medications = []
 # -- Dr Green --
-doctor_green = User.create!(first_name: "Judy", last_name: "Green",
-                      specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
-doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
+# doctor_green = User.create!(first_name: "Judy", last_name: "Green",
+#                       specialization: "Cardiologist", email: "judygreen@bloom.com", password: "123456")
+# doctor_green.avatar.attach(io: File.open("app/assets/images/avatars/dr-green.png"), filename: "dr-green.png", content_type: "image/png")
 
 john = Patient.new(first_name: "John", last_name: "Smith",
             gender: "male", address: Faker::Address.street_address,
