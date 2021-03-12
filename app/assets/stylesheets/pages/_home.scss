@@ -4,11 +4,15 @@
   background-position: center;
   background-size: cover;
 }
+.padding-sides {
+  padding: 0px 34px;
+}
 
 .top-right-bloc {
   display: flex;
+  padding-top: 100px;
   justify-content: center;
-  align-items: center;
+  align-items: top;
   background: $m-blue;
   color: white;
   border-top: 50px solid $m-bluelight;
